@@ -6,11 +6,19 @@ local M = {}
 session.abduco_session()
 
 -- Different colors for mode
-local purple = '#B48EAD'
-local blue = '#81A1C1'
-local yellow = '#EBCB8B'
-local green = '#A3BE8C'
-local red = '#BF616A'
+-- local red = '#BF616A'
+-- local yellow = '#EBCB8B'
+-- local green = '#A3BE8C'
+-- local blue = '#81A1C1'
+-- local purple = '#B48EAD'
+
+local red = '#ff4040'
+local orange = '#ff9326'
+local yellow = '#ffcb65'
+local green = '#9ceb4f'
+local aqua = '#18ffe0'
+local blue = '#31baff'
+local purple = '#9d8cff'
 
 -- fg and bg
 local white_fg = '#e6e6e6'
@@ -25,7 +33,7 @@ local right_separator = ''
 local blank = ' '
 
 -- Icons
-local iconNERDTree = '🌳'
+local iconNERDTree = '🌳🌳🌳'
 local iconVista = '📌'
 
 ------------------------------------------------------------------------
@@ -82,6 +90,16 @@ local filetype_bg = 'None'
 local filetype_fg = blue
 local filetype_gui = 'bold'
 api.nvim_command('hi NeoLineFiletype guibg='..filetype_bg..' guifg='..filetype_fg..' gui='..filetype_gui)
+
+-- VCS Color
+local vcs_add = green
+local vcs_delete = red
+local vcs_change = orange
+api.nvim_command('hi NeoLineVCSLeft guifg='..green)
+api.nvim_command('hi NeoLineVCSAdd guibg='..green..' guifg='..bg)
+api.nvim_command('hi NeoLineVCSDelete guibg='..red..' guifg='..bg)
+api.nvim_command('hi NeoLineVCSChange guibg='..orange..' guifg='..bg)
+api.nvim_command('hi NeoLineVCSRight guifg='..orange)
 
 -- row and column Color
 local line_bg = 'None'
@@ -151,9 +169,16 @@ function M.activeLine()
   -- Repository Status
   local repostats = api.nvim_call_function('sy#repo#get_stats', {})
   if repostats[1] > -1 then
+    statusline = statusline.."%#NeoLineVCSLeft#"
+    statusline = statusline..left_separator
+    statusline = statusline.."%#NeoLineVCSAdd#"
     statusline = statusline.."+"..repostats[1]
+    statusline = statusline.."%#NeoLineVCSDelete#"
     statusline = statusline.."-"..repostats[2]
+    statusline = statusline.."%#NeoLineVCSChange#"
     statusline = statusline.."~"..repostats[3]
+    statusline = statusline.."%#NeoLineVCSRight#"
+    statusline = statusline..right_separator
   end
 
   -- Alignment to left
@@ -221,8 +246,8 @@ local getTabLabel = function(n)
   return file_name
 end
 
-api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg=#BF616A guifg=#292929')
-api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg=#BF616A')
+api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..blue..' guifg=#292929')
+api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..blue)
 api.nvim_command('hi NeoLineTabLine guibg=#4d4d4d guifg=#c7c7c7 gui=None')
 api.nvim_command('hi NeoLineTabLineSeparator guifg=#4d4d4d')
 api.nvim_command('hi NeoLineTabLineFill guibg=None gui=None')
