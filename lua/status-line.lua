@@ -12,6 +12,7 @@ session.abduco_session()
 -- local blue = '#81A1C1'
 -- local purple = '#B48EAD'
 
+local white = '#ffffff'
 local red = '#ff4040'
 local orange = '#ff9326'
 local yellow = '#ffcb65'
@@ -95,10 +96,11 @@ api.nvim_command('hi NeoLineFiletype guibg='..filetype_bg..' guifg='..filetype_f
 local vcs_add = green
 local vcs_delete = red
 local vcs_change = orange
+local vcs_fg = white
 api.nvim_command('hi NeoLineVCSLeft guifg='..green)
-api.nvim_command('hi NeoLineVCSAdd guibg='..green..' guifg='..bg)
-api.nvim_command('hi NeoLineVCSDelete guibg='..red..' guifg='..bg)
-api.nvim_command('hi NeoLineVCSChange guibg='..orange..' guifg='..bg)
+api.nvim_command('hi NeoLineVCSAdd guibg='..green..' guifg='..vcs_fg)
+api.nvim_command('hi NeoLineVCSDelete guibg='..red..' guifg='..vcs_fg)
+api.nvim_command('hi NeoLineVCSChange guibg='..orange..' guifg='..vcs_fg)
 api.nvim_command('hi NeoLineVCSRight guifg='..orange)
 
 -- row and column Color
