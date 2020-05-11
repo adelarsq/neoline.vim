@@ -1,6 +1,6 @@
 # neoline.vim ✅
 
-A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim).
+A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim) using [Lua](https://www.lua.org).
 
 ## Plugins Supported 🤗
 
