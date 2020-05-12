@@ -29,13 +29,21 @@ local bg = '#4d4d4d'
 -- Separators
 local left_separator = ''
 local right_separator = ''
+-- local left_separator = ' '
+-- local right_separator = ' '
+-- let s:separators = {
+      -- \ 'arrow' : ["\ue0b0", "\ue0b2"],
+      -- \ 'curve' : ["\ue0b4", "\ue0b6"],
+      -- \ 'slant' : ["\ue0b8", "\ue0ba"],
+      -- \ 'brace' : ["\ue0d2", "\ue0d4"],
+      -- \ 'fire' : ["\ue0c0", "\ue0c2"],
 
 -- Blank Between Components
 local blank = ' '
 
 -- Icons
-local iconNERDTree = '🌳🌳🌳'
-local iconVista = '📌'
+local iconNERDTree = '🌳 NERDTree'
+local iconVista = '📌 Vista'
 
 ------------------------------------------------------------------------
 --                             StatusLine                             --
@@ -220,8 +228,8 @@ function M.inActiveLine()
       -- return statusline
   -- end
 
-  local file_name = api.nvim_call_function('expand', {'%F'})
-  statusline = statusline.."%#NeoLineInActive# "..file_name
+  -- local file_name = api.nvim_call_function('expand', {'%F'})
+  statusline = statusline.."%#NeoLineInActive# "
 
   return statusline
 end

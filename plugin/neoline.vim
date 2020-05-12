@@ -1,10 +1,10 @@
 
-function! InactiveLine()
-    return luaeval("require'status-line'.inActiveLine()")
-endfunction
-
 function! ActiveLine()
     return luaeval("require'status-line'.activeLine()")
+endfunction
+
+function! InactiveLine()
+    return luaeval("require'status-line'.inActiveLine()")
 endfunction
 
 " Change statusline automatically
