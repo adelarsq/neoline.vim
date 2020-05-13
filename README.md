@@ -29,6 +29,10 @@ call dein#add('adelarsq/neoline.vim')
 
 Then open the editor and install with `call dein#install()`.
 
+## TODO
+
+- Support one color [per tab](https://marketplace.visualstudio.com/items?itemName=orepor.color-tabs-vscode-ext)
+
 ## Acknowledgments 💡
 
 Thanks goes to these people/projects for inspiration:
