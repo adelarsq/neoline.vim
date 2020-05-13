@@ -3,6 +3,9 @@ function! ActiveLine()
     return luaeval("require'status-line'.activeLine()")
 endfunction
 
+" https://stackoverflow.com/questions/5215163/how-to-get-a-unique-identifier-for-a-window
+" use 
+"     let l:current_window = win_getid()
 function! InactiveLine()
     return luaeval("require'status-line'.inActiveLine()")
 endfunction

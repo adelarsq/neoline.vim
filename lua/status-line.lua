@@ -13,11 +13,13 @@ session.abduco_session()
 -- local purple = '#B48EAD'
 
 local white = '#ffffff'
-local red = '#ff4040'
+-- local red = '#ff4040'
+local red = '#ff5349' -- red orange
 local orange = '#ff9326'
-local yellow = '#ffcb65'
+-- local yellow = '#ffcb65'
+local yellow = '#fe6e00' -- blaze orange
 -- local green = '#9ceb4f'
-local green = '#4CBB17'
+local green = '#4CBB17' -- color Kelly
 local aqua = '#18ffe0'
 local blue = '#31baff'
 local purple = '#9d8cff'
@@ -28,16 +30,24 @@ local black_fg = '#282c34'
 local bg = '#4d4d4d'
 
 -- Separators
-local left_separator = ''
-local right_separator = ''
+-- local left_separator = ''
+-- local right_separator = ''
 -- local left_separator = ' '
 -- local right_separator = ' '
+-- local left_separator = ''
+-- local right_separator = ''
+local left_separator = ''
+local right_separator = ''
 -- let s:separators = {
       -- \ 'arrow' : ["\ue0b0", "\ue0b2"],
       -- \ 'curve' : ["\ue0b4", "\ue0b6"],
       -- \ 'slant' : ["\ue0b8", "\ue0ba"],
       -- \ 'brace' : ["\ue0d2", "\ue0d4"],
       -- \ 'fire' : ["\ue0c0", "\ue0c2"],
+-- call s:check_defined('g:airline_left_sep', "\ue0b0")      " 
+-- call s:check_defined('g:airline_left_alt_sep', "\ue0b1")  " 
+-- call s:check_defined('g:airline_right_sep', "\ue0b2")     " 
+-- call s:check_defined('g:airline_right_alt_sep', "\ue0b3") " 
 
 -- Blank Between Components
 local blank = ' '
@@ -46,33 +56,38 @@ local blank = ' '
 local iconNERDTree = '🌳 NERDTree'
 local iconVista = '📌 Vista'
 
+-- Using NERDFonts
+-- https://github.com/ryanoasis/powerline-extra-symbols
+-- ro=, ws=☲, lnr=☰, mlnr=, br=, nx=Ɇ, crypt=🔒, dirty=⚡
+local ln=''
+
 ------------------------------------------------------------------------
 --                             StatusLine                             --
 ------------------------------------------------------------------------
 
 -- Mode Prompt Table
 local current_mode = setmetatable({
-      ['n'] = 'NORMAL',
-      ['no'] = 'N·Operator Pending',
-      ['v'] = 'VISUAL',
-      ['V'] = 'V·Line',
-      ['^V'] = 'V·Block',
+      ['n'] = ' NORMAL',
+      ['no'] = 'ﮫ N·Operator Pending',
+      ['v'] = ' VISUAL',
+      ['V'] = ' V·Line',
+      ['^V'] = ' V·Block',
       ['s'] = 'Select',
       ['S'] = 'S·Line',
       ['^S'] = 'S·Block',
-      ['i'] = 'INSERT',
-      ['ic'] = 'INSERT',
-      ['ix'] = 'INSERT',
-      ['R'] = 'Replace',
-      ['Rv'] = 'V·Replace',
-      ['c'] = 'COMMAND',
-      ['cv'] = 'Vim Ex',
-      ['ce'] = 'Ex',
-      ['r'] = 'Prompt',
-      ['rm'] = 'More',
+      ['i'] = ' INSERT',
+      ['ic'] = ' INSERT',
+      ['ix'] = ' INSERT',
+      ['R'] = ' Replace',
+      ['Rv'] = ' V·Replace',
+      ['c'] = ' COMMAND',
+      ['cv'] = ' Vim Ex',
+      ['ce'] = ' Ex',
+      ['r'] = ' Prompt',
+      ['rm'] = ' More',
       ['r?'] = 'Confirm',
-      ['!'] = 'Shell',
-      ['t'] = 'TERMINAL'
+      ['!'] = ' Shell',
+      ['t'] = ' TERMINAL'
     }, {
       -- fix weird issues
       __index = function(_, _)
@@ -106,11 +121,12 @@ local vcs_add = green
 local vcs_delete = red
 local vcs_change = orange
 local vcs_fg = white
-api.nvim_command('hi NeoLineVCSLeft guifg='..green)
-api.nvim_command('hi NeoLineVCSAdd guibg='..green..' guifg='..vcs_fg)
-api.nvim_command('hi NeoLineVCSDelete guibg='..red..' guifg='..vcs_fg)
-api.nvim_command('hi NeoLineVCSChange guibg='..orange..' guifg='..vcs_fg)
-api.nvim_command('hi NeoLineVCSRight guifg='..orange)
+api.nvim_command('hi NeoLineVCSLeft guifg='..white..' guibg='..blue)
+api.nvim_command('hi NeoLineVCSLeft1 guifg='..blue..' guibg='..white)
+api.nvim_command('hi NeoLineVCSAdd guifg='..green..' guibg='..white)
+api.nvim_command('hi NeoLineVCSDelete guifg='..red..' guibg='..white)
+api.nvim_command('hi NeoLineVCSChange guifg='..orange..' guibg='..white)
+api.nvim_command('hi NeoLineVCSRight guifg='..white..' guibg='..blue)
 
 api.nvim_command('hi NeoLineBlue guifg='..white..' guibg='..blue)
 
@@ -188,6 +204,7 @@ function M.activeLine()
   local repostats = api.nvim_call_function('sy#repo#get_stats', {})
   if repostats[1] > -1 then
     statusline = statusline.."%#NeoLineVCSLeft#"
+    statusline = statusline..left_separator
     statusline = statusline.."%#NeoLineVCSAdd#"
     statusline = statusline.."+"..repostats[1]
     statusline = statusline.."%#NeoLineVCSDelete#"
@@ -195,6 +212,7 @@ function M.activeLine()
     statusline = statusline.."%#NeoLineVCSChange#"
     statusline = statusline.."~"..repostats[3]
     statusline = statusline.."%#NeoLineVCSRight#"
+    statusline = statusline..right_separator
   end
 
   -- Alignment to left
@@ -212,7 +230,7 @@ function M.activeLine()
 
   -- Component: row and col
   local line = api.nvim_call_function('line', {"."})
-  statusline = statusline.."%#NeoLineBlue# Ln "..line
+  statusline = statusline.."%#NeoLineBlue# "..ln.." "..line
 
   return statusline
 end
