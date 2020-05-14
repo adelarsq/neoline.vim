@@ -30,9 +30,9 @@ endfunction
 " Change statusline automatically
 augroup NeoLine
   autocmd!
-  " autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine(bufnr('%'))
-  " autocmd WinLeave,BufLeave * setlocal statusline=%!InactiveLine(bufnr('%'))
-  autocmd WinEnter,BufEnter,BufDelete,SessionLoadPost,FileChangedShellPost * setlocal statusline=%!UpdateLine(bufnr('%'))
+  autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine(bufnr('%'))
+  autocmd WinLeave,BufLeave * setlocal statusline=%!InactiveLine(bufnr('%'))
+  " autocmd WinEnter,BufEnter,BufDelete,SessionLoadPost,FileChangedShellPost * setlocal statusline=%!UpdateLine(bufnr('%'))
 augroup END
 
 
