@@ -175,19 +175,19 @@ local TrimmedDirectory = function(dir)
   return dir
 end
 
-function M.activeLine()
+function M.activeLine(idbuffer)
   local statusline = "%#NeoLineBlue#"
 
   local filetype = api.nvim_buf_get_option(0, 'filetype')
 
   -- Icon For File
-  if filetype == 'nerdtree' then
-      statusline = statusline..iconNERDTree;
-      return statusline
-  elseif filetype == 'vista' then
-      statusline = statusline..iconVista
-      return statusline
-  end
+  -- if filetype == 'nerdtree' then
+      -- statusline = statusline..iconNERDTree;
+      -- return statusline
+  -- elseif filetype == 'vista' then
+      -- statusline = statusline..iconVista
+      -- return statusline
+  -- end
 
   -- Component: Mode
   local mode = api.nvim_get_mode()['mode']
@@ -239,13 +239,13 @@ local InactiveLine_bg = '#4d4d4d'
 local InactiveLine_fg = white_fg
 api.nvim_command('hi NeoLineInActive guibg='..InactiveLine_bg..' guifg='..InactiveLine_fg)
 
-function M.inActiveLine()
+function M.inActiveLine(idbuffer)
   local statusline = ""
 
-  statusline = "%#NeoLineInActive# "
+  statusline = "%#NeoLineInActive# %f"
 
-  -- local filetype = api.nvim_buf_get_option(0, 'filetype')
-  -- Icon For File
+  -- local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
+  -- -- Icon For File
   -- if filetype == 'nerdtree' then
       -- statusline = statusline..iconNERDTree
       -- return statusline

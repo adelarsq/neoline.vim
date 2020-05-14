@@ -1,20 +1,37 @@
 
-function! ActiveLine()
-    return luaeval("require'status-line'.activeLine()")
+function! ActiveLine(idbuffer)
+    let ss = "require'status-line'.activeLine(" . a:idbuffer . ")"
+    return luaeval(ss)
 endfunction
 
 " https://stackoverflow.com/questions/5215163/how-to-get-a-unique-identifier-for-a-window
 " use 
 "     let l:current_window = win_getid()
-function! InactiveLine()
-    return luaeval("require'status-line'.inActiveLine()")
+function! InactiveLine(idbuffer)
+    let ss = "require'status-line'.inActiveLine(" . a:idbuffer . ")"
+    " let ss = "require'status-line'.inActiveLine()"
+    return luaeval(ss)
+endfunction
+
+function! UpdateLine(idbuffer) abort
+    if &buftype ==# 'popup' | return | endif
+
+    let ssA = "require'status-line'.activeLine(" . a:idbuffer . ")"
+    let ssI = "require'status-line'.inActiveLine(" . a:idbuffer . ")"
+
+    let w = winnr()
+    let s = winnr('$') == 1 && w > 0 ? [luaeval(ssA)] : [luaeval(ssA), luaeval(ssI)]
+    for n in range(1, winnr('$'))
+        call setwinvar(n, '&statusline', s[n!=w])
+    endfor
 endfunction
 
 " Change statusline automatically
 augroup NeoLine
   autocmd!
-  autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine()
-  autocmd WinLeave,BufLeave * setlocal statusline=%!InactiveLine()
+  " autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine(bufnr('%'))
+  " autocmd WinLeave,BufLeave * setlocal statusline=%!InactiveLine(bufnr('%'))
+  autocmd WinEnter,BufEnter,BufDelete,SessionLoadPost,FileChangedShellPost * setlocal statusline=%!UpdateLine(bufnr('%'))
 augroup END
 
 
