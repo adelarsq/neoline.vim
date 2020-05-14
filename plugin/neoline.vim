@@ -13,6 +13,7 @@ function! InactiveLine(idbuffer)
     return luaeval(ss)
 endfunction
 
+" Based on https://github.com/itchyny/lightline.vim/blob/893bd90787abfec52a2543074e444fc6a9e0cf78/autoload/lightline.vim
 function! UpdateLine(idbuffer) abort
     if &buftype ==# 'popup' | return | endif
 
