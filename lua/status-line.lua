@@ -181,13 +181,15 @@ function M.activeLine(idbuffer)
   local filetype = api.nvim_buf_get_option(0, 'filetype')
 
   -- Icon For File
-  -- if filetype == 'nerdtree' then
-      -- statusline = statusline..iconNERDTree;
-      -- return statusline
-  -- elseif filetype == 'vista' then
+  if filetype == 'nerdtree' then
+      statusline = statusline.."%f"
+      -- statusline = statusline..iconNERDTree
+      return statusline
+  elseif filetype == 'vista' then
+      statusline = statusline.."%f"
       -- statusline = statusline..iconVista
-      -- return statusline
-  -- end
+      return statusline
+  end
 
   -- Component: Mode
   local mode = api.nvim_get_mode()['mode']
