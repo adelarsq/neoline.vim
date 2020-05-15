@@ -37,6 +37,7 @@ Then open the editor and install with `call dein#install()`.
 
 Thanks goes to these people/projects for inspiration:
 
+- [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
 - [haorenW1025 dotfiles](https://github.com/haorenW1025/dotfiles)
 
 ## License 📜
