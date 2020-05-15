@@ -37,6 +37,7 @@ local bg = '#4d4d4d'
 -- local right_separator = ' '
 -- local left_separator = ''
 -- local right_separator = ''
+-- statusline = statusline.."▒░"
 local left_separator = ''
 local right_separator = ''
 -- let s:separators = {
@@ -214,6 +215,7 @@ function M.activeLine(idbuffer)
   if repostats[1] > -1 then
     statusline = statusline.."%#NeoLineVCSLeft#"
     statusline = statusline..left_separator
+    statusline = statusline..''
     statusline = statusline.."%#NeoLineVCSAdd#"
     statusline = statusline.."+"..repostats[1]
     statusline = statusline.."%#NeoLineVCSDelete#"
@@ -222,6 +224,7 @@ function M.activeLine(idbuffer)
     statusline = statusline.."~"..repostats[3]
     statusline = statusline.."%#NeoLineVCSRight#"
     statusline = statusline..right_separator
+    statusline = statusline..''
   end
 
   -- Alignment to left
@@ -231,7 +234,9 @@ function M.activeLine(idbuffer)
 
   -- Coc Status
   local cocstatus = api.nvim_call_function('coc#status', {})
-  statusline = statusline..cocstatus
+  if cocstatus ~= '' then
+    statusline = statusline..cocstatus
+  end
 
   -- Component: FileType
   statusline = statusline.."%#NeoLineBlue# "..filetype
