@@ -17,13 +17,15 @@ endfunction
 function! UpdateLine(idbuffer) abort
     if &buftype ==# 'popup' | return | endif
 
-    let ssA = "require'status-line'.activeLine(" . a:idbuffer . ")"
+    " let ssA = "require'status-line'.activeLine(" . a:idbuffer . ")"
     let ssI = "require'status-line'.inActiveLine(" . a:idbuffer . ")"
 
     let w = winnr()
-    let s = winnr('$') == 1 && w > 0 ? [luaeval(ssA)] : [luaeval(ssA), luaeval(ssI)]
+    " let s = winnr('$') == 1 && w > 0 ? [luaeval(ssA)] : [luaeval(ssA), luaeval(ssI)]
     for n in range(1, winnr('$'))
-        call setwinvar(n, '&statusline', s[n!=w])
+        if n!=w
+            call setwinvar(n, '&statusline', luaeval(ssI))
+        endif
     endfor
 endfunction
 
@@ -31,8 +33,8 @@ endfunction
 augroup NeoLine
   autocmd!
   autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine(bufnr('%'))
-  autocmd WinLeave,BufLeave * setlocal statusline=%!InactiveLine(bufnr('%'))
-  " autocmd WinEnter,BufEnter,BufDelete,SessionLoadPost,FileChangedShellPost * setlocal statusline=%!UpdateLine(bufnr('%'))
+  autocmd WinEnter,BufEnter,WinLeave,BufLeave * call UpdateLine(bufnr('%'))
+  " autocmd WinEnter,BufEnter,BufDelete,SessionLoadPost,FileChangedShellPost * call UpdateLine(bufnr('%'))
 augroup END
 
 

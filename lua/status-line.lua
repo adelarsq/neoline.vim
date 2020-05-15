@@ -20,6 +20,7 @@ local orange = '#ff9326'
 local yellow = '#fe6e00' -- blaze orange
 -- local green = '#9ceb4f'
 local green = '#4CBB17' -- color Kelly
+local turquoise = '#3FE0D0'
 local aqua = '#18ffe0'
 local blue = '#31baff'
 local purple = '#9d8cff'
@@ -67,14 +68,14 @@ local ln=''
 
 -- Mode Prompt Table
 local current_mode = setmetatable({
-      ['n'] = ' NORMAL',
+      ['n'] = ' NORMAL',
       ['no'] = 'ﮫ N·Operator Pending',
       ['v'] = ' VISUAL',
       ['V'] = ' V·Line',
       ['^V'] = ' V·Block',
-      ['s'] = 'Select',
-      ['S'] = 'S·Line',
-      ['^S'] = 'S·Block',
+      ['s'] = ' Select',
+      ['S'] = ' S·Line',
+      ['^S'] = ' S·Block',
       ['i'] = ' INSERT',
       ['ic'] = ' INSERT',
       ['ix'] = ' INSERT',
@@ -85,13 +86,14 @@ local current_mode = setmetatable({
       ['ce'] = ' Ex',
       ['r'] = ' Prompt',
       ['rm'] = ' More',
-      ['r?'] = 'Confirm',
+      ['r?'] = ' Confirm',
       ['!'] = ' Shell',
       ['t'] = ' TERMINAL'
     }, {
+      -- TODO
       -- fix weird issues
       __index = function(_, _)
-        return 'V·Block'
+        return ' V·Block'
       end
     }
 )
@@ -158,10 +160,15 @@ local RedrawColors = function(mode)
     api.nvim_command('hi NeoLineModeSeparator guifg='..yellow)
     api.nvim_command('hi NeoLineBlue guibg='..yellow)
   end
-  if mode == 't' then
+  if mode == 'R' then
     api.nvim_command('hi NeoLineMode guibg='..red..' guifg='..black_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..red)
     api.nvim_command('hi NeoLineBlue guibg='..red)
+  end
+  if mode == 't' then
+    api.nvim_command('hi NeoLineMode guibg='..turquoise..' guifg='..black_fg..' gui=bold')
+    api.nvim_command('hi NeoLineModeSeparator guifg='..turquoise)
+    api.nvim_command('hi NeoLineBlue guibg='..turquoise)
   end
 end
 
