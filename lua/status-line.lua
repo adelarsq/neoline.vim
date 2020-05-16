@@ -38,6 +38,8 @@ local bg = '#4d4d4d'
 -- local left_separator = ''
 -- local right_separator = ''
 -- statusline = statusline.."▒░"
+-- local left_separator = ''
+-- local right_separator = ''
 local left_separator = ''
 local right_separator = ''
 -- let s:separators = {
@@ -131,7 +133,7 @@ api.nvim_command('hi NeoLineVCSDelete guifg='..red..' guibg='..white)
 api.nvim_command('hi NeoLineVCSChange guifg='..orange..' guibg='..white)
 api.nvim_command('hi NeoLineVCSRight guifg='..white..' guibg='..blue)
 
-api.nvim_command('hi NeoLineBlue guifg='..white..' guibg='..blue)
+api.nvim_command('hi NeoLineDefault guifg='..white..' guibg='..blue)
 
 -- row and column Color
 local line_bg = 'None'
@@ -144,32 +146,32 @@ local RedrawColors = function(mode)
   if mode == 'n' then
     api.nvim_command('hi NeoLineMode guibg='..blue..' guifg='..black_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..blue)
-    api.nvim_command('hi NeoLineBlue guibg='..blue)
+    api.nvim_command('hi NeoLineDefault guibg='..blue)
   end
   if mode == 'i' then
     api.nvim_command('hi NeoLineMode guibg='..green..' guifg='..black_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..green)
-    api.nvim_command('hi NeoLineBlue guibg='..green)
+    api.nvim_command('hi NeoLineDefault guibg='..green)
   end
   if mode == 'v' or mode == 'V' or mode == '^V' then
     api.nvim_command('hi NeoLineMode guibg='..purple..' guifg='..black_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..purple)
-    api.nvim_command('hi NeoLineBlue guibg='..purple)
+    api.nvim_command('hi NeoLineDefault guibg='..purple)
   end
   if mode == 'c' then
     api.nvim_command('hi NeoLineMode guibg='..yellow..' guifg='..black_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..yellow)
-    api.nvim_command('hi NeoLineBlue guibg='..yellow)
+    api.nvim_command('hi NeoLineDefault guibg='..yellow)
   end
   if mode == 'R' then
     api.nvim_command('hi NeoLineMode guibg='..red..' guifg='..black_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..red)
-    api.nvim_command('hi NeoLineBlue guibg='..red)
+    api.nvim_command('hi NeoLineDefault guibg='..red)
   end
   if mode == 't' then
     api.nvim_command('hi NeoLineMode guibg='..turquoise..' guifg='..black_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..turquoise)
-    api.nvim_command('hi NeoLineBlue guibg='..turquoise)
+    api.nvim_command('hi NeoLineDefault guibg='..turquoise)
   end
 end
 
@@ -184,7 +186,7 @@ local TrimmedDirectory = function(dir)
 end
 
 function M.activeLine(idbuffer)
-  local statusline = "%#NeoLineBlue#"
+  local statusline = "%#NeoLineDefault#"
 
   local filetype = api.nvim_buf_get_option(0, 'filetype')
 
@@ -202,7 +204,7 @@ function M.activeLine(idbuffer)
   -- Component: Mode
   local mode = api.nvim_get_mode()['mode']
   RedrawColors(mode)
-  statusline = statusline.."%#NeoLineBlue#"..current_mode[mode].." %#NeoLineBlue#"
+  statusline = statusline.."%#NeoLineDefault#"..current_mode[mode].." %#NeoLineDefault#"
   statusline = statusline..blank
 
   -- Component: Working Directory
@@ -214,7 +216,8 @@ function M.activeLine(idbuffer)
   local repostats = api.nvim_call_function('sy#repo#get_stats', {})
   if repostats[1] > -1 then
     statusline = statusline.."%#NeoLineVCSLeft#"
-    statusline = statusline..left_separator
+    -- statusline = statusline..left_separator
+    statusline = statusline.."%#NeoLineDefault#"
     statusline = statusline..''
     statusline = statusline.."%#NeoLineVCSAdd#"
     statusline = statusline.."+"..repostats[1]
@@ -223,14 +226,15 @@ function M.activeLine(idbuffer)
     statusline = statusline.."%#NeoLineVCSChange#"
     statusline = statusline.."~"..repostats[3]
     statusline = statusline.."%#NeoLineVCSRight#"
-    statusline = statusline..right_separator
+    -- statusline = statusline..right_separator
+    statusline = statusline.."%#NeoLineDefault#"
     statusline = statusline..''
   end
 
   -- Alignment to left
-  statusline = statusline.."%#NeoLineBlue#"
+  statusline = statusline.."%#NeoLineDefault#"
   statusline = statusline.."%="
-  statusline = statusline.."%#NeoLineBlue#"
+  statusline = statusline.."%#NeoLineDefault#"
 
   -- Coc Status
   local cocstatus = api.nvim_call_function('coc#status', {})
@@ -239,12 +243,12 @@ function M.activeLine(idbuffer)
   end
 
   -- Component: FileType
-  statusline = statusline.."%#NeoLineBlue# "..filetype
+  statusline = statusline.."%#NeoLineDefault# "..filetype
   statusline = statusline..blank
 
   -- Component: row and col
   local line = api.nvim_call_function('line', {"."})
-  statusline = statusline.."%#NeoLineBlue# "..ln.." "..line
+  statusline = statusline.."%#NeoLineDefault# "..ln.." "..line
 
   return statusline
 end
