@@ -2,7 +2,7 @@
 
 A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim) using [Lua](https://www.lua.org).
 
-## Plugins Supported 🤗
+## Supported Plugins 🤗
 
 - [vim-signify](https://github.com/mhinz/vim-signify)
 - [coc.nvim](https://github.com/neoclide/coc.nvim)
