@@ -283,21 +283,22 @@ end
 ------------------------------------------------------------------------
 
 local getTabLabel = function(n)
+  local current_number = api.nvim_tabpage_get_number(n)
   local current_win = api.nvim_tabpage_get_win(n)
   local current_buf = api.nvim_win_get_buf(current_win)
   local file_name = api.nvim_buf_get_name(current_buf)
   if string.find(file_name, 'term://') ~= nil then
-    return ' '..api.nvim_call_function('fnamemodify', {file_name, ":p:t"})
+    return current_number..'  '..api.nvim_call_function('fnamemodify', {file_name, ":p:t"})
   end
   file_name = api.nvim_call_function('fnamemodify', {file_name, ":p:t"})
   if file_name == '' then
-    return "No Name"
+    return current_number.." No Name"
   end
   local icon = icons.deviconTable[file_name]
   if icon ~= nil then
-    return icon..' '..file_name
+    return current_number..' '..icon..' '..file_name
   end
-  return file_name
+  return current_number..' '..file_name
 end
 
 api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..blue..' guifg='..white)

@@ -12,7 +12,6 @@ endfunction
 function! InactiveLine(idbuffer) abort
     if &buftype ==# 'popup' | return | endif
 
-    " let ssA = "require'status-line'.activeLine(" . a:idbuffer . ")"
     let ssI = "require'status-line'.inActiveLine(" . a:idbuffer . ")"
 
     let w = winnr()
