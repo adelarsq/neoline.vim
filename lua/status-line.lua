@@ -13,12 +13,9 @@ session.abduco_session()
 -- local purple = '#B48EAD'
 
 local white = '#ffffff'
--- local red = '#ff4040'
 local red = '#ff5349' -- red orange
 local orange = '#ff9326'
--- local yellow = '#ffcb65'
 local yellow = '#fe6e00' -- blaze orange
--- local green = '#9ceb4f'
 local green = '#4CBB17' -- color Kelly
 local turquoise = '#3FE0D0'
 local aqua = '#18ffe0'
@@ -35,8 +32,8 @@ local bg = '#4d4d4d'
 -- local right_separator = ''
 -- local left_separator = ' '
 -- local right_separator = ' '
--- local left_separator = ''
--- local right_separator = ''
+-- local left_separator = ' '
+-- local right_separator = ' '
 -- statusline = statusline.."▒░"
 -- local left_separator = ''
 -- local right_separator = ''
@@ -101,46 +98,6 @@ local current_mode = setmetatable({
     }
 )
 
--- Filename Color
-local file_bg = purple
-local file_fg = black_fg
-local file_gui = 'bold'
-api.nvim_command('hi NeoLineFile guibg='..file_bg..' guifg='..file_fg..' gui='..file_gui)
-api.nvim_command('hi NeoLineFileSeparator guifg='..file_bg)
-
--- Working directory Color
-local dir_bg = bg
-local dir_fg = white_fg
-local dir_gui = 'bold'
-api.nvim_command('hi NeoLineNeoLineDirectory guibg='..dir_bg..' guifg='..dir_fg..' gui='..dir_gui)
-api.nvim_command('hi NeoLineDirSeparator guifg='..dir_bg)
-
--- FileType Color
-local filetype_bg = 'None'
-local filetype_fg = blue
-local filetype_gui = 'bold'
-api.nvim_command('hi NeoLineFiletype guibg='..filetype_bg..' guifg='..filetype_fg..' gui='..filetype_gui)
-
--- VCS Color
-local vcs_add = green
-local vcs_delete = red
-local vcs_change = orange
-local vcs_fg = white
-api.nvim_command('hi NeoLineVCSLeft guifg='..white..' guibg='..blue)
-api.nvim_command('hi NeoLineVCSLeft1 guifg='..blue..' guibg='..white)
-api.nvim_command('hi NeoLineVCSAdd guifg='..green..' guibg='..white)
-api.nvim_command('hi NeoLineVCSDelete guifg='..red..' guibg='..white)
-api.nvim_command('hi NeoLineVCSChange guifg='..orange..' guibg='..white)
-api.nvim_command('hi NeoLineVCSRight guifg='..white..' guibg='..blue)
-
-api.nvim_command('hi NeoLineDefault guifg='..white..' guibg='..blue)
-
--- row and column Color
-local line_bg = 'None'
-local line_fg = white_fg
-local line_gui = 'bold'
-api.nvim_command('hi NeoLineLine guibg='..line_bg..' guifg='..line_fg..' gui='..line_gui)
-
 -- Redraw different colors for different mode
 local RedrawColors = function(mode)
   if mode == 'n' then
@@ -183,6 +140,61 @@ local TrimmedDirectory = function(dir)
     return string.gsub(dir, home, '~')
   end
   return dir
+end
+
+-- Initialize colors
+function M.initColors()
+    -- Filename Color
+    local file_bg = purple
+    local file_fg = black_fg
+    local file_gui = 'bold'
+    api.nvim_command('hi NeoLineFile guibg='..file_bg..' guifg='..file_fg..' gui='..file_gui)
+    api.nvim_command('hi NeoLineFileSeparator guifg='..file_bg)
+    
+    -- Working directory Color
+    local dir_bg = bg
+    local dir_fg = white_fg
+    local dir_gui = 'bold'
+    api.nvim_command('hi NeoLineNeoLineDirectory guibg='..dir_bg..' guifg='..dir_fg..' gui='..dir_gui)
+    api.nvim_command('hi NeoLineDirSeparator guifg='..dir_bg)
+    
+    -- FileType Color
+    local filetype_bg = 'None'
+    local filetype_fg = blue
+    local filetype_gui = 'bold'
+    api.nvim_command('hi NeoLineFiletype guibg='..filetype_bg..' guifg='..filetype_fg..' gui='..filetype_gui)
+    
+    -- VCS Color
+    local vcs_add = green
+    local vcs_delete = red
+    local vcs_change = orange
+    local vcs_fg = white
+    api.nvim_command('hi NeoLineVCSLeft guifg='..white..' guibg='..blue)
+    api.nvim_command('hi NeoLineVCSLeft1 guifg='..blue..' guibg='..white)
+    api.nvim_command('hi NeoLineVCSAdd guifg='..green..' guibg='..white)
+    api.nvim_command('hi NeoLineVCSDelete guifg='..red..' guibg='..white)
+    api.nvim_command('hi NeoLineVCSChange guifg='..orange..' guibg='..white)
+    api.nvim_command('hi NeoLineVCSRight guifg='..white..' guibg='..blue)
+    
+    api.nvim_command('hi NeoLineDefault guifg='..white..' guibg='..blue)
+    
+    -- row and column Color
+    local line_bg = 'None'
+    local line_fg = white_fg
+    local line_gui = 'bold'
+    api.nvim_command('hi NeoLineLine guibg='..line_bg..' guifg='..line_fg..' gui='..line_gui)
+
+    -- TabLine
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..blue..' guifg='..white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..blue)
+    api.nvim_command('hi NeoLineTabLine guibg=#4d4d4d guifg=#c7c7c7 gui=None')
+    api.nvim_command('hi NeoLineTabLineSeparator guifg=#4d4d4d')
+    api.nvim_command('hi NeoLineTabLineFill guibg=None gui=None')
+
+    local InactiveLine_bg = '#4d4d4d'
+    local InactiveLine_fg = white_fg
+    api.nvim_command('hi NeoLineInActive guibg='..InactiveLine_bg..' guifg='..InactiveLine_fg)
+
 end
 
 function M.activeLine(idbuffer)
@@ -253,10 +265,6 @@ function M.activeLine(idbuffer)
   return statusline
 end
 
-local InactiveLine_bg = '#4d4d4d'
-local InactiveLine_fg = white_fg
-api.nvim_command('hi NeoLineInActive guibg='..InactiveLine_bg..' guifg='..InactiveLine_fg)
-
 function M.inActiveLine(idbuffer)
   local statusline = ""
 
@@ -301,13 +309,6 @@ local getTabLabel = function(n)
   return current_number..' '..file_name
 end
 
-api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..blue..' guifg='..white)
-api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..blue)
-api.nvim_command('hi NeoLineTabLine guibg=#4d4d4d guifg=#c7c7c7 gui=None')
-api.nvim_command('hi NeoLineTabLineSeparator guifg=#4d4d4d')
-api.nvim_command('hi NeoLineTabLineFill guibg=None gui=None')
-
-
 function M.TabLine()
   local tabline = ''
   local tab_list = api.nvim_list_tabpages()
@@ -332,6 +333,8 @@ function M.TabLine()
   end
   return tabline
 end
-return M
 
+M.initColors()
+
+return M
 
