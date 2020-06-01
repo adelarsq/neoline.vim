@@ -16,10 +16,12 @@ local white = '#ffffff'
 local red = '#ff5349' -- red orange
 local orange = '#ff9326'
 local yellow = '#fe6e00' -- blaze orange
-local green = '#4CBB17' -- color Kelly
+-- local green = '#4CBB17' -- color Kelly
+local green = '#55a630'
 local turquoise = '#3FE0D0'
 local aqua = '#18ffe0'
-local blue = '#31baff'
+-- local blue = '#31baff'
+local blue = '#3a86ff'
 local purple = '#9d8cff'
 
 -- fg and bg
