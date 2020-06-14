@@ -16,12 +16,12 @@ local white = '#ffffff'
 local red = '#ff5349' -- red orange
 local orange = '#ff9326'
 local yellow = '#fe6e00' -- blaze orange
--- local green = '#4CBB17' -- color Kelly
-local green = '#55a630'
+local green = '#4CBB17' -- color Kelly
+-- local green = '#55a630'
 local turquoise = '#3FE0D0'
 local aqua = '#18ffe0'
--- local blue = '#31baff'
-local blue = '#3a86ff'
+local blue = '#31baff'
+-- local blue = '#3a86ff'
 local purple = '#9d8cff'
 
 -- fg and bg
@@ -70,32 +70,32 @@ local ln=''
 
 -- Mode Prompt Table
 local current_mode = setmetatable({
-      ['n'] = ' NORMAL',
-      ['no'] = 'ﮫ N·Operator Pending',
-      ['v'] = ' VISUAL',
-      ['V'] = ' V·Line',
-      ['^V'] = ' V·Block',
-      ['s'] = ' Select',
-      ['S'] = ' S·Line',
-      ['^S'] = ' S·Block',
-      ['i'] = ' INSERT',
-      ['ic'] = ' INSERT',
-      ['ix'] = ' INSERT',
-      ['R'] = ' Replace',
-      ['Rv'] = ' V·Replace',
-      ['c'] = ' COMMAND',
-      ['cv'] = ' Vim Ex',
-      ['ce'] = ' Ex',
-      ['r'] = ' Prompt',
-      ['rm'] = ' More',
-      ['r?'] = ' Confirm',
-      ['!'] = ' Shell',
-      ['t'] = ' TERMINAL'
+      ['n'] = 'NORMAL',
+      ['no'] = 'N·Operator Pending',
+      ['v'] = 'VISUAL',
+      ['V'] = 'V·Line',
+      ['^V'] = 'V·Block',
+      ['s'] = 'Select',
+      ['S'] = 'S·Line',
+      ['^S'] = 'S·Block',
+      ['i'] = 'INSERT',
+      ['ic'] = 'INSERT',
+      ['ix'] = 'INSERT',
+      ['R'] = 'Replace',
+      ['Rv'] = 'V·Replace',
+      ['c'] = 'COMMAND',
+      ['cv'] = 'Vim Ex',
+      ['ce'] = 'Ex',
+      ['r'] = 'Prompt',
+      ['rm'] = 'More',
+      ['r?'] = 'Confirm',
+      ['!'] = 'Shell',
+      ['t'] = 'TERMINAL'
     }, {
       -- TODO
       -- fix weird issues
       __index = function(_, _)
-        return ' V·Block'
+        return 'V·Block'
       end
     }
 )
@@ -251,9 +251,14 @@ function M.activeLine(idbuffer)
   statusline = statusline.."%#NeoLineDefault#"
 
   -- Coc Status
-  local cocstatus = api.nvim_call_function('coc#status', {})
-  if cocstatus ~= '' then
-    statusline = statusline..cocstatus
+  -- local cocstatus = api.nvim_call_function('coc#status', {})
+  -- if cocstatus ~= '' then
+    -- statusline = statusline..cocstatus
+  -- end
+
+  -- lsp-status
+  if #vim.lsp.buf_get_clients() > 0 then
+    statusline = statusline..require('lsp-status').status()
   end
 
   -- Component: FileType
