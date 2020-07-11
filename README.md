@@ -34,13 +34,14 @@ Then open the editor and install with `call dein#install()`.
 - Goyo support
 - Support one color [per tab](https://marketplace.visualstudio.com/items?itemName=orepor.color-tabs-vscode-ext)
 - Animations? [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my)
+- Move all code to Lua
 
 ## Acknowledgments 💡
 
 Thanks goes to these people/projects for inspiration:
 
 - [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
-- [haorenW1025 dotfiles](https://github.com/haorenW1025/dotfiles)
+- [haorenW1025 dotfiles](https://github.com/haorenW1025/config)
 - [ahmedelgabri/statusline.vim](https://gist.github.com/ahmedelgabri/b9127dfe36ba86f4496c8c28eb65ef2b)
 
 ## License 📜
