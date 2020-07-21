@@ -297,6 +297,15 @@ end
 --                              TabLine                               --
 ------------------------------------------------------------------------
 
+local getIcon = function(file_name)
+  -- local icon = icons.deviconTable[file_name]
+
+  -- TODO verify if var exists
+  -- g:webdevicons_enable
+  local icon = api.nvim_call_function('WebDevIconsGetFileTypeSymbol', {file_name})
+  return icon
+end
+
 local getTabLabel = function(n)
   local current_number = api.nvim_tabpage_get_number(n)
   local current_win = api.nvim_tabpage_get_win(n)
@@ -309,7 +318,7 @@ local getTabLabel = function(n)
   if file_name == '' then
     return current_number.." No Name"
   end
-  local icon = icons.deviconTable[file_name]
+  local icon = getIcon(file_name)
   if icon ~= nil then
     return current_number..' '..icon..' '..file_name
   end
