@@ -37,6 +37,12 @@ Then open the editor and install with `call dein#install()`.
 - Animations? [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my)
 - Move all code to Lua
 
+## Others
+
+- [vim-airline](https://github.com/vim-airline/vim-airline)
+- [lightline.vim](https://github.com/itchyny/lightline.vim)
+- [onestatus](https://github.com/narajaon/onestatus)
+
 ## Acknowledgments 💡
 
 Thanks goes to these people/projects for inspiration:
