@@ -250,11 +250,13 @@ function M.activeLine(idbuffer)
   statusline = statusline.."%="
   statusline = statusline.."%#NeoLineDefault#"
 
-  -- Coc Status
-  -- local cocstatus = api.nvim_call_function('coc#status', {})
-  -- if cocstatus ~= '' then
-    -- statusline = statusline..cocstatus
-  -- end
+  -- neoclide/coc.nvim
+
+  local didCocLoaded = api.nvim_call_function('exists', {'g:did_coc_loaded'})
+  if didCocLoaded ~= 0 then
+      local cocstatus = api.nvim_call_function('coc#status', {})
+      statusline = statusline..cocstatus
+  end
 
   -- lsp-status
 

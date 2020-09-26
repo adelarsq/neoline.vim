@@ -7,6 +7,7 @@ A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim)
 - [vim-signify](https://github.com/mhinz/vim-signify)
 - [coc.nvim](https://github.com/neoclide/coc.nvim)
 - [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
+- [nvim-lua/lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim)
 
 ## Installation 🧙
 
