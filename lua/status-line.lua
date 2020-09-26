@@ -261,9 +261,7 @@ function M.activeLine(idbuffer)
   local useLspStatus, importedLspStatus = pcall(require, "lsp-status")
 
   if useLspStatus then
-    if #vim.lsp.buf_get_clients() > 0 then
-        statusline = statusline..importedLspStatus.status()
-    end
+    statusline = statusline..importedLspStatus.status()
   end
 
   -- Component: FileType
