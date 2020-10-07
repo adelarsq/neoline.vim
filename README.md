@@ -8,6 +8,9 @@ A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim)
 - [coc.nvim](https://github.com/neoclide/coc.nvim)
 - [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
 - [nvim-lua/lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim)
+- [preservim/nerdtree](https://github.com/preservim/nerdtree)
+- [ms-jpq/chadtree](https://github.com/ms-jpq/chadtree)
+- [adelarsq/neovcs.vim](https://github.com/adelarsq/neovcs.vim)
 
 ## Installation 🧙
 

@@ -1,7 +1,10 @@
 local api = vim.api
+local util = require 'util'
 local icons = require 'devicon'
 local session = require 'abduco'
 local M = {}
+
+------------------------------------------------------------------------
 
 session.abduco_session()
 
@@ -205,9 +208,9 @@ function M.activeLine(idbuffer)
   local filetype = api.nvim_buf_get_option(0, 'filetype')
 
   -- Icon For File
-  if filetype == 'nerdtree' then
-      statusline = statusline.."%f"
-      -- statusline = statusline..iconNERDTree
+  if filetype == 'nerdtree' or filetype == 'CHADTree' then
+      -- statusline = statusline.."%f"
+      statusline = statusline..iconNERDTree
       return statusline
   elseif filetype == 'vista' then
       statusline = statusline.."%f"
@@ -222,12 +225,12 @@ function M.activeLine(idbuffer)
   statusline = statusline..blank
 
   -- Component: Working Directory
-  -- local dir = api.nvim_call_function('getcwd', {})
+  -- local dir = util.Call('getcwd', {})
   -- statusline = statusline.."%#NeoLineDirSeparator#"..left_separator.."%#NeoLineDirectory# "..TrimmedDirectory(dir).." %#NeoLineDirSeparator#"..right_separator
   -- statusline = statusline..blank
 
   -- Repository Status
-  local repostats = api.nvim_call_function('sy#repo#get_stats', {})
+  local repostats = util.Call('sy#repo#get_stats', {})
   if repostats[1] > -1 then
     statusline = statusline.."%#NeoLineVCSLeft#"
     -- statusline = statusline..left_separator
@@ -239,9 +242,15 @@ function M.activeLine(idbuffer)
     statusline = statusline.."-"..repostats[2]
     statusline = statusline.."%#NeoLineVCSChange#"
     statusline = statusline.."~"..repostats[3]
-    statusline = statusline.."%#NeoLineVCSRight#"
     -- statusline = statusline..right_separator
+
+    -- TODO verificar se plugin esta ativo
+    local vcsName = util.Call('VcsName', {})
+    statusline = statusline.." "..vcsName
+
+    statusline = statusline.."%#NeoLineVCSRight#"
     statusline = statusline.."%#NeoLineDefault#"
+
     statusline = statusline..''
   end
 
@@ -252,9 +261,8 @@ function M.activeLine(idbuffer)
 
   -- neoclide/coc.nvim
 
-  local didCocLoaded = api.nvim_call_function('exists', {'g:did_coc_loaded'})
-  if didCocLoaded ~= 0 then
-      local cocstatus = api.nvim_call_function('coc#status', {})
+  if util.Exists('g:did_coc_loaded') then
+      local cocstatus = util.Call('coc#status', {})
       statusline = statusline..cocstatus
   end
 
@@ -271,7 +279,7 @@ function M.activeLine(idbuffer)
   statusline = statusline..blank
 
   -- Component: row and col
-  local line = api.nvim_call_function('line', {"."})
+  local line = util.Call('line', {"."})
   statusline = statusline.."%#NeoLineDefault# "..ln.." "..line
 
   return statusline
@@ -282,17 +290,19 @@ function M.inActiveLine(idbuffer)
 
   statusline = "%#NeoLineInActive# %f"
 
-  -- local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
+  local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
   -- -- Icon For File
-  -- if filetype == 'nerdtree' then
-      -- statusline = statusline..iconNERDTree
-      -- return statusline
+  if filetype == 'nerdtree' then
+      statusline = "%#NeoLineInActive# "..iconNERDTree
+      return statusline
+  end
+
   -- elseif filetype == 'vista' then
       -- statusline = statusline..iconVista
       -- return statusline
   -- end
 
-  -- local file_name = api.nvim_call_function('expand', {'%F'})
+  -- local file_name = util.Call('expand', {'%F'})
   statusline = statusline.."%#NeoLineInActive# "
 
   return statusline
@@ -305,11 +315,12 @@ end
 local getIcon = function(file_name)
   -- local icon = icons.deviconTable[file_name]
 
-  -- TODO verify if var exists
-  -- g:webdevicons_enable
-  local icon = api.nvim_call_function('WebDevIconsGetFileTypeSymbol', {file_name})
-  return icon
+  if util.Exists('g:webdevicons_enable') then
+      local icon = util.Call('WebDevIconsGetFileTypeSymbol', {file_name})
+      return icon
+  end
 end
+
 
 local getTabLabel = function(n)
   local current_number = api.nvim_tabpage_get_number(n)
@@ -317,9 +328,9 @@ local getTabLabel = function(n)
   local current_buf = api.nvim_win_get_buf(current_win)
   local file_name = api.nvim_buf_get_name(current_buf)
   if string.find(file_name, 'term://') ~= nil then
-    return current_number..'  '..api.nvim_call_function('fnamemodify', {file_name, ":p:t"})
+    return current_number..'  '..util.Call('fnamemodify', {file_name, ":p:t"})
   end
-  file_name = api.nvim_call_function('fnamemodify', {file_name, ":p:t"})
+  file_name = util.Call('fnamemodify', {file_name, ":p:t"})
   if file_name == '' then
     return current_number.." No Name"
   end
