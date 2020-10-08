@@ -1,6 +1,6 @@
 local api = vim.api
 local util = require 'util'
-local icons = require 'devicon'
+local icons = require 'icons'
 local session = require 'abduco'
 local M = {}
 
@@ -209,12 +209,10 @@ function M.activeLine(idbuffer)
 
   -- Icon For File
   if filetype == 'nerdtree' or filetype == 'CHADTree' then
-      -- statusline = statusline.."%f"
       statusline = statusline..iconNERDTree
       return statusline
-  elseif filetype == 'vista' then
-      statusline = statusline.."%f"
-      -- statusline = statusline..iconVista
+  elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown' then
+      statusline = statusline..iconVista
       return statusline
   end
 
@@ -291,16 +289,14 @@ function M.inActiveLine(idbuffer)
   statusline = "%#NeoLineInActive# %f"
 
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
-  -- -- Icon For File
-  if filetype == 'nerdtree' then
-      statusline = "%#NeoLineInActive# "..iconNERDTree
+
+  if filetype == 'nerdtree' or filetype == 'CHADTree' then
+      statusline = "%#NeoLineInActive#"..iconNERDTree
+      return statusline
+  elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown'  then
+      statusline = "%#NeoLineInActive#"..iconVista
       return statusline
   end
-
-  -- elseif filetype == 'vista' then
-      -- statusline = statusline..iconVista
-      -- return statusline
-  -- end
 
   -- local file_name = util.Call('expand', {'%F'})
   statusline = statusline.."%#NeoLineInActive# "
