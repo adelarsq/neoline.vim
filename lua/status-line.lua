@@ -61,6 +61,7 @@ local blank = ' '
 -- Icons
 local iconNERDTree = '🌳 NERDTree'
 local iconVista = '📌 Vista'
+local iconQf = '📌 QF'
 
 -- Using NERDFonts
 -- https://github.com/ryanoasis/powerline-extra-symbols
@@ -138,13 +139,13 @@ local RedrawColors = function(mode)
 end
 
 local TrimmedDirectory = function(dir)
-  local home = os.getenv("HOME")
-  local _, index = string.find(dir, home, 1)
-  if index ~= nil and index ~= string.len(dir) then
-    -- TODO Trimmed Home NeoLineDirectory
-    return string.gsub(dir, home, '~')
-  end
-  return dir
+    local home = os.getenv("HOME")
+    local _, index = string.find(dir, home, 1)
+    if index ~= nil and index ~= string.len(dir) then
+        -- TODO Trimmed Home NeoLineDirectory
+        return string.gsub(dir, home, '~')
+    end
+    return dir
 end
 
 -- Initialize colors
@@ -155,20 +156,20 @@ function M.initColors()
     local file_gui = 'bold'
     api.nvim_command('hi NeoLineFile guibg='..file_bg..' guifg='..file_fg..' gui='..file_gui)
     api.nvim_command('hi NeoLineFileSeparator guifg='..file_bg)
-    
+
     -- Working directory Color
     local dir_bg = bg
     local dir_fg = white_fg
     local dir_gui = 'bold'
     api.nvim_command('hi NeoLineNeoLineDirectory guibg='..dir_bg..' guifg='..dir_fg..' gui='..dir_gui)
     api.nvim_command('hi NeoLineDirSeparator guifg='..dir_bg)
-    
+
     -- FileType Color
     local filetype_bg = 'None'
     local filetype_fg = blue
     local filetype_gui = 'bold'
     api.nvim_command('hi NeoLineFiletype guibg='..filetype_bg..' guifg='..filetype_fg..' gui='..filetype_gui)
-    
+
     -- VCS Color
     local vcs_add = green
     local vcs_delete = red
@@ -180,9 +181,9 @@ function M.initColors()
     api.nvim_command('hi NeoLineVCSDelete guifg='..red..' guibg='..white)
     api.nvim_command('hi NeoLineVCSChange guifg='..orange..' guibg='..white)
     api.nvim_command('hi NeoLineVCSRight guifg='..white..' guibg='..blue)
-    
+
     api.nvim_command('hi NeoLineDefault guifg='..white..' guibg='..blue)
-    
+
     -- row and column Color
     local line_bg = 'None'
     local line_fg = white_fg
@@ -308,14 +309,6 @@ end
 --                              TabLine                               --
 ------------------------------------------------------------------------
 
-local getIcon = function(file_name)
-  -- local icon = icons.deviconTable[file_name]
-
-  if util.Exists('g:webdevicons_enable') then
-      local icon = util.Call('WebDevIconsGetFileTypeSymbol', {file_name})
-      return icon
-  end
-end
 
 
 local getTabLabel = function(n)
@@ -330,7 +323,7 @@ local getTabLabel = function(n)
   if file_name == '' then
     return current_number.." No Name"
   end
-  local icon = getIcon(file_name)
+  local icon = icons.GetIcon(file_name)
   if icon ~= nil then
     return current_number..' '..icon..' '..file_name
   end
