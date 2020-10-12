@@ -62,6 +62,7 @@ local blank = ' '
 local iconNERDTree = '🌳 NERDTree'
 local iconVista = '📌 Vista'
 local iconQf = '📌 QF'
+local iconShell = '🐚'
 
 -- Using NERDFonts
 -- https://github.com/ryanoasis/powerline-extra-symbols
@@ -309,15 +310,13 @@ end
 --                              TabLine                               --
 ------------------------------------------------------------------------
 
-
-
 local getTabLabel = function(n)
   local current_number = api.nvim_tabpage_get_number(n)
   local current_win = api.nvim_tabpage_get_win(n)
   local current_buf = api.nvim_win_get_buf(current_win)
   local file_name = api.nvim_buf_get_name(current_buf)
   if string.find(file_name, 'term://') ~= nil then
-    return current_number..'  '..util.Call('fnamemodify', {file_name, ":p:t"})
+    return current_number..' '..iconShell..' '..util.Call('fnamemodify', {file_name, ":p:t"})
   end
   file_name = util.Call('fnamemodify', {file_name, ":p:t"})
   if file_name == '' then
