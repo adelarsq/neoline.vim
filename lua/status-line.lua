@@ -61,13 +61,13 @@ local blank = ' '
 -- Icons
 local iconNERDTree = '🌳 NERDTree'
 local iconVista = '📌 Vista'
-local iconQf = '📌 QF'
+local iconQf = '🐆 QF'
 local iconShell = '🐚'
 
 -- Using NERDFonts
 -- https://github.com/ryanoasis/powerline-extra-symbols
 -- ro=, ws=☲, lnr=☰, mlnr=, br=, nx=Ɇ, crypt=🔒, dirty=⚡
-local ln=''
+local iconLn=''
 
 ------------------------------------------------------------------------
 --                             StatusLine                             --
@@ -267,9 +267,7 @@ function M.activeLine(idbuffer)
   end
 
   -- lsp-status
-
   local useLspStatus, importedLspStatus = pcall(require, "lsp-status")
-
   if useLspStatus then
     statusline = statusline..importedLspStatus.status()
   end
@@ -280,7 +278,7 @@ function M.activeLine(idbuffer)
 
   -- Component: row and col
   local line = util.Call('line', {"."})
-  statusline = statusline.."%#NeoLineDefault# "..ln.." "..line
+  statusline = statusline.."%#NeoLineDefault# %{&fileencoding?&fileencoding:&encoding} "..iconLn.." "..line
 
   return statusline
 end
