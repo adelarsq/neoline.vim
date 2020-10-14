@@ -11,6 +11,8 @@ A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim)
 - [preservim/nerdtree](https://github.com/preservim/nerdtree)
 - [ms-jpq/chadtree](https://github.com/ms-jpq/chadtree)
 - [adelarsq/neovcs.vim](https://github.com/adelarsq/neovcs.vim)
+- [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui)
+- [glepnir/dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
 
 ## Installation 🧙
 

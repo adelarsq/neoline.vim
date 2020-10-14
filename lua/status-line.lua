@@ -63,6 +63,9 @@ local iconNERDTree = '🌳 NERDTree'
 local iconVista = '📌 Vista'
 local iconQf = '🐆 QF'
 local iconShell = '🐚'
+local iconDBUI = '🎲'
+local iconDBUIOut = '🐬'
+local iconDashboard = '🌅'
 
 -- Using NERDFonts
 -- https://github.com/ryanoasis/powerline-extra-symbols
@@ -213,6 +216,15 @@ function M.activeLine(idbuffer)
   if filetype == 'nerdtree' or filetype == 'CHADTree' then
       statusline = statusline..iconNERDTree
       return statusline
+  elseif filetype == 'dbui' then
+      statusline = statusline..iconDBUI
+      return statusline
+  elseif filetype == 'dbout' then
+      statusline = statusline..iconDBUIOut
+      return statusline
+  elseif filetype == 'dashboard' then
+      statusline = statusline..iconDashboard
+      return statusline
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown' then
       statusline = statusline..iconVista
       return statusline
@@ -292,6 +304,15 @@ function M.inActiveLine(idbuffer)
 
   if filetype == 'nerdtree' or filetype == 'CHADTree' then
       statusline = "%#NeoLineInActive#"..iconNERDTree
+      return statusline
+  elseif filetype == 'dbui' then
+      statusline = "%#NeoLineInActive#"..iconDBUI
+      return statusline
+  elseif filetype == 'dbout' then
+      statusline = "%#NeoLineInActive#"..iconDBUIOut
+      return statusline
+  elseif filetype == 'dashboard' then
+      statusline = "%#NeoLineInActive#"..iconDashboard
       return statusline
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown'  then
       statusline = "%#NeoLineInActive#"..iconVista
