@@ -13,6 +13,7 @@ A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim)
 - [adelarsq/neovcs.vim](https://github.com/adelarsq/neovcs.vim)
 - [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui)
 - [glepnir/dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
+- [junegunn/vim-plug](https://github.com/junegunn/vim-plug)
 
 ## Installation 🧙
 

@@ -66,6 +66,7 @@ local iconShell = '🐚'
 local iconDBUI = '🎲'
 local iconDBUIOut = '🐬'
 local iconDashboard = '🌅'
+local iconUpdate = '🧙'
 
 -- Using NERDFonts
 -- https://github.com/ryanoasis/powerline-extra-symbols
@@ -225,6 +226,9 @@ function M.activeLine(idbuffer)
   elseif filetype == 'dashboard' then
       statusline = statusline..iconDashboard
       return statusline
+  elseif filetype == 'vim-plug' then
+      statusline = statusline..iconUpdate
+      return statusline
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown' then
       statusline = statusline..iconVista
       return statusline
@@ -290,7 +294,7 @@ function M.activeLine(idbuffer)
 
   -- Component: row and col
   local line = util.Call('line', {"."})
-  statusline = statusline.."%#NeoLineDefault# %{&fileencoding?&fileencoding:&encoding} "..iconLn.." "..line
+  statusline = statusline.."%#NeoLineDefault# %{&fileencoding} "..iconLn.." "..line
 
   return statusline
 end
@@ -313,6 +317,9 @@ function M.inActiveLine(idbuffer)
       return statusline
   elseif filetype == 'dashboard' then
       statusline = "%#NeoLineInActive#"..iconDashboard
+      return statusline
+  elseif filetype == 'vim-plug' then
+      statusline = "%#NeoLineInActive#"..iconUpdate
       return statusline
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown'  then
       statusline = "%#NeoLineInActive#"..iconVista
