@@ -2,19 +2,6 @@
 
 A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim) using [Lua](https://www.lua.org).
 
-## Supported Plugins 🤗
-
-- [vim-signify](https://github.com/mhinz/vim-signify)
-- [coc.nvim](https://github.com/neoclide/coc.nvim)
-- [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
-- [nvim-lua/lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim)
-- [preservim/nerdtree](https://github.com/preservim/nerdtree)
-- [ms-jpq/chadtree](https://github.com/ms-jpq/chadtree)
-- [adelarsq/neovcs.vim](https://github.com/adelarsq/neovcs.vim)
-- [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui)
-- [glepnir/dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
-- [junegunn/vim-plug](https://github.com/junegunn/vim-plug)
-
 ## Installation 🧙
 
 ### [Plug](https://github.com/junegunn/vim-plug)
@@ -37,12 +24,24 @@ call dein#add('adelarsq/neoline.vim')
 
 Then open the editor and install with `call dein#install()`.
 
-## TODO
+## Features/Todos
 
-- Goyo support
-- Support one color [per tab](https://marketplace.visualstudio.com/items?itemName=orepor.color-tabs-vscode-ext)
-- Animations? [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my)
-- Move all code to Lua
+- Support for plugins
+  - [x] [vim-signify](https://github.com/mhinz/vim-signify)
+  - [x] [coc.nvim](https://github.com/neoclide/coc.nvim)
+  - [x] [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
+  - [x] [nvim-lua/lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim)
+  - [x] [preservim/nerdtree](https://github.com/preservim/nerdtree)
+  - [x] [ms-jpq/chadtree](https://github.com/ms-jpq/chadtree)
+  - [x] [adelarsq/neovcs.vim](https://github.com/adelarsq/neovcs.vim)
+  - [x] [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui)
+  - [x] [glepnir/dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
+  - [x] [junegunn/vim-plug](https://github.com/junegunn/vim-plug)
+  - [ ] [junegunn/goyo.vim](https://github.com/junegunn/goyo.vim)
+- [ ] Support one color [per tab](https://marketplace.visualstudio.com/items?itemName=orepor.color-tabs-vscode-ext)
+- [ ] Line cored based on mode
+- [ ] Animations? [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my)
+- [ ] Move all code to Lua
 
 ## Others
 
