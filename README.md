@@ -24,7 +24,7 @@ call dein#add('adelarsq/neoline.vim')
 
 Then open the editor and install with `call dein#install()`.
 
-## Features/Todos
+## Features/Todos ⚙️
 
 - Support for plugins
   - [x] [vim-signify](https://github.com/mhinz/vim-signify)
