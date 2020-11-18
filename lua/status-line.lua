@@ -246,28 +246,30 @@ function M.activeLine(idbuffer)
   -- statusline = statusline..blank
 
   -- Repository Status
-  local repostats = util.Call('sy#repo#get_stats', {})
-  if repostats[1] > -1 then
-    statusline = statusline.."%#NeoLineVCSLeft#"
-    -- statusline = statusline..left_separator
-    statusline = statusline.."%#NeoLineDefault#"
-    statusline = statusline..''
-    statusline = statusline.."%#NeoLineVCSAdd#"
-    statusline = statusline.."+"..repostats[1]
-    statusline = statusline.."%#NeoLineVCSDelete#"
-    statusline = statusline.."-"..repostats[2]
-    statusline = statusline.."%#NeoLineVCSChange#"
-    statusline = statusline.."~"..repostats[3]
-    -- statusline = statusline..right_separator
+  if util.Exists('g:loaded_signify') then
+      local repostats = util.Call('sy#repo#get_stats', {})
+      if repostats[1] > -1 then
+          statusline = statusline.."%#NeoLineVCSLeft#"
+          -- statusline = statusline..left_separator
+          statusline = statusline.."%#NeoLineDefault#"
+          statusline = statusline..''
+          statusline = statusline.."%#NeoLineVCSAdd#"
+          statusline = statusline.."+"..repostats[1]
+          statusline = statusline.."%#NeoLineVCSDelete#"
+          statusline = statusline.."-"..repostats[2]
+          statusline = statusline.."%#NeoLineVCSChange#"
+          statusline = statusline.."~"..repostats[3]
+          -- statusline = statusline..right_separator
 
-    -- TODO verificar se plugin esta ativo
-    local vcsName = util.Call('VcsName', {})
-    statusline = statusline.." "..vcsName
+          -- TODO verificar se plugin esta ativo
+          local vcsName = util.Call('VcsName', {})
+          statusline = statusline.." "..vcsName
 
-    statusline = statusline.."%#NeoLineVCSRight#"
-    statusline = statusline.."%#NeoLineDefault#"
+          statusline = statusline.."%#NeoLineVCSRight#"
+          statusline = statusline.."%#NeoLineDefault#"
 
-    statusline = statusline..''
+          statusline = statusline..''
+      end
   end
 
   -- Alignment to left
@@ -283,10 +285,10 @@ function M.activeLine(idbuffer)
   end
 
   -- lsp-status
-  local useLspStatus, importedLspStatus = pcall(require, "lsp-status")
-  if useLspStatus then
-    statusline = statusline..importedLspStatus.status()
-  end
+  -- local useLspStatus, importedLspStatus = pcall(require, "lsp-status")
+  -- if useLspStatus then
+    -- statusline = statusline..importedLspStatus.status()
+  -- end
 
   -- Component: FileType
   statusline = statusline.."%#NeoLineDefault# "..filetype
