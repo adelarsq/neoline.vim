@@ -2,6 +2,10 @@
 
 A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim) using [Lua](https://www.lua.org).
 
+Using neoline.vim with [ayu-vim](https://github.com/ayu-theme/ayu-vim) light theme and [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme):
+
+<img width="782" alt="Captura de Tela 2020-11-19 às 18 20 49" src="https://user-images.githubusercontent.com/430272/99725679-38b75f00-2a94-11eb-9e94-6c4595c3a1bc.png">
+
 ## Installation 🧙
 
 ### [Plug](https://github.com/junegunn/vim-plug)
