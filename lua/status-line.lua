@@ -278,17 +278,16 @@ function M.activeLine(idbuffer)
   statusline = statusline.."%#NeoLineDefault#"
 
   -- neoclide/coc.nvim
-
   if util.Exists('g:did_coc_loaded') then
       local cocstatus = util.Call('coc#status', {})
       statusline = statusline..cocstatus
   end
 
   -- lsp-status
-  -- local useLspStatus, importedLspStatus = pcall(require, "lsp-status")
-  -- if useLspStatus then
-    -- statusline = statusline..importedLspStatus.status()
-  -- end
+  local useLspStatus, importedLspStatus = pcall(require, "lsp-status")
+  if useLspStatus then
+    statusline = statusline..importedLspStatus.status()
+  end
 
   -- Component: FileType
   statusline = statusline.."%#NeoLineDefault# "..filetype
