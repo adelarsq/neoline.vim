@@ -83,10 +83,10 @@ local current_mode = setmetatable({
       ['no'] = 'N·Operator Pending',
       ['v'] = 'VISUAL',
       ['V'] = 'V·Line',
-      ['^V'] = 'V·Block',
+      [''] = 'V·Block',
       ['s'] = 'Select',
       ['S'] = 'S·Line',
-      ['^S'] = 'S·Block',
+      [''] = 'S·Block',
       ['i'] = 'INSERT',
       ['ic'] = 'INSERT',
       ['ix'] = 'INSERT',
@@ -100,13 +100,7 @@ local current_mode = setmetatable({
       ['r?'] = 'Confirm',
       ['!'] = 'Shell',
       ['t'] = 'TERMINAL'
-    }, {
-      -- TODO
-      -- fix weird issues
-      __index = function(_, _)
-        return 'V·Block'
-      end
-    }
+    }, {}
 )
 
 -- Redraw different colors for different mode
@@ -121,7 +115,7 @@ local RedrawColors = function(mode)
     api.nvim_command('hi NeoLineModeSeparator guifg='..green)
     api.nvim_command('hi NeoLineDefault guibg='..green)
   end
-  if mode == 'v' or mode == 'V' or mode == '^V' then
+  if mode == 'v' or mode == 'V' or mode == '' then
     api.nvim_command('hi NeoLineMode guibg='..purple..' guifg='..black_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..purple)
     api.nvim_command('hi NeoLineDefault guibg='..purple)
