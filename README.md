@@ -34,7 +34,7 @@ Then open the editor and install with `call dein#install()`.
   - [x] [vim-signify](https://github.com/mhinz/vim-signify)
   - [x] [coc.nvim](https://github.com/neoclide/coc.nvim)
   - [x] [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
-  - [x] [nvim-lua/lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim)
+  - [x] ~~[nvim-lua/lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim)~~
   - [x] [preservim/nerdtree](https://github.com/preservim/nerdtree)
   - [x] [ms-jpq/chadtree](https://github.com/ms-jpq/chadtree)
   - [x] [adelarsq/neovcs.vim](https://github.com/adelarsq/neovcs.vim)

@@ -147,6 +147,25 @@ local TrimmedDirectory = function(dir)
     return dir
 end
 
+local LspStatus = function()
+    local sl = ''
+    sl = sl.."%#NeoLineDefault#"
+    sl = sl..''
+    if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
+        sl=sl.."%#NeoLineDefaultInverse#"
+        sl=sl..'🔥'
+        sl=sl..' E:'
+        sl=sl..'%{luaeval("vim.lsp.diagnostic.get_count([[Error]])")}'
+        sl=sl..' W:'
+        sl=sl..'%{luaeval("vim.lsp.diagnostic.get_count([[Warning]])")}'
+    else
+        sl=sl..'%#MyStatuslineLSPErrors#🧊'
+    end
+    sl = sl.."%#NeoLineDefault#"
+    sl = sl..''
+    return sl 
+end
+
 -- Initialize colors
 function M.initColors()
     -- Filename Color
@@ -182,6 +201,7 @@ function M.initColors()
     api.nvim_command('hi NeoLineVCSRight guifg='..white..' guibg='..blue)
 
     api.nvim_command('hi NeoLineDefault guifg='..white..' guibg='..blue)
+    api.nvim_command('hi NeoLineDefaultInverse guifg='..blue..' guibg='..white)
 
     -- row and column Color
     local line_bg = 'None'
@@ -277,11 +297,7 @@ function M.activeLine(idbuffer)
       statusline = statusline..cocstatus
   end
 
-  -- lsp-status
-  local useLspStatus, importedLspStatus = pcall(require, "lsp-status")
-  if useLspStatus then
-    statusline = statusline..importedLspStatus.status()
-  end
+  statusline = statusline..LspStatus()
 
   -- Component: FileType
   statusline = statusline.."%#NeoLineDefault# "..filetype
