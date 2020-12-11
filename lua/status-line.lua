@@ -59,7 +59,7 @@ local right_separator = ''
 local blank = ' '
 
 -- Icons
-local iconNERDTree = '🌳 NERDTree'
+local iconNERDTree = '🌳'
 local iconVista = '📌 Vista'
 local iconQf = '🐆 QF'
 local iconShell = '🐚'
@@ -67,6 +67,7 @@ local iconDBUI = '🎲'
 local iconDBUIOut = '🐬'
 local iconDashboard = '🌅'
 local iconUpdate = '🧙'
+local iconVcs = '🐙'
 
 -- Using NERDFonts
 -- https://github.com/ryanoasis/powerline-extra-symbols
@@ -166,6 +167,15 @@ local LspStatus = function()
     return sl 
 end
 
+local NERDTreeStatus = function()
+    local root_dir = vim.fn.eval('g:NERDTree.ForCurrentTab().getRoot().path.str()')
+    local iconNERDTree = '🌳'
+    local statusline = iconNERDTree
+    statusline = statusline..' '
+    statusline = statusline..root_dir
+    return statusline
+end
+
 -- Initialize colors
 function M.initColors()
     -- Filename Color
@@ -229,7 +239,7 @@ function M.activeLine(idbuffer)
 
   -- Icon For File
   if filetype == 'nerdtree' or filetype == 'CHADTree' then
-      statusline = statusline..iconNERDTree
+      statusline = statusline..NERDTreeStatus()
       return statusline
   elseif filetype == 'dbui' then
       statusline = statusline..iconDBUI
@@ -239,6 +249,9 @@ function M.activeLine(idbuffer)
       return statusline
   elseif filetype == 'dashboard' then
       statusline = statusline..iconDashboard
+      return statusline
+  elseif filetype == 'git' or filetype == 'svn' then
+      statusline = statusline..iconVcs
       return statusline
   elseif filetype == 'vim-plug' then
       statusline = statusline..iconUpdate
@@ -318,7 +331,7 @@ function M.inActiveLine(idbuffer)
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
 
   if filetype == 'nerdtree' or filetype == 'CHADTree' then
-      statusline = "%#NeoLineInActive#"..iconNERDTree
+      statusline = "%#NeoLineInActive#"..NERDTreeStatus()
       return statusline
   elseif filetype == 'dbui' then
       statusline = "%#NeoLineInActive#"..iconDBUI
@@ -328,6 +341,9 @@ function M.inActiveLine(idbuffer)
       return statusline
   elseif filetype == 'dashboard' then
       statusline = "%#NeoLineInActive#"..iconDashboard
+      return statusline
+  elseif filetype == 'git' or filetype == 'svn' then
+      statusline = "%#NeoLineInActive#"..iconVcs
       return statusline
   elseif filetype == 'vim-plug' then
       statusline = "%#NeoLineInActive#"..iconUpdate
