@@ -36,7 +36,11 @@ Then open the editor and install with `call dein#install()`.
   - [x] [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
   - [x] ~~[nvim-lua/lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim)~~
   - [x] [preservim/nerdtree](https://github.com/preservim/nerdtree)
+    - [x] Show cwd path
+    - [ ] Trim cwd path
   - [x] [ms-jpq/chadtree](https://github.com/ms-jpq/chadtree)
+    - [ ] Show cwd path
+    - [ ] Trim cwd path
   - [x] [adelarsq/neovcs.vim](https://github.com/adelarsq/neovcs.vim)
   - [x] [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui)
   - [x] [glepnir/dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
