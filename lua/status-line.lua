@@ -150,7 +150,6 @@ end
 local LspStatus = function()
     local sl = ''
     sl = sl.."%#NeoLineDefault#"
-    -- sl = sl..''
     sl = sl..left_separator
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
         sl=sl.."%#NeoLineDefaultInverse#"
@@ -163,7 +162,6 @@ local LspStatus = function()
         sl=sl..'%#MyStatuslineLSPErrors#🧊'
     end
     sl = sl.."%#NeoLineDefault#"
-    -- sl = sl..''
     sl = sl..right_separator
     return sl 
 end
@@ -280,7 +278,6 @@ function M.activeLine(idbuffer)
           statusline = statusline.."%#NeoLineVCSLeft#"
           statusline = statusline.."%#NeoLineDefault#"
 
-          -- statusline = statusline..''
           statusline = statusline..left_separator
 
           statusline = statusline.."%#NeoLineVCSAdd#"
@@ -297,7 +294,6 @@ function M.activeLine(idbuffer)
           statusline = statusline.."%#NeoLineVCSRight#"
           statusline = statusline.."%#NeoLineDefault#"
 
-          -- statusline = statusline..''
           statusline = statusline..right_separator
       end
   end
