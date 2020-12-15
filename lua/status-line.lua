@@ -33,8 +33,8 @@ local black_fg = '#282c34'
 local bg = '#4d4d4d'
 
 -- Separators
--- local left_separator = ''
--- local right_separator = ''
+local left_separator = ''
+local right_separator = ''
 -- local left_separator = ' '
 -- local right_separator = ' '
 -- local left_separator = ' '
@@ -42,8 +42,7 @@ local bg = '#4d4d4d'
 -- statusline = statusline.."▒░"
 -- local left_separator = ''
 -- local right_separator = ''
-local left_separator = ''
-local right_separator = ''
+
 -- let s:separators = {
       -- \ 'arrow' : ["\ue0b0", "\ue0b2"],
       -- \ 'curve' : ["\ue0b4", "\ue0b6"],
@@ -151,7 +150,8 @@ end
 local LspStatus = function()
     local sl = ''
     sl = sl.."%#NeoLineDefault#"
-    sl = sl..''
+    -- sl = sl..''
+    sl = sl..left_separator
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
         sl=sl.."%#NeoLineDefaultInverse#"
         sl=sl..'🔥'
@@ -163,7 +163,8 @@ local LspStatus = function()
         sl=sl..'%#MyStatuslineLSPErrors#🧊'
     end
     sl = sl.."%#NeoLineDefault#"
-    sl = sl..''
+    -- sl = sl..''
+    sl = sl..right_separator
     return sl 
 end
 
@@ -277,16 +278,17 @@ function M.activeLine(idbuffer)
       local repostats = util.Call('sy#repo#get_stats', {})
       if repostats[1] > -1 then
           statusline = statusline.."%#NeoLineVCSLeft#"
-          -- statusline = statusline..left_separator
           statusline = statusline.."%#NeoLineDefault#"
-          statusline = statusline..''
+
+          -- statusline = statusline..''
+          statusline = statusline..left_separator
+
           statusline = statusline.."%#NeoLineVCSAdd#"
           statusline = statusline.."+"..repostats[1]
           statusline = statusline.."%#NeoLineVCSDelete#"
           statusline = statusline.."-"..repostats[2]
           statusline = statusline.."%#NeoLineVCSChange#"
           statusline = statusline.."~"..repostats[3]
-          -- statusline = statusline..right_separator
 
           -- TODO verificar se plugin esta ativo
           local vcsName = util.Call('VcsName', {})
@@ -295,7 +297,8 @@ function M.activeLine(idbuffer)
           statusline = statusline.."%#NeoLineVCSRight#"
           statusline = statusline.."%#NeoLineDefault#"
 
-          statusline = statusline..''
+          -- statusline = statusline..''
+          statusline = statusline..right_separator
       end
   end
 
