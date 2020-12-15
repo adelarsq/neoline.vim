@@ -58,7 +58,6 @@ local right_separator = ''
 local blank = ' '
 
 -- Icons
-local iconNERDTree = '🌳'
 local iconVista = '📌 Vista'
 local iconQf = '🐆 QF'
 local iconShell = '🐚'
