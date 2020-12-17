@@ -136,16 +136,6 @@ local RedrawColors = function(mode)
   end
 end
 
-local TrimmedDirectory = function(dir)
-    local home = os.getenv("HOME")
-    local _, index = string.find(dir, home, 1)
-    if index ~= nil and index ~= string.len(dir) then
-        -- TODO Trimmed Home NeoLineDirectory
-        return string.gsub(dir, home, '~')
-    end
-    return dir
-end
-
 local LspStatus = function()
     local sl = ''
     sl = sl.."%#NeoLineDefault#"
@@ -158,7 +148,7 @@ local LspStatus = function()
         sl=sl..' W:'
         sl=sl..'%{luaeval("vim.lsp.diagnostic.get_count([[Warning]])")}'
     else
-        sl=sl..'%#MyStatuslineLSPErrors#🧊'
+        sl=sl..'%#NeoLineDefaultInverse#🧊'
     end
     sl = sl.."%#NeoLineDefault#"
     sl = sl..right_separator
@@ -167,6 +157,9 @@ end
 
 local NERDTreeStatus = function()
     local root_dir = vim.fn.eval('g:NERDTree.ForCurrentTab().getRoot().path.str()')
+    if root_dir ~= nil then
+        root_dir = util.TrimmedDirectory(root_dir)
+    end
     local iconNERDTree = '🌳'
     local statusline = iconNERDTree
     statusline = statusline..' '
