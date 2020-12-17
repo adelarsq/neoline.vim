@@ -226,7 +226,7 @@ end
 function M.activeLine(idbuffer)
   local statusline = "%#NeoLineDefault#"
 
-  local filetype = api.nvim_buf_get_option(0, 'filetype')
+  local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
 
   -- Icon For File
   if filetype == 'nerdtree' or filetype == 'CHADTree' then
