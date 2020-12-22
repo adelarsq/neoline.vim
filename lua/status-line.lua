@@ -139,6 +139,10 @@ end
 local LspStatus = function(idbuffer)
     local sl = ''
 
+    if not util.IsVersion5() then
+        return sl
+    end
+
     sl = sl.."%#NeoLineDefault#"
     sl = sl..left_separator
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(idbuffer)) then

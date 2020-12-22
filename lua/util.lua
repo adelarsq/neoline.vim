@@ -21,5 +21,9 @@ M.TrimmedDirectory = function(arg0)
     return arg0
 end
 
+M.IsVersion5 = function()
+    return api.nvim_call_function('has', {'nvim-0.5'}) == 1
+end
+
 return M
 
