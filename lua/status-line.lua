@@ -136,17 +136,18 @@ local RedrawColors = function(mode)
   end
 end
 
-local LspStatus = function()
+local LspStatus = function(idbuffer)
     local sl = ''
+
     sl = sl.."%#NeoLineDefault#"
     sl = sl..left_separator
-    if not vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
+    if not vim.tbl_isempty(vim.lsp.buf_get_clients(idbuffer)) then
         sl=sl.."%#NeoLineDefaultInverse#"
         sl=sl..'🔥'
         sl=sl..' E:'
-        sl=sl..'%{luaeval("vim.lsp.diagnostic.get_count([[Error]])")}'
+        sl=sl..'%{luaeval("vim.lsp.diagnostic.get_count('..idbuffer..',[[Error]])")}'
         sl=sl..' W:'
-        sl=sl..'%{luaeval("vim.lsp.diagnostic.get_count([[Warning]])")}'
+        sl=sl..'%{luaeval("vim.lsp.diagnostic.get_count('..idbuffer..',[[Warning]])")}'
     else
         sl=sl..'%#NeoLineDefaultInverse#🧊'
     end
@@ -301,7 +302,7 @@ function M.activeLine(idbuffer)
       statusline = statusline..cocstatus
   end
 
-  statusline = statusline..LspStatus()
+  statusline = statusline..LspStatus(idbuffer)
 
   -- Component: FileType
   statusline = statusline.."%#NeoLineDefault# "..filetype
