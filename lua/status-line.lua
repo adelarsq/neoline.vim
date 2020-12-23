@@ -161,14 +161,22 @@ local LspStatus = function(idbuffer)
 end
 
 local NERDTreeStatus = function()
-    local root_dir = vim.fn.eval('g:NERDTree.ForCurrentTab().getRoot().path.str()')
-    if root_dir ~= nil then
-        root_dir = util.TrimmedDirectory(root_dir)
-    end
+    local root_dir = ''
+
     local iconNERDTree = '🌳'
     local statusline = iconNERDTree
     statusline = statusline..' '
-    statusline = statusline..root_dir
+
+    if util.IsVersion5() then
+        root_dir = vim.fn.eval('g:NERDTree.ForCurrentTab().getRoot().path.str()')
+        if root_dir ~= nil then
+            root_dir = util.TrimmedDirectory(root_dir)
+        end
+        statusline = statusline..root_dir
+    else
+        statusline = statusline..'NERDTree'
+    end
+
     return statusline
 end
 

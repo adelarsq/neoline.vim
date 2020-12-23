@@ -36,7 +36,7 @@ Then open the editor and install with `call dein#install()`.
   - [x] [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
   - [x] ~~[nvim-lua/lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim)~~
   - [x] [preservim/nerdtree](https://github.com/preservim/nerdtree)
-    - [x] Show cwd path
+    - [x] Show cwd path **(requires Neovim 0.5)**
     - [ ] Trim cwd path
   - [x] [ms-jpq/chadtree](https://github.com/ms-jpq/chadtree)
     - [ ] Show cwd path
@@ -46,6 +46,7 @@ Then open the editor and install with `call dein#install()`.
   - [x] [glepnir/dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
   - [x] [junegunn/vim-plug](https://github.com/junegunn/vim-plug)
   - [ ] [junegunn/goyo.vim](https://github.com/junegunn/goyo.vim)
+- [x] LSP status support **(Requires Neovim 0.5)**
 - [ ] Support one color [per tab](https://marketplace.visualstudio.com/items?itemName=orepor.color-tabs-vscode-ext)
 - [ ] Line cored based on mode
 - [ ] Animations? [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my)
