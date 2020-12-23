@@ -55,13 +55,13 @@ Then open the editor and install with `call dein#install()`.
 
 ## Others 🦕
 
-- [vim-airline](https://github.com/vim-airline/vim-airline)
-- [lightline.vim](https://github.com/itchyny/lightline.vim)
-- [onestatus](https://github.com/narajaon/onestatus)
-- [galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim)
-- [fancystatus](https://github.com/Wafelack/fancystatus)
-- [nvim-bufferline.lua](https://github.com/akinsho/nvim-bufferline.lua)
 - [bubbly.nvim](https://github.com/datwaft/bubbly.nvim)
+- [fancystatus](https://github.com/Wafelack/fancystatus)
+- [galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim)
+- [lightline.vim](https://github.com/itchyny/lightline.vim)
+- [nvim-bufferline.lua](https://github.com/akinsho/nvim-bufferline.lua)
+- [onestatus](https://github.com/narajaon/onestatus)
+- [vim-airline](https://github.com/vim-airline/vim-airline)
 
 ## Acknowledgments 💡
 
