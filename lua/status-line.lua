@@ -29,8 +29,10 @@ local purple = '#9d8cff'
 
 -- fg and bg
 local white_fg = '#e6e6e6'
-local black_fg = '#282c34'
-local bg = '#4d4d4d'
+-- local black_fg = '#282c34'
+-- local bg = '#4d4d4d'
+local black_fg = '#cccccc'
+local bg = '#cccccc'
 
 -- Separators
 local left_separator = ''
@@ -39,7 +41,8 @@ local right_separator = ''
 -- local right_separator = ' '
 -- local left_separator = ' '
 -- local right_separator = ' '
--- statusline = statusline.."▒░"
+-- local left_separator = '░▒'
+-- local right_separator = '▒░'
 -- local left_separator = ''
 -- local right_separator = ''
 
@@ -160,6 +163,29 @@ local LspStatus = function(idbuffer)
     return sl 
 end
 
+local TsStatus = function()
+    local sl = ''
+
+    if not util.IsVersion5() then
+        return sl
+    end
+
+    sl = sl.."%#NeoLineDefault#"
+    sl = sl..left_separator
+    sl = sl.."%#NeoLineDefaultInverse#"
+    
+    local ts = util.Call('nvim_treesitter#statusline', {30})
+    if ts == nil then
+        return ''
+    end
+    sl = sl..ts
+
+    sl = sl.."%#NeoLineDefault#"
+    sl = sl..right_separator
+    
+    return sl
+end
+
 local NERDTreeStatus = function()
     local root_dir = ''
 
@@ -226,12 +252,12 @@ function M.initColors()
     -- TabLine
     api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..blue..' guifg='..white)
     api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..blue)
-    api.nvim_command('hi NeoLineTabLine guibg=#4d4d4d guifg=#c7c7c7 gui=None')
-    api.nvim_command('hi NeoLineTabLineSeparator guifg=#4d4d4d')
+    api.nvim_command('hi NeoLineTabLine guibg=#cccccc guifg=#ffffff gui=None')
+    api.nvim_command('hi NeoLineTabLineSeparator guifg=#cccccc')
     api.nvim_command('hi NeoLineTabLineFill guibg=None gui=None')
 
-    local InactiveLine_bg = '#4d4d4d'
-    local InactiveLine_fg = white_fg
+    local InactiveLine_bg = '#cccccc'
+    local InactiveLine_fg = '#ffffff'
     api.nvim_command('hi NeoLineInActive guibg='..InactiveLine_bg..' guifg='..InactiveLine_fg)
 
 end
@@ -302,6 +328,8 @@ function M.activeLine(idbuffer)
           statusline = statusline..right_separator
       end
   end
+
+  statusline = statusline..TsStatus()
 
   -- Alignment to left
   statusline = statusline.."%#NeoLineDefault#"
