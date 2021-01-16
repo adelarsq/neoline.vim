@@ -4,7 +4,7 @@ A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim)
 
 Using neoline.vim with [ayu-vim](https://github.com/ayu-theme/ayu-vim) light theme and [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme):
 
-<img width="782" src="https://user-images.githubusercontent.com/430272/100549420-a102ff00-3251-11eb-9c54-4032a57b7a92.png">
+<img width="782" src="https://user-images.githubusercontent.com/430272/104824373-de3a4500-582f-11eb-9f6a-999e215ec3f2.png">
 
 ## Installation 🧙
 
