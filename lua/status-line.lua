@@ -329,6 +329,10 @@ function M.activeLine(idbuffer)
       end
   end
 
+  statusline = statusline.."%#NeoLineDefault#"
+  statusline = statusline.."%="
+  statusline = statusline.."%#NeoLineDefault#"
+
   statusline = statusline..TsStatus()
 
   -- Alignment to left
