@@ -41,13 +41,13 @@ M.TrimmedDirectory = function(arg0)
 
     for j=1,pathTableSize-1,1 do
         if j == 1 then
-            ret=ret..pathTable[j]
+            ret=ret..pathTable[j]:sub(1,1)
         else
             ret=ret.."/"
-            if j==pathTableSize then
+            if j==pathTableSize-1 then
                 ret=ret..pathTable[j]
             else
-                ret=ret..pathTable[j]
+                ret=ret..pathTable[j]:sub(1,1)
             end
         end
     end
