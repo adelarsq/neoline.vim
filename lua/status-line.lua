@@ -255,6 +255,9 @@ function M.initColors()
     local filetype_gui = 'bold'
     api.nvim_command('hi NeoLineFiletype guibg='..filetype_bg..' guifg='..filetype_fg..' gui='..filetype_gui)
 
+    -- File changed
+    api.nvim_command('hi NeoLineFileChanged guifg='..red..' guibg='..white)
+
     -- VCS Color
     local vcs_add = green
     local vcs_delete = red
@@ -329,15 +332,15 @@ function M.activeLine(idbuffer)
   -- statusline = statusline.."%#NeoLineDirSeparator#"..left_separator.."%#NeoLineDirectory# "..TrimmedDirectory(dir).." %#NeoLineDirSeparator#"..right_separator
   -- statusline = statusline..blank
 
+  statusline = statusline.."%#NeoLineVCSLeft#"
+  statusline = statusline.."%#NeoLineDefault#"
+  statusline = statusline..left_separator
+
   -- Repository Status
   if util.Exists('g:loaded_signify') then
       local repostats = util.Call('sy#repo#get_stats', {})
+
       if repostats[1] > -1 then
-          statusline = statusline.."%#NeoLineVCSLeft#"
-          statusline = statusline.."%#NeoLineDefault#"
-
-          statusline = statusline..left_separator
-
           statusline = statusline.."%#NeoLineVCSAdd#"
           statusline = statusline.."+"..repostats[1]
           statusline = statusline.."%#NeoLineVCSDelete#"
@@ -348,13 +351,15 @@ function M.activeLine(idbuffer)
           -- TODO verificar se plugin esta ativo
           local vcsName = util.Call('VcsName', {})
           statusline = statusline.." "..vcsName
-
-          statusline = statusline.."%#NeoLineVCSRight#"
-          statusline = statusline.."%#NeoLineDefault#"
-
-          statusline = statusline..right_separator
       end
   end
+
+  statusline = statusline.."%#NeoLineFileChanged#"
+  statusline = statusline.."%{&modified?'+':''}"
+
+  statusline = statusline.."%#NeoLineVCSRight#"
+  statusline = statusline.."%#NeoLineDefault#"
+  statusline = statusline..right_separator
 
   statusline = statusline.."%#NeoLineDefault#"
   statusline = statusline.."%="
