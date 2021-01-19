@@ -139,7 +139,14 @@ local RedrawColors = function(mode)
   end
 end
 
-local LspStatus = function(idbuffer)
+-- neoclide/coc.nvim
+local CocStatus = function()
+    local cocstatus = util.Call('coc#status', {})
+    return cocstatus
+end
+
+-- Builtin Neovim LSP
+local BuiltinLsp = function(idbuffer)
     local sl = ''
 
     if not util.IsVersion5() then
@@ -161,6 +168,18 @@ local LspStatus = function(idbuffer)
     sl = sl.."%#NeoLineDefault#"
     sl = sl..right_separator
     return sl 
+end
+
+local LspStatus = function(idbuffer)
+    local sl = ''
+
+    if util.Exists('g:did_coc_loaded') then
+        sl=sl..CocStatus()
+    else
+        sl=sl..BuiltinLsp(idbuffer)
+    end
+
+    return sl
 end
 
 local TsStatus = function()
@@ -204,6 +223,14 @@ local NERDTreeStatus = function()
     end
 
     return statusline
+end
+
+local CurrentScope = function()
+    if util.Exists('g:did_coc_loaded') then
+        return vim.fn.eval('b:coc_current_function')
+    else
+        return TsStatus()
+    end
 end
 
 -- Initialize colors
@@ -333,18 +360,12 @@ function M.activeLine(idbuffer)
   statusline = statusline.."%="
   statusline = statusline.."%#NeoLineDefault#"
 
-  statusline = statusline..TsStatus()
+  statusline = statusline..CurrentScope()
 
   -- Alignment to left
   statusline = statusline.."%#NeoLineDefault#"
   statusline = statusline.."%="
   statusline = statusline.."%#NeoLineDefault#"
-
-  -- neoclide/coc.nvim
-  if util.Exists('g:did_coc_loaded') then
-      local cocstatus = util.Call('coc#status', {})
-      statusline = statusline..cocstatus
-  end
 
   statusline = statusline..LspStatus(idbuffer)
 
