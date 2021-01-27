@@ -8,6 +8,10 @@ local M = {}
 
 session.abduco_session()
 
+------------------------------------------------------------------------
+-- Colors
+------------------------------------------------------------------------
+
 -- Different colors for mode
 -- local red = '#BF616A'
 -- local yellow = '#EBCB8B'
@@ -26,13 +30,31 @@ local aqua = '#18ffe0'
 local blue = '#31baff'
 -- local blue = '#3a86ff'
 local purple = '#9d8cff'
+local green_light = '#D5F5E3'
+local purple_light = '#E8DAEF'
+local blue_light = '#D6EAF8'
+local red_light = '#FADBD8'
 
 -- fg and bg
 local white_fg = '#e6e6e6'
 -- local black_fg = '#282c34'
 -- local bg = '#4d4d4d'
-local black_fg = '#cccccc'
-local bg = '#cccccc'
+local gray = '#cccccc'
+
+------------------------------------------------------------------------
+-- Components
+------------------------------------------------------------------------
+
+local normal_fg = gray
+local normal_bg = white
+local activeline_bg = blue
+local activeline_fg = '#ffffff'
+local inactiveline_bg = '#cccccc'
+local inactiveline_fg = '#ffffff'
+
+------------------------------------------------------------------------
+-- Configs
+------------------------------------------------------------------------
 
 -- Separators
 local left_separator = ''
@@ -105,37 +127,95 @@ local current_mode = setmetatable({
     }, {}
 )
 
+-- Initialize colors
+function M.initColors()
+
+    -- File changed
+    api.nvim_command('hi NeoLineFileChanged guifg='..red..' guibg='..white)
+
+    -- VCS Color
+    local vcs_add = green
+    local vcs_delete = red
+    local vcs_change = orange
+    local vcs_fg = white
+    api.nvim_command('hi NeoLineVCSLeft guifg='..white..' guibg='..blue)
+    api.nvim_command('hi NeoLineVCSLeft1 guifg='..blue..' guibg='..white)
+    api.nvim_command('hi NeoLineVCSAdd guifg='..green..' guibg='..white)
+    api.nvim_command('hi NeoLineVCSDelete guifg='..red..' guibg='..white)
+    api.nvim_command('hi NeoLineVCSChange guifg='..orange..' guibg='..white)
+    api.nvim_command('hi NeoLineVCSRight guifg='..white..' guibg='..blue)
+
+    api.nvim_command('hi NeoLineDefault guifg='..white..' guibg='..blue)
+    api.nvim_command('hi NeoLineDefaultInverse guifg='..blue..' guibg='..white)
+
+    -- row and column Color
+    local line_bg = 'None'
+    local line_fg = white_fg
+    local line_gui = 'bold'
+    api.nvim_command('hi NeoLineLine guibg='..line_bg..' guifg='..line_fg..' gui='..line_gui)
+
+    -- TabLine
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..blue..' guifg='..white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..blue)
+    api.nvim_command('hi NeoLineTabLine guibg=#cccccc guifg=#ffffff gui=None')
+    api.nvim_command('hi NeoLineTabLineSeparator guifg=#cccccc')
+    api.nvim_command('hi NeoLineTabLineFill guibg=None gui=None')
+
+    api.nvim_command('hi NeoLineActive guibg='..activeline_bg..' guifg='..activeline_fg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..activeline_fg..' guifg='..activeline_bg)
+
+    api.nvim_command('hi NeoLineInActive guibg='..inactiveline_bg..' guifg='..inactiveline_fg)
+    api.nvim_command('hi NeoLineInActiveInverse guibg='..inactiveline_fg..' guifg='..inactiveline_bg)
+
+end
+
 -- Redraw different colors for different mode
 local RedrawColors = function(mode)
   if mode == 'n' then
-    api.nvim_command('hi NeoLineMode guibg='..blue..' guifg='..black_fg..' gui=bold')
+    api.nvim_command('hi NeoLineMode guibg='..blue..' guifg='..normal_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..blue)
     api.nvim_command('hi NeoLineDefault guibg='..blue)
+    api.nvim_command('hi CursorLine guibg='..blue_light)
+    api.nvim_command('hi NeoLineActive guibg='..blue..' guifg='..normal_bg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..blue)
   end
   if mode == 'i' then
-    api.nvim_command('hi NeoLineMode guibg='..green..' guifg='..black_fg..' gui=bold')
+    api.nvim_command('hi NeoLineMode guibg='..green..' guifg='..normal_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..green)
     api.nvim_command('hi NeoLineDefault guibg='..green)
+    api.nvim_command('hi CursorLine guibg='..green_light)
+    api.nvim_command('hi NeoLineActive guibg='..green..' guifg='..normal_bg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..green)
   end
   if mode == 'v' or mode == 'V' or mode == '' then
-    api.nvim_command('hi NeoLineMode guibg='..purple..' guifg='..black_fg..' gui=bold')
+    api.nvim_command('hi NeoLineMode guibg='..purple..' guifg='..normal_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..purple)
     api.nvim_command('hi NeoLineDefault guibg='..purple)
+    api.nvim_command('hi Visual guibg='..purple_light)
+    api.nvim_command('hi NeoLineActive guibg='..purple..' guifg='..normal_bg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..purple)
   end
   if mode == 'c' then
-    api.nvim_command('hi NeoLineMode guibg='..yellow..' guifg='..black_fg..' gui=bold')
+    api.nvim_command('hi NeoLineMode guibg='..yellow..' guifg='..normal_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..yellow)
     api.nvim_command('hi NeoLineDefault guibg='..yellow)
+    api.nvim_command('hi NeoLineActive guibg='..yellow..' guifg='..normal_bg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..yellow)
   end
-  if mode == 'R' then
-    api.nvim_command('hi NeoLineMode guibg='..red..' guifg='..black_fg..' gui=bold')
+  if mode == 'Rv' then
+    api.nvim_command('hi NeoLineMode guibg='..red..' guifg='..normal_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..red)
     api.nvim_command('hi NeoLineDefault guibg='..red)
+    api.nvim_command('hi CursorLine guibg='..red_light)
+    api.nvim_command('hi NeoLineActive guibg='..red..' guifg='..normal_bg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..red)
   end
   if mode == 't' then
-    api.nvim_command('hi NeoLineMode guibg='..turquoise..' guifg='..black_fg..' gui=bold')
+    api.nvim_command('hi NeoLineMode guibg='..turquoise..' guifg='..normal_fg..' gui=bold')
     api.nvim_command('hi NeoLineModeSeparator guifg='..turquoise)
     api.nvim_command('hi NeoLineDefault guibg='..turquoise)
+    api.nvim_command('hi NeoLineActive guibg='..turquoise..' guifg='..normal_bg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..turquoise)
   end
 end
 
@@ -233,91 +313,49 @@ local CurrentScope = function()
     end
 end
 
--- Initialize colors
-function M.initColors()
-    -- Filename Color
-    local file_bg = purple
-    local file_fg = black_fg
-    local file_gui = 'bold'
-    api.nvim_command('hi NeoLineFile guibg='..file_bg..' guifg='..file_fg..' gui='..file_gui)
-    api.nvim_command('hi NeoLineFileSeparator guifg='..file_bg)
-
-    -- Working directory Color
-    local dir_bg = bg
-    local dir_fg = white_fg
-    local dir_gui = 'bold'
-    api.nvim_command('hi NeoLineNeoLineDirectory guibg='..dir_bg..' guifg='..dir_fg..' gui='..dir_gui)
-    api.nvim_command('hi NeoLineDirSeparator guifg='..dir_bg)
-
-    -- FileType Color
-    local filetype_bg = 'None'
-    local filetype_fg = blue
-    local filetype_gui = 'bold'
-    api.nvim_command('hi NeoLineFiletype guibg='..filetype_bg..' guifg='..filetype_fg..' gui='..filetype_gui)
-
-    -- File changed
-    api.nvim_command('hi NeoLineFileChanged guifg='..red..' guibg='..white)
-
-    -- VCS Color
-    local vcs_add = green
-    local vcs_delete = red
-    local vcs_change = orange
-    local vcs_fg = white
-    api.nvim_command('hi NeoLineVCSLeft guifg='..white..' guibg='..blue)
-    api.nvim_command('hi NeoLineVCSLeft1 guifg='..blue..' guibg='..white)
-    api.nvim_command('hi NeoLineVCSAdd guifg='..green..' guibg='..white)
-    api.nvim_command('hi NeoLineVCSDelete guifg='..red..' guibg='..white)
-    api.nvim_command('hi NeoLineVCSChange guifg='..orange..' guibg='..white)
-    api.nvim_command('hi NeoLineVCSRight guifg='..white..' guibg='..blue)
-
-    api.nvim_command('hi NeoLineDefault guifg='..white..' guibg='..blue)
-    api.nvim_command('hi NeoLineDefaultInverse guifg='..blue..' guibg='..white)
-
-    -- row and column Color
-    local line_bg = 'None'
-    local line_fg = white_fg
-    local line_gui = 'bold'
-    api.nvim_command('hi NeoLineLine guibg='..line_bg..' guifg='..line_fg..' gui='..line_gui)
-
-    -- TabLine
-    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..blue..' guifg='..white)
-    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..blue)
-    api.nvim_command('hi NeoLineTabLine guibg=#cccccc guifg=#ffffff gui=None')
-    api.nvim_command('hi NeoLineTabLineSeparator guifg=#cccccc')
-    api.nvim_command('hi NeoLineTabLineFill guibg=None gui=None')
-
-    local InactiveLine_bg = '#cccccc'
-    local InactiveLine_fg = '#ffffff'
-    api.nvim_command('hi NeoLineInActive guibg='..InactiveLine_bg..' guifg='..InactiveLine_fg)
-
-end
-
 function M.activeLine(idbuffer)
   local statusline = "%#NeoLineDefault#"
+
+  statusline = "%#NeoLineActiveInverse#" .. left_separator
+  statusline = statusline.."%#NeoLineActive#"
 
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
 
   -- Icon For File
   if filetype == 'nerdtree' or filetype == 'CHADTree' then
       statusline = statusline..NERDTreeStatus()
+      statusline = statusline .. "%="
+      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
       return statusline
   elseif filetype == 'dbui' then
       statusline = statusline..iconDBUI
+      statusline = statusline .. "%="
+      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
       return statusline
   elseif filetype == 'dbout' then
       statusline = statusline..iconDBUIOut
+      statusline = statusline .. "%="
+      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
       return statusline
   elseif filetype == 'dashboard' then
       statusline = statusline..iconDashboard
+      statusline = statusline .. "%="
+      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
       return statusline
   elseif filetype == 'git' or filetype == 'svn' then
       statusline = statusline..iconVcs
+      statusline = statusline .. "%="
+      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
       return statusline
   elseif filetype == 'vim-plug' then
       statusline = statusline..iconUpdate
+      statusline = statusline .. "%="
+      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
       return statusline
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown' then
       statusline = statusline..iconVista
+      statusline = statusline .. "%="
+      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
       return statusline
   end
 
@@ -326,11 +364,6 @@ function M.activeLine(idbuffer)
   RedrawColors(mode)
   statusline = statusline.."%#NeoLineDefault#"..current_mode[mode].." %#NeoLineDefault#"
   statusline = statusline..blank
-
-  -- Component: Working Directory
-  -- local dir = util.Call('getcwd', {})
-  -- statusline = statusline.."%#NeoLineDirSeparator#"..left_separator.."%#NeoLineDirectory# "..TrimmedDirectory(dir).." %#NeoLineDirSeparator#"..right_separator
-  -- statusline = statusline..blank
 
   statusline = statusline.."%#NeoLineVCSLeft#"
   statusline = statusline.."%#NeoLineDefault#"
@@ -382,41 +415,39 @@ function M.activeLine(idbuffer)
   local line = util.Call('line', {"."})
   statusline = statusline.."%#NeoLineDefault# %{&fileencoding} "..iconLn.." "..line
 
+  statusline = statusline.."%#NeoLineActiveInverse#"..right_separator
+
   return statusline
 end
 
 function M.inActiveLine(idbuffer)
   local statusline = ""
 
-  statusline = "%#NeoLineInActive# %f"
+  statusline = "%#NeoLineInActiveInverse#" .. left_separator
 
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
 
   if filetype == 'nerdtree' or filetype == 'CHADTree' then
-      statusline = "%#NeoLineInActive#"..NERDTreeStatus()
-      return statusline
+      statusline = statusline .. "%#NeoLineInActive#"..NERDTreeStatus()
   elseif filetype == 'dbui' then
-      statusline = "%#NeoLineInActive#"..iconDBUI
-      return statusline
+      statusline = statusline .. "%#NeoLineInActive#"..iconDBUI
   elseif filetype == 'dbout' then
-      statusline = "%#NeoLineInActive#"..iconDBUIOut
-      return statusline
+      statusline = statusline .. "%#NeoLineInActive#"..iconDBUIOut
   elseif filetype == 'dashboard' then
-      statusline = "%#NeoLineInActive#"..iconDashboard
-      return statusline
+      statusline = statusline .. "%#NeoLineInActive#"..iconDashboard
   elseif filetype == 'git' or filetype == 'svn' then
-      statusline = "%#NeoLineInActive#"..iconVcs
-      return statusline
+      statusline = statusline .. "%#NeoLineInActive#"..iconVcs
   elseif filetype == 'vim-plug' then
-      statusline = "%#NeoLineInActive#"..iconUpdate
-      return statusline
+      statusline = statusline .. "%#NeoLineInActive#"..iconUpdate
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown'  then
-      statusline = "%#NeoLineInActive#"..iconVista
-      return statusline
+      statusline = statusline .. "%#NeoLineInActive#"..iconVista
+  else
+      statusline = statusline .. "%#NeoLineInActive# %f"
+      statusline = statusline .."%#NeoLineInActive# "
   end
 
-  -- local file_name = util.Call('expand', {'%F'})
-  statusline = statusline.."%#NeoLineInActive# "
+  statusline = statusline .. "%="
+  statusline = statusline .. "%#NeoLineInActiveInverse#" .. right_separator
 
   return statusline
 end

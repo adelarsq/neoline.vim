@@ -49,10 +49,11 @@ Then open the editor and install with `call dein#install()`.
 - [x] LSP status support **(Requires Neovim 0.5)**
 - [x] TreeSitter support **(Requires Neovim 0.5)**
 - [ ] Support one color [per tab](https://marketplace.visualstudio.com/items?itemName=orepor.color-tabs-vscode-ext)
-- [ ] Line cored based on mode
+- [x] Line cored based on mode
 - [ ] Animations? [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my)
 - [ ] Move all code to Lua
 - [ ] Add theme support
+- [x] Rounded borders
 
 ## Others 🦕
 
