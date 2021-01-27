@@ -178,6 +178,8 @@ local RedrawColors = function(mode)
     api.nvim_command('hi CursorLine guibg='..blue_light)
     api.nvim_command('hi NeoLineActive guibg='..blue..' guifg='..normal_bg)
     api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..blue)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..blue..' guifg='..white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..blue)
   end
   if mode == 'i' then
     api.nvim_command('hi NeoLineMode guibg='..green..' guifg='..normal_fg..' gui=bold')
@@ -186,6 +188,8 @@ local RedrawColors = function(mode)
     api.nvim_command('hi CursorLine guibg='..green_light)
     api.nvim_command('hi NeoLineActive guibg='..green..' guifg='..normal_bg)
     api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..green)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..green..' guifg='..white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..green)
   end
   if mode == 'v' or mode == 'V' or mode == '' then
     api.nvim_command('hi NeoLineMode guibg='..purple..' guifg='..normal_fg..' gui=bold')
@@ -194,6 +198,8 @@ local RedrawColors = function(mode)
     api.nvim_command('hi Visual guibg='..purple_light)
     api.nvim_command('hi NeoLineActive guibg='..purple..' guifg='..normal_bg)
     api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..purple)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..purple..' guifg='..white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..purple)
   end
   if mode == 'c' then
     api.nvim_command('hi NeoLineMode guibg='..yellow..' guifg='..normal_fg..' gui=bold')
@@ -201,6 +207,8 @@ local RedrawColors = function(mode)
     api.nvim_command('hi NeoLineDefault guibg='..yellow)
     api.nvim_command('hi NeoLineActive guibg='..yellow..' guifg='..normal_bg)
     api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..yellow)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..yellow..' guifg='..white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..yellow)
   end
   if mode == 'Rv' then
     api.nvim_command('hi NeoLineMode guibg='..red..' guifg='..normal_fg..' gui=bold')
@@ -209,6 +217,8 @@ local RedrawColors = function(mode)
     api.nvim_command('hi CursorLine guibg='..red_light)
     api.nvim_command('hi NeoLineActive guibg='..red..' guifg='..normal_bg)
     api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..red)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..red..' guifg='..white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..red)
   end
   if mode == 't' then
     api.nvim_command('hi NeoLineMode guibg='..turquoise..' guifg='..normal_fg..' gui=bold')
@@ -216,6 +226,8 @@ local RedrawColors = function(mode)
     api.nvim_command('hi NeoLineDefault guibg='..turquoise)
     api.nvim_command('hi NeoLineActive guibg='..turquoise..' guifg='..normal_bg)
     api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..turquoise)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..turquoise..' guifg='..white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..turquoise)
   end
 end
 
