@@ -55,6 +55,7 @@ Then open the editor and install with `call dein#install()`.
 - [ ] Move all code to Lua
 - [ ] Add theme support
 - [x] Rounded borders
+- [ ] Detect window size to show the right elements
 
 ## Others 🦕
 
