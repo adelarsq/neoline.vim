@@ -425,7 +425,8 @@ function M.activeLine(idbuffer)
 
   -- Component: row and col
   local line = util.Call('line', {"."})
-  statusline = statusline.."%#NeoLineDefault# %{&fileencoding} "..iconLn.." "..line
+  local column = util.Call('col', {"."})
+  statusline = statusline.."%#NeoLineDefault# %{&fileencoding} "..iconLn.." "..line..":"..column
 
   statusline = statusline.."%#NeoLineActiveInverse#"..right_separator
 
