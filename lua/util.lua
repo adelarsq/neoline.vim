@@ -7,6 +7,11 @@ M.Exists = function(variable)
     return loaded ~= 0
 end
 
+M.Has = function(variable)
+    local loaded = api.nvim_call_function('has', {variable})
+    return loaded ~= 0
+end
+
 M.Call = function(arg0, arg1)
     return api.nvim_call_function(arg0, arg1)
 end
@@ -27,8 +32,23 @@ local SplitString = function(arg0)
     return pathTable, i
 end
 
+M.OnWindows = function()
+    if M.Has("win32") or M.Has("win64") then
+        return true
+    else
+        return false
+    end
+end
+
 M.TrimmedDirectory = function(arg0)
-    local home = os.getenv("HOME")
+    local home = ''
+
+    if M.OnWindows() then
+        home = os.getenv("HOMEPATH")
+    else
+        home = os.getenv("HOME")
+    end
+
     local path = string.gsub(arg0,home,"~")
 
     if path=="~" then
