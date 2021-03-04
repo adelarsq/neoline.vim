@@ -56,6 +56,8 @@ Then open the editor and install with `call dein#install()`.
 - [ ] Add theme support
 - [x] Rounded borders
 - [ ] Detect window size to show the right elements
+- [ ] Better support for MS Windows
+- [ ] Better support for dark themes
 
 ## Others 🦕
 
