@@ -58,6 +58,7 @@ Then open the editor and install with `call dein#install()`.
 - [ ] Detect window size to show the right elements
 - [ ] Better support for MS Windows
 - [ ] Better support for dark themes
+- [ ] Add hint about position history
 
 ## Others 🦕
 
