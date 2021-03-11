@@ -275,13 +275,16 @@ local LspStatus = function(idbuffer)
 end
 
 local TsStatus = function()
-    local sl = ''
 
     if not util.IsVersion5() then
-        return sl
+        return ''
     end
 
-    sl = sl.."%#NeoLineDefault#"
+    if not util.Exists('g:loaded_nvim_treesitter') then
+        return ''
+    end
+
+    local sl = "%#NeoLineDefault#"
     sl = sl..left_separator
     sl = sl.."%#NeoLineDefaultInverse#"
     
