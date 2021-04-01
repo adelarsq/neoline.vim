@@ -63,7 +63,6 @@ Then open the editor and install with `call dein#install()`.
 ## Others 🦕
 
 - [bubbly.nvim](https://github.com/datwaft/bubbly.nvim)
-- [fancystatus](https://github.com/Wafelack/fancystatus)
 - [galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
 - [nvim-bufferline.lua](https://github.com/akinsho/nvim-bufferline.lua)
