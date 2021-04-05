@@ -37,7 +37,7 @@ Then open the editor and install with `call dein#install()`.
   - [x] ~~[nvim-lua/lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim)~~
   - [x] [preservim/nerdtree](https://github.com/preservim/nerdtree)
     - [x] Show cwd path **(requires Neovim 0.5)**
-    - [ ] Trim cwd path
+    - [x] Trim cwd path
   - [x] [ms-jpq/chadtree](https://github.com/ms-jpq/chadtree)
     - [ ] Show cwd path
     - [ ] Trim cwd path
