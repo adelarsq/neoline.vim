@@ -385,6 +385,14 @@ function M.activeLine(idbuffer)
   statusline = statusline..left_separator
 
   -- Repository Status
+  -- if util.Exists('g:loaded_neovcs') then
+
+      -- local vcsStatus = util.Call('VcsStatusLine', {})
+
+      -- statusline = statusline.."%#NeoLineVCSChange#"
+      -- statusline = statusline.." "..vcsStatus
+
+  -- else
   if util.Exists('g:loaded_signify') then
       local repostats = util.Call('sy#repo#get_stats', {})
 
