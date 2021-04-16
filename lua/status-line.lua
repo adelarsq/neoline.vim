@@ -320,6 +320,14 @@ local NERDTreeStatus = function()
     return statusline
 end
 
+local DebugStatus = function()
+    if not util.Exists('g:nvim_dap') then
+        return ''
+    end
+
+    return require('dap').status()
+end
+
 local CurrentScope = function()
     if util.Exists('g:did_coc_loaded') then
         return vim.fn.eval('b:coc_current_function')
@@ -421,7 +429,12 @@ function M.activeLine(idbuffer)
   statusline = statusline.."%="
   statusline = statusline.."%#NeoLineDefault#"
 
-  statusline = statusline..CurrentScope()
+  local debugStatus = DebugStatus()
+  if debugStatus == '' then
+    statusline = statusline..CurrentScope()
+  else
+    statusline = statusline..debugStatus
+  end
 
   -- Alignment to left
   statusline = statusline.."%#NeoLineDefault#"

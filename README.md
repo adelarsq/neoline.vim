@@ -45,6 +45,7 @@ Then open the editor and install with `call dein#install()`.
   - [x] [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui)
   - [x] [glepnir/dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
   - [x] [junegunn/vim-plug](https://github.com/junegunn/vim-plug)
+  - [x] [mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap)
   - [ ] [junegunn/goyo.vim](https://github.com/junegunn/goyo.vim)
 - [x] LSP status support **(Requires Neovim 0.5)**
 - [x] TreeSitter support **(Requires Neovim 0.5)**
