@@ -2,9 +2,13 @@
 
 A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim) using [Lua](https://www.lua.org).
 
-Using neoline.vim with [ayu-vim](https://github.com/ayu-theme/ayu-vim) light theme and [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme):
+Using neoline.vim with [material](https://github.com/marko-cerovac/material.nvim) dart theme and [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme):
 
-<img width="782" src="https://user-images.githubusercontent.com/430272/105769010-f13dcb00-5f3b-11eb-8a46-2dc633ee9d66.png">
+<img width="782" src="https://user-images.githubusercontent.com/430272/115162411-c4500e80-a079-11eb-8315-7b1d30265e3a.png">
+
+Using neoline.vim with [material](https://github.com/marko-cerovac/material.nvim) light theme and [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme):
+
+
 
 ## Installation 🧙
 
