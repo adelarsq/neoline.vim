@@ -163,9 +163,13 @@ function M.initColors()
 
     api.nvim_command('hi NeoLineActive guibg='..activeline_bg..' guifg='..activeline_fg)
     api.nvim_command('hi NeoLineActiveInverse guibg='..activeline_fg..' guifg='..activeline_bg)
+    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..activeline_bg)
+    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..activeline_bg)
 
     api.nvim_command('hi NeoLineInActive guibg='..inactiveline_bg..' guifg='..inactiveline_fg)
     api.nvim_command('hi NeoLineInActiveInverse guibg='..inactiveline_fg..' guifg='..inactiveline_bg)
+    api.nvim_command('hi NeoLineInActiveInverseBegin guibg=none'..' guifg='..inactiveline_bg)
+    api.nvim_command('hi NeoLineInActiveInverseEnd guibg=none'..' guifg='..inactiveline_bg)
 
 end
 
@@ -339,7 +343,7 @@ end
 function M.activeLine(idbuffer)
   local statusline = "%#NeoLineDefault#"
 
-  statusline = "%#NeoLineActiveInverse#" .. left_separator
+  statusline = "%#NeoLineActiveInverseBegin#" .. left_separator
   statusline = statusline.."%#NeoLineActive#"
 
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
@@ -348,37 +352,37 @@ function M.activeLine(idbuffer)
   if filetype == 'nerdtree' or filetype == 'CHADTree' then
       statusline = statusline..NERDTreeStatus()
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'dbui' then
       statusline = statusline..iconDBUI
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'dbout' then
       statusline = statusline..iconDBUIOut
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'dashboard' then
       statusline = statusline..iconDashboard
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'git' or filetype == 'svn' then
       statusline = statusline..iconVcs
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'vim-plug' then
       statusline = statusline..iconUpdate
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown' then
       statusline = statusline..iconVista
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverse#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   end
 
@@ -452,7 +456,7 @@ function M.activeLine(idbuffer)
   local column = util.Call('col', {"."})
   statusline = statusline.."%#NeoLineDefault# %{&fileencoding} "..iconLn.." "..line..":"..column
 
-  statusline = statusline.."%#NeoLineActiveInverse#"..right_separator
+  statusline = statusline.."%#NeoLineActiveInverseEnd#"..right_separator
 
   return statusline
 end
@@ -460,7 +464,7 @@ end
 function M.inActiveLine(idbuffer)
   local statusline = ""
 
-  statusline = "%#NeoLineInActiveInverse#" .. left_separator
+  statusline = "%#NeoLineInActiveInverseBegin#" .. left_separator
 
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
 
@@ -484,7 +488,7 @@ function M.inActiveLine(idbuffer)
   end
 
   statusline = statusline .. "%="
-  statusline = statusline .. "%#NeoLineInActiveInverse#" .. right_separator
+  statusline = statusline .. "%#NeoLineInActiveInverseEnd#" .. right_separator
 
   return statusline
 end
