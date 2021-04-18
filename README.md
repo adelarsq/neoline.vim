@@ -8,7 +8,7 @@ Using neoline.vim with [material](https://github.com/marko-cerovac/material.nvim
 
 Using neoline.vim with [material](https://github.com/marko-cerovac/material.nvim) light theme and [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme):
 
-
+<img width="782" src="https://user-images.githubusercontent.com/430272/115162557-9d460c80-a07a-11eb-859d-5ab66e625f1a.png">
 
 ## Installation 🧙
 
