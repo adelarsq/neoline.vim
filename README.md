@@ -70,6 +70,7 @@ Then open the editor and install with `call dein#install()`.
 - [bubbly.nvim](https://github.com/datwaft/bubbly.nvim)
 - [galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
+- [lualine.nvim](https://github.com/hoob3rt/lualine.nvim)
 - [nvim-bufferline.lua](https://github.com/akinsho/nvim-bufferline.lua)
 - [onestatus](https://github.com/narajaon/onestatus)
 - [vim-airline](https://github.com/vim-airline/vim-airline)
