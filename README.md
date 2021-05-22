@@ -86,6 +86,7 @@ Then open the editor and install with `call dein#install()`.
 - [nvim-bufferline.lua](https://github.com/akinsho/nvim-bufferline.lua)
 - [onestatus](https://github.com/narajaon/onestatus)
 - [vim-airline](https://github.com/vim-airline/vim-airline)
+- [staline.nvim](https://github.com/tamton-aquib/staline.nvim)
 
 ## Acknowledgments 💡
 
