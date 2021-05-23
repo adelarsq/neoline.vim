@@ -76,6 +76,7 @@ Then open the editor and install with `call dein#install()`.
 - [ ] Better support for MS Windows
 - [ ] Better support for dark themes
 - [ ] Add hint about position history
+- [ ] Setting per-filetype [1](https://www.reddit.com/r/neovim/comments/nbdgh9/statusline_plugin_with_perfiletype_settings/)
 
 ## Others 🦕
 
