@@ -476,31 +476,33 @@ end
 function M.inActiveLine(idbuffer)
   local statusline = ""
 
-  statusline = "%#NeoLineInActiveInverseBegin#" .. left_separator
+  -- statusline = "%#Normal#" .. left_separator
+  statusline = "%#Normal#" .. " "
 
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
 
   if filetype == 'nerdtree' or filetype == 'CHADTree' then
-      statusline = statusline .. "%#NeoLineInActive#"..NERDTreeStatus()
+      statusline = statusline .. "%#Normal#"..NERDTreeStatus()
   elseif filetype == 'dbui' then
-      statusline = statusline .. "%#NeoLineInActive#"..iconDBUI
+      statusline = statusline .. "%#Normal#"..iconDBUI
   elseif filetype == 'dbout' then
-      statusline = statusline .. "%#NeoLineInActive#"..iconDBUIOut
+      statusline = statusline .. "%#Normal#"..iconDBUIOut
   elseif filetype == 'dashboard' then
-      statusline = statusline .. "%#NeoLineInActive#"..iconDashboard
+      statusline = statusline .. "%#Normal#"..iconDashboard
   elseif filetype == 'git' or filetype == 'svn' then
-      statusline = statusline .. "%#NeoLineInActive#"..iconVcs
+      statusline = statusline .. "%#Normal#"..iconVcs
   elseif filetype == 'vim-plug' then
-      statusline = statusline .. "%#NeoLineInActive#"..iconUpdate
+      statusline = statusline .. "%#Normal#"..iconUpdate
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown'  then
-      statusline = statusline .. "%#NeoLineInActive#"..iconVista
+      statusline = statusline .. "%#Normal#"..iconVista
   else
-      statusline = statusline .. "%#NeoLineInActive# %f"
-      statusline = statusline .."%#NeoLineInActive# "
+      statusline = statusline .. "%#Normal# %f"
+      statusline = statusline .."%#Normal# "
   end
 
   statusline = statusline .. "%="
-  statusline = statusline .. "%#NeoLineInActiveInverseEnd#" .. right_separator
+  -- statusline = statusline .. "%#Normal#" .. right_separator
+  statusline = statusline .. "%#Normal#" .. " "
 
   return statusline
 end
@@ -539,9 +541,11 @@ function M.TabLine()
       tabline = tabline.."%#NeoLineTabLineSel# "..file_name
       tabline = tabline.." %#NeoLineTabLineSelSeparator#"..right_separator
     else
-      tabline = tabline.."%#NeoLineTabLineSeparator# "..left_separator
-      tabline = tabline.."%#NeoLineTabLine# "..file_name
-      tabline = tabline.." %#NeoLineTabLineSeparator#"..right_separator
+      -- tabline = tabline.."%#Normal# "..left_separator
+      tabline = tabline.."%#Normal# ".." "
+      tabline = tabline.."%#Normal# "..file_name
+      -- tabline = tabline.." %#Normal#"..right_separator
+      tabline = tabline.." %#Normal#".." "
     end
   end
   tabline = tabline.."%="
