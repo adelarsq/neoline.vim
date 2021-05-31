@@ -78,6 +78,7 @@ Then open the editor and install with `call dein#install()`.
 - [ ] Add hint about position history
 - [ ] Setting per-filetype [1](https://www.reddit.com/r/neovim/comments/nbdgh9/statusline_plugin_with_perfiletype_settings/)
 - [ ] Show LSP diagnostics for the whole workspace
+- [x] Use normal mode hightlight on inative tabs/buffers for better UX
 
 ## Others 🦕
 
