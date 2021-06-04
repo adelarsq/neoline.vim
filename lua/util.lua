@@ -16,10 +16,8 @@ M.Call = function(arg0, arg1)
     return api.nvim_call_function(arg0, arg1)
 end
 
-local SplitString = function(arg0)
-
-    -- TODO Windows support
-    local arg0Split = arg0:gmatch('[^/%s]+')
+local SplitString = function(arg0,fileSeparator)
+    local arg0Split = arg0:gmatch('[^'..fileSeparator..'%s]+')
 
     local pathTable = {}
     local i = 1
@@ -42,11 +40,14 @@ end
 
 M.TrimmedDirectory = function(arg0)
     local home = ''
+    local separator = ''
 
     if M.OnWindows() then
-        home = os.getenv("HOMEPATH")
+        fileSeparator = '\\'
+        home = 'C'..os.getenv("HOMEPATH")
     else
         home = os.getenv("HOME")
+        fileSeparator = '/'
     end
 
     local path = string.gsub(arg0,home,"~")
@@ -55,7 +56,7 @@ M.TrimmedDirectory = function(arg0)
         return path
     end
 
-    local pathTable, pathTableSize = SplitString(path)
+    local pathTable, pathTableSize = SplitString(path,fileSeparator)
 
     local ret=''
 
@@ -63,7 +64,7 @@ M.TrimmedDirectory = function(arg0)
         if j == 1 then
             ret=ret..pathTable[j]:sub(1,1)
         else
-            ret=ret.."/"
+            ret=ret..fileSeparator
             if j==pathTableSize-1 then
                 ret=ret..pathTable[j]
             else
