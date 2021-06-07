@@ -103,3 +103,10 @@ Thanks goes to these people/projects for inspiration:
 
 [MIT](License)
 
+## Self-plug 🔌
+
+If you liked this plugin, also check out:
+
+- [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme) - Emoji/Unicode Icons Theme for Vim and Neovim with support for 40+ plugins and 300+ filetypes
+- [neovcs.vim](https://github.com/adelarsq/neovcs.vim) - VCS support for Neovim
+
