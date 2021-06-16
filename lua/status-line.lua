@@ -83,7 +83,7 @@ local right_separator = ''
 local blank = ' '
 
 -- Icons
-local iconVista = '📌 Vista'
+local iconOutline = '📌 Outline'
 local iconQf = '🐆 QF'
 local iconShell = '🐚'
 local iconDBUI = '🎲'
@@ -352,6 +352,15 @@ local CurrentScope = function()
     end
 end
 
+local RunStatus = function()
+    local result = vim.g.asyncrun_status
+    if result ~= nil then
+        return ''
+    else
+        return result
+    end
+end
+
 function M.activeLine(idbuffer)
   local statusline = "%#NeoLineDefault#"
 
@@ -391,8 +400,8 @@ function M.activeLine(idbuffer)
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
-  elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown' then
-      statusline = statusline..iconVista
+  elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown' or filetype == 'flutterToolsOutline' then
+      statusline = statusline..iconOutline
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
@@ -457,6 +466,7 @@ function M.activeLine(idbuffer)
   statusline = statusline.."%="
   statusline = statusline.."%#NeoLineDefault#"
 
+  statusline = statusline..RunStatus()
   statusline = statusline..LspStatus(idbuffer)
 
   -- Component: FileType
@@ -494,7 +504,7 @@ function M.inActiveLine(idbuffer)
   elseif filetype == 'vim-plug' then
       statusline = statusline .. "%#Normal#"..iconUpdate
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown'  then
-      statusline = statusline .. "%#Normal#"..iconVista
+      statusline = statusline .. "%#Normal#"..iconOutline
   else
       statusline = statusline .. "%#Normal# %f"
       statusline = statusline .."%#Normal# "

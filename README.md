@@ -62,6 +62,8 @@ Then open the editor and install with `call dein#install()`.
   - Distraction free:
     - [ ] [junegunn/goyo.vim](https://github.com/junegunn/goyo.vim)
     - [ ] [kdav5758/TrueZen.nvim](https://github.com/kdav5758/TrueZen.nvim)
+  - Languages:
+    - [ ] [akinsho/flutter-tools.nvim](https://github.com/akinsho/flutter-tools.nvim)
 - [x] LSP status support **(Requires Neovim 0.5)**
 - [x] TreeSitter support **(Requires Neovim 0.5)**
 - [x] Mode color for current tab
@@ -79,6 +81,7 @@ Then open the editor and install with `call dein#install()`.
 - [ ] Setting per-filetype [1](https://www.reddit.com/r/neovim/comments/nbdgh9/statusline_plugin_with_perfiletype_settings/)
 - [ ] Show LSP diagnostics for the whole workspace
 - [x] Use normal mode hightlight on inative tabs/buffers for better UX
+- [ ] Runner status [1](https://www.reddit.com/r/vimporn/comments/nv0pi7/simple_runner/)
 
 ## Others 🦕
 
