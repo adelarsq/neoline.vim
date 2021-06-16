@@ -63,7 +63,7 @@ Then open the editor and install with `call dein#install()`.
     - [ ] [junegunn/goyo.vim](https://github.com/junegunn/goyo.vim)
     - [ ] [kdav5758/TrueZen.nvim](https://github.com/kdav5758/TrueZen.nvim)
   - Languages:
-    - [ ] [akinsho/flutter-tools.nvim](https://github.com/akinsho/flutter-tools.nvim)
+    - [x] [akinsho/flutter-tools.nvim](https://github.com/akinsho/flutter-tools.nvim)
 - [x] LSP status support **(Requires Neovim 0.5)**
 - [x] TreeSitter support **(Requires Neovim 0.5)**
 - [x] Mode color for current tab
