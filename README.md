@@ -43,7 +43,7 @@ Then open the editor and install with `call dein#install()`.
     - [x] ~~[nvim-lua/lsp-status.nvim](https://github.com/nvim-lua/lsp-status.nvim)~~
   - File tree:
     - [x] [preservim/nerdtree](https://github.com/preservim/nerdtree)
-      - [x] Show cwd path **(requires Neovim 0.5)**
+      - [x] Show cwd path
       - [x] Trim cwd path
     - [x] [ms-jpq/chadtree](https://github.com/ms-jpq/chadtree)
       - [ ] Show cwd path
@@ -64,8 +64,8 @@ Then open the editor and install with `call dein#install()`.
     - [ ] [kdav5758/TrueZen.nvim](https://github.com/kdav5758/TrueZen.nvim)
   - Languages:
     - [x] [akinsho/flutter-tools.nvim](https://github.com/akinsho/flutter-tools.nvim)
-- [x] LSP status support **(Requires Neovim 0.5)**
-- [x] TreeSitter support **(Requires Neovim 0.5)**
+- [x] LSP status support
+- [x] TreeSitter support
 - [x] Mode color for current tab
 - [ ] Support one color [per tab](https://marketplace.visualstudio.com/items?itemName=orepor.color-tabs-vscode-ext)
 - [ ] Line cored based on mode **(disabled until dark mode to be supported)**
