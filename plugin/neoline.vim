@@ -39,4 +39,9 @@ function! TabLine()
     return luaeval("require'status-line'.TabLine()")
 endfunction
 
-set tabline=%!TabLine()
+if !exists('g:neoline_disable_tabline')
+    set tabline=%!TabLine()
+endif
+
+finish
+

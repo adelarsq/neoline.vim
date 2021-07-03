@@ -83,6 +83,20 @@ Then open the editor and install with `call dein#install()`.
 - [x] Use normal mode hightlight on inative tabs/buffers for better UX
 - [ ] Runner status [1](https://www.reddit.com/r/vimporn/comments/nv0pi7/simple_runner/)
 
+## Options ✅
+
+Disabling the tabline:
+
+```vim
+set g:neoline_disable_tabline=1
+```
+
+Or with Lua:
+
+```lua
+vim.g.neoline_disable_tabline=1
+```
+
 ## Others 🦕
 
 - [bubbly.nvim](https://github.com/datwaft/bubbly.nvim)

@@ -336,6 +336,22 @@ local NERDTreeStatus = function()
     return statusline
 end
 
+local FilePath = function(n)
+    -- local root_dir = ''
+    -- local current_buf = api.nvim_win_get_buf(n)
+    -- local file_name = api.nvim_buf_get_name(current_buf)
+
+    -- if util.IsVersion5() then
+        -- root_dir = vim.fn.eval('g:NERDTree.ForCurrentTab().getRoot().path.str()')
+        -- if root_dir ~= nil then
+            -- root_dir = util.TrimmedDirectory(root_dir)
+        -- end
+        -- return root_dir..'/'..file_name
+    -- else
+        return '%f'
+    -- end
+end
+
 local DebugStatus = function()
     if not util.Exists('g:nvim_dap') then
         return ''
@@ -486,7 +502,6 @@ end
 function M.inActiveLine(idbuffer)
   local statusline = ""
 
-  -- statusline = "%#Normal#" .. left_separator
   statusline = "%#Normal#" .. " "
 
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
@@ -506,12 +521,11 @@ function M.inActiveLine(idbuffer)
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown'  then
       statusline = statusline .. "%#Normal#"..iconOutline
   else
-      statusline = statusline .. "%#Normal# %f"
+      statusline = statusline .. "%#Normal# "..FilePath(idbuffer)
       statusline = statusline .."%#Normal# "
   end
 
   statusline = statusline .. "%="
-  -- statusline = statusline .. "%#Normal#" .. right_separator
   statusline = statusline .. "%#Normal#" .. " "
 
   return statusline
@@ -551,10 +565,8 @@ function M.TabLine()
       tabline = tabline.."%#NeoLineTabLineSel# "..file_name
       tabline = tabline.." %#NeoLineTabLineSelSeparator#"..right_separator
     else
-      -- tabline = tabline.."%#Normal# "..left_separator
       tabline = tabline.."%#Normal# ".." "
       tabline = tabline.."%#Normal# "..file_name
-      -- tabline = tabline.." %#Normal#"..right_separator
       tabline = tabline.." %#Normal#".." "
     end
   end
