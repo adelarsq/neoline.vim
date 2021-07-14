@@ -119,6 +119,7 @@ vim.g.neoline_disable_tabline=1
 - [onestatus](https://github.com/narajaon/onestatus)
 - [vim-airline](https://github.com/vim-airline/vim-airline)
 - [staline.nvim](https://github.com/tamton-aquib/staline.nvim)
+- [nvim-hardline](https://github.com/ojroques/nvim-hardline)
 
 ## Acknowledgments 💡
 
