@@ -27,13 +27,14 @@ function! InactiveLine(idbuffer) abort
     endfor
 endfunction
 
-" Change statusline automatically
-augroup NeoLine
-  autocmd!
-  autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine(bufnr('%'))
-  autocmd WinEnter,BufEnter,WinLeave,BufLeave * call InactiveLine(bufnr('%'))
-augroup END
-
+if !exists('g:neoline_disable_statusline')
+    " Change statusline automatically
+    augroup NeoLine
+      autocmd!
+      autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine(bufnr('%'))
+      autocmd WinEnter,BufEnter,WinLeave,BufLeave * call InactiveLine(bufnr('%'))
+    augroup END
+endif
 
 function! TabLine()
     return luaeval("require'status-line'.TabLine()")

@@ -85,7 +85,19 @@ Then open the editor and install with `call dein#install()`.
 
 ## Options ✅
 
-Disabling the tabline:
+**Disabling the statusline:**
+
+```vim
+set g:neoline_disable_statusline=1
+```
+
+Or with Lua:
+
+```lua
+vim.g.neoline_disable_statusline=1
+```
+
+**Disabling the tabline:**
 
 ```vim
 set g:neoline_disable_tabline=1
