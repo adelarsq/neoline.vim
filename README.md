@@ -64,6 +64,8 @@ Then open the editor and install with `call dein#install()`.
     - [ ] [kdav5758/TrueZen.nvim](https://github.com/kdav5758/TrueZen.nvim)
   - Languages:
     - [x] [akinsho/flutter-tools.nvim](https://github.com/akinsho/flutter-tools.nvim)
+  - Diagnostics:
+    - [x] [folke/trouble.nvim](https://github.com/folke/trouble.nvim)
 - [x] LSP status support
 - [x] TreeSitter support
 - [x] Mode color for current tab
