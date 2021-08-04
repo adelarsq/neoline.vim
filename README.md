@@ -115,13 +115,14 @@ vim.g.neoline_disable_tabline=1
 
 - [bubbly.nvim](https://github.com/datwaft/bubbly.nvim)
 - [galaxyline.nvim](https://github.com/glepnir/galaxyline.nvim)
+- [konapun/vacuumline.nvim](https://github.com/konapun/vacuumline.nvim)
 - [lightline.vim](https://github.com/itchyny/lightline.vim)
 - [lualine.nvim](https://github.com/hoob3rt/lualine.nvim)
 - [nvim-bufferline.lua](https://github.com/akinsho/nvim-bufferline.lua)
-- [onestatus](https://github.com/narajaon/onestatus)
-- [vim-airline](https://github.com/vim-airline/vim-airline)
-- [staline.nvim](https://github.com/tamton-aquib/staline.nvim)
 - [nvim-hardline](https://github.com/ojroques/nvim-hardline)
+- [onestatus](https://github.com/narajaon/onestatus)
+- [staline.nvim](https://github.com/tamton-aquib/staline.nvim)
+- [vim-airline](https://github.com/vim-airline/vim-airline)
 
 ## Acknowledgments 💡
 
