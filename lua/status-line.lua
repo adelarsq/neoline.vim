@@ -92,6 +92,7 @@ local iconDashboard = '🌅'
 local iconUpdate = '🧙'
 local iconVcs = '🐙'
 local iconTrouble = '💩'
+local iconHelp = '💡 help'
 
 -- Using NERDFonts
 -- https://github.com/ryanoasis/powerline-extra-symbols
@@ -422,6 +423,11 @@ function M.activeLine(idbuffer)
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
+  elseif filetype == 'help' then
+      statusline = statusline..iconHelp
+      statusline = statusline .. "%="
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
+      return statusline
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown' or filetype == 'flutterToolsOutline' then
       statusline = statusline..iconOutline
       statusline = statusline .. "%="
@@ -526,6 +532,8 @@ function M.inActiveLine(idbuffer)
       statusline = statusline .. "%#Normal#"..iconUpdate
   elseif filetype == 'Trouble' then
       statusline = statusline .. "%#Normal#"..iconTrouble
+  elseif filetype == 'help' then
+      statusline = statusline .. "%#Normal#"..iconHelp
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown'  then
       statusline = statusline .. "%#Normal#"..iconOutline
   else
