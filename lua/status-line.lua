@@ -518,7 +518,7 @@ function M.inActiveLine(idbuffer)
 
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
 
-  if filetype == 'nerdtree' or filetype == 'CHADTree' then
+  if filetype == 'nerdtree' or filetype == 'CHADTree' or filetype == 'NvimTree' then
       statusline = statusline .. "%#Normal#"..TreeStatus()
   elseif filetype == 'dbui' then
       statusline = statusline .. "%#Normal#"..iconDBUI
