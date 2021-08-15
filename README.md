@@ -48,6 +48,9 @@ Then open the editor and install with `call dein#install()`.
     - [x] [ms-jpq/chadtree](https://github.com/ms-jpq/chadtree)
       - [ ] Show cwd path
       - [ ] Trim cwd path
+    - [x] [kyazdani42/nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+      - [ ] Show cwd path
+      - [ ] Trim cwd path
   - VCS:
     - [x] [adelarsq/neovcs.vim](https://github.com/adelarsq/neovcs.vim)
     - [x] [vim-signify](https://github.com/mhinz/vim-signify)

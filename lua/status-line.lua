@@ -318,23 +318,23 @@ local TsStatus = function()
     return sl
 end
 
-local NERDTreeStatus = function()
-    local root_dir = ''
-
-    local iconNERDTree = '🌳'
-    local statusline = iconNERDTree
+local TreeStatus = function()
+    local iconTree = '🌳'
+    local statusline = iconTree
     statusline = statusline..' '
-
-    if util.IsVersion5() then
-        root_dir = vim.fn.eval('g:NERDTree.ForCurrentTab().getRoot().path.str()')
-        if root_dir ~= nil then
-            root_dir = util.TrimmedDirectory(root_dir)
+    if filetype == 'nerdtree' then
+        if util.IsVersion5() then
+            root_dir = vim.fn.eval('g:NERDTree.ForCurrentTab().getRoot().path.str()')
+            if root_dir ~= nil then
+                root_dir = util.TrimmedDirectory(root_dir)
+            end
+            statusline = statusline..root_dir
+        else
+            statusline = statusline..'NERDTree'
         end
-        statusline = statusline..root_dir
     else
-        statusline = statusline..'NERDTree'
+        -- nothing for now
     end
-
     return statusline
 end
 
@@ -388,8 +388,8 @@ function M.activeLine(idbuffer)
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
 
   -- Icon For File
-  if filetype == 'nerdtree' or filetype == 'CHADTree' then
-      statusline = statusline..NERDTreeStatus()
+  if filetype == 'nerdtree' or filetype == 'CHADTree' or filetype == 'NvimTree' then
+      statusline = statusline..TreeStatus()
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
@@ -519,7 +519,7 @@ function M.inActiveLine(idbuffer)
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
 
   if filetype == 'nerdtree' or filetype == 'CHADTree' then
-      statusline = statusline .. "%#Normal#"..NERDTreeStatus()
+      statusline = statusline .. "%#Normal#"..TreeStatus()
   elseif filetype == 'dbui' then
       statusline = statusline .. "%#Normal#"..iconDBUI
   elseif filetype == 'dbout' then
