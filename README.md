@@ -74,7 +74,7 @@ Then open the editor and install with `call dein#install()`.
 - [x] Mode color for current tab
 - [ ] Support one color [per tab](https://marketplace.visualstudio.com/items?itemName=orepor.color-tabs-vscode-ext)
 - [ ] Line cored based on mode **(disabled until dark mode to be supported)**
-- [ ] Animations? [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my)
+- [ ] Animations? [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my) [2](https://github.com/windwp/windline.nvim)
 - [ ] Move all code to Lua
 - [ ] Add theme support
 - [ ] Custom borders
@@ -126,6 +126,7 @@ vim.g.neoline_disable_tabline=1
 - [onestatus](https://github.com/narajaon/onestatus)
 - [staline.nvim](https://github.com/tamton-aquib/staline.nvim)
 - [vim-airline](https://github.com/vim-airline/vim-airline)
+- [windwp/windline.nvim](https://github.com/windwp/windline.nvim)
 
 ## Acknowledgments 💡
 
