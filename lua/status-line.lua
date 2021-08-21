@@ -371,12 +371,13 @@ local CurrentScope = function()
 end
 
 local RunStatus = function()
-    local result = vim.g.asyncrun_status
-    if result ~= nil then
-        return ''
-    else
-        return result
+    if util.Exists('g:asyncrun_status') then
+        local result = vim.g.asyncrun_status
+        if result ~= nil then
+            return result
+        end
     end
+    return ''
 end
 
 function M.activeLine(idbuffer)
