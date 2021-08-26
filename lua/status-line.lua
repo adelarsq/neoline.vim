@@ -307,7 +307,7 @@ local TsStatus = function()
     sl = sl.."%#NeoLineDefaultInverse#"
     
     local ts = util.Call('nvim_treesitter#statusline', {30})
-    if ts == nil then
+    if ts == nil or ts == '' then
         return ''
     end
     sl = sl..ts
@@ -390,47 +390,48 @@ function M.activeLine(idbuffer)
 
   -- Icon For File
   if filetype == 'nerdtree' or filetype == 'CHADTree' or filetype == 'NvimTree' then
-      statusline = statusline..TreeStatus()
+      statusline = statusline .. TreeStatus()
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'dbui' then
-      statusline = statusline..iconDBUI
+      statusline = statusline .. iconDBUI
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'dbout' then
-      statusline = statusline..iconDBUIOut
+      statusline = statusline .. iconDBUIOut
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'dashboard' then
-      statusline = statusline..iconDashboard
+      statusline = statusline .. iconDashboard
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'git' or filetype == 'svn' then
-      statusline = statusline..iconVcs
+      statusline = statusline .. iconVcs
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'vim-plug' then
-      statusline = statusline..iconUpdate
+      statusline = statusline .. iconUpdate
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'Trouble' then
-      statusline = statusline..iconTrouble
+      statusline = statusline .. iconTrouble
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'help' then
-      statusline = statusline..iconHelp
+      statusline = statusline .. iconHelp
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown' or filetype == 'flutterToolsOutline' then
-      statusline = statusline..iconOutline
+      statusline = statusline ..iconOutline
+      -- statusline = statusline .. vim.fn.eval('vista#statusline#()')
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
       return statusline
@@ -537,6 +538,7 @@ function M.inActiveLine(idbuffer)
       statusline = statusline .. "%#Normal#"..iconHelp
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown'  then
       statusline = statusline .. "%#Normal#"..iconOutline
+      -- statusline = statusline .. vim.fn.eval('vista#statusline#()')
   else
       statusline = statusline .. "%#Normal# "..FilePath(idbuffer)
       statusline = statusline .."%#Normal# "
