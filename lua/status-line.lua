@@ -255,6 +255,19 @@ local CocStatus = function()
     return cocstatus
 end
 
+local NeoDiagnosticStatus = function(idbuffer)
+    bufnr = bufnr or 0
+    local diagnostics = vim.diagnostic.get(bufnr)
+    local count = { 0, 0, 0, 0 }
+    for _, diagnostic in ipairs(diagnostics) do
+        count[diagnostic.severity] = count[diagnostic.severity] + 1
+    end
+    return count[vim.diagnostic.severity.ERROR],
+           count[vim.diagnostic.severity.WARN],
+           count[vim.diagnostic.severity.INFO],
+           count[vim.diagnostic.severity.HINT]
+end
+
 -- Builtin Neovim LSP
 local BuiltinLsp = function(idbuffer)
     local sl = ''
@@ -266,12 +279,14 @@ local BuiltinLsp = function(idbuffer)
     sl = sl.."%#NeoLineDefault#"
     sl = sl..left_separator
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(idbuffer)) then
+        local error, warning, information, hint = NeoDiagnosticStatus(idbuffer)
+
         sl=sl.."%#NeoLineDefaultInverse#"
         sl=sl..'🔥'
         sl=sl..' E:'
-        sl=sl..'%{luaeval("vim.lsp.diagnostic.get_count('..idbuffer..',[[Error]])")}'
+        sl=sl..error
         sl=sl..' W:'
-        sl=sl..'%{luaeval("vim.lsp.diagnostic.get_count('..idbuffer..',[[Warning]])")}'
+        sl=sl..warning
     else
         sl=sl..'%#NeoLineDefaultInverse#🧊'
     end
