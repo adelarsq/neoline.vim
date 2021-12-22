@@ -283,10 +283,22 @@ local BuiltinLsp = function(idbuffer)
 
         sl=sl.."%#NeoLineDefaultInverse#"
         sl=sl..'🔥'
-        sl=sl..' E:'
-        sl=sl..error
-        sl=sl..' W:'
-        sl=sl..warning
+        if error > 0 then
+            sl=sl..' E:'
+            sl=sl..error
+        end
+        if warning > 0 then
+            sl=sl..' W:'
+            sl=sl..warning
+        end
+        if information > 0 then
+            sl=sl..' I:'
+            sl=sl..information
+        end
+        if hint > 0 then
+            sl=sl..' H:'
+            sl=sl..hint
+        end
     else
         sl=sl..'%#NeoLineDefaultInverse#🧊'
     end
