@@ -76,9 +76,9 @@ Then open the editor and install with `call dein#install()`.
 - [ ] Line cored based on mode **(disabled until dark mode to be supported)**
 - [ ] Animations? [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my) [2](https://github.com/windwp/windline.nvim)
 - [ ] Move all code to Lua
+    - [x] Work in progress
 - [ ] Add theme support
-- [ ] Custom borders
-  - [x] Rounded borders
+- [x] Custom borders
 - [ ] Detect window size to show the right elements
 - [ ] Better support for MS Windows
 - [ ] Better support for dark themes

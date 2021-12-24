@@ -13,91 +13,122 @@ session.abduco_session()
 ------------------------------------------------------------------------
 
 -- Different colors for mode
--- local red = '#BF616A'
--- local yellow = '#EBCB8B'
--- local green = '#A3BE8C'
--- local blue = '#81A1C1'
--- local purple = '#B48EAD'
+-- vim.g.neoline_red = '#BF616A'
+-- vim.g.neoline_yellow = '#EBCB8B'
+-- vim.g.neoline_green = '#A3BE8C'
+-- vim.g.neoline_blue = '#81A1C1'
+-- vim.g.neoline_purple = '#B48EAD'
 
-local white = '#ffffff'
-local red = '#ff5349' -- red orange
-local orange = '#ff9326'
-local yellow = '#fe6e00' -- blaze orange
-local green = '#4CBB17' -- color Kelly
--- local green = '#55a630'
-local turquoise = '#3FE0D0'
-local aqua = '#18ffe0'
-local blue = '#31baff'
--- local blue = '#3a86ff'
-local purple = '#9d8cff'
-local green_light = '#D5F5E3'
-local purple_light = '#E8DAEF'
-local blue_light = '#D6EAF8'
-local red_light = '#FADBD8'
+vim.g.neoline_white = '#ffffff'
+vim.g.neoline_red = '#ff5349' -- red orange
+vim.g.neoline_orange = '#ff9326'
+vim.g.neoline_yellow = '#fe6e00' -- blaze orange
+vim.g.neoline_green = '#4CBB17' -- color Kelly
+-- vim.g.neoline_green = '#55a630'
+vim.g.neoline_turquoise = '#3FE0D0'
+vim.g.neoline_aqua = '#18ffe0'
+vim.g.neoline_blue = '#31baff'
+-- vim.g.neoline_blue = '#3a86ff'
+vim.g.neoline_purple = '#9d8cff'
+vim.g.neoline_green_light = '#D5F5E3'
+vim.g.neoline_purple_light = '#E8DAEF'
+vim.g.neoline_blue_light = '#D6EAF8'
+vim.g.neoline_red_light = '#FADBD8'
 
 -- fg and bg
-local white_fg = '#e6e6e6'
--- local black_fg = '#282c34'
--- local bg = '#4d4d4d'
-local gray = '#cccccc'
+vim.g.neoline_white_fg = '#e6e6e6'
+-- vim.g.neoline_black_fg = '#282c34'
+-- vim.g.neoline_bg = '#4d4d4d'
+vim.g.neoline_gray = '#cccccc'
 
 ------------------------------------------------------------------------
 -- Components
 ------------------------------------------------------------------------
 
-local normal_fg = gray
-local normal_bg = white
-local activeline_bg = blue
-local activeline_fg = '#ffffff'
-local inactiveline_bg = '#cccccc'
-local inactiveline_fg = '#ffffff'
+vim.g.neoline_normal_fg = vim.g.neoline_gray
+vim.g.neoline_normal_bg = vim.g.neoline_white
+vim.g.neoline_activeline_bg = vim.g.neoline_blue
+vim.g.neoline_activeline_fg = '#ffffff'
+vim.g.neoline_inactiveline_bg = '#cccccc'
+vim.g.neoline_inactiveline_fg = '#ffffff'
 
 ------------------------------------------------------------------------
 -- Configs
 ------------------------------------------------------------------------
 
 -- Separators
-local left_separator = ''
-local right_separator = ''
--- local left_separator = ' '
--- local right_separator = ' '
--- local left_separator = ' '
--- local right_separator = ' '
--- local left_separator = '░▒'
--- local right_separator = '▒░'
--- local left_separator = ''
--- local right_separator = ''
+if not vim.g.neoline_separator then
+   vim.g.neoline_left_separator = ''
+   vim.g.neoline_right_separator = ''
+end
 
--- let s:separators = {
-      -- \ 'arrow' : ["\ue0b0", "\ue0b2"],
-      -- \ 'curve' : ["\ue0b4", "\ue0b6"],
-      -- \ 'slant' : ["\ue0b8", "\ue0ba"],
-      -- \ 'brace' : ["\ue0d2", "\ue0d4"],
-      -- \ 'fire' : ["\ue0c0", "\ue0c2"],
--- call s:check_defined('g:airline_left_sep', "\ue0b0")      " 
--- call s:check_defined('g:airline_left_alt_sep', "\ue0b1")  " 
--- call s:check_defined('g:airline_right_sep', "\ue0b2")     " 
--- call s:check_defined('g:airline_right_alt_sep', "\ue0b3") " 
+if vim.g.neoline_separator == 'fire' then
+  vim.g.neoline_left_separator = ' '
+  vim.g.neoline_right_separator = ' '
+end
 
--- Blank Between Components
-local blank = ' '
+if vim.g.neoline_separator == 'dots1' then
+ vim.g.neoline_left_separator = ' '
+ vim.g.neoline_right_separator = ' '
+end
+
+if vim.g.neoline_separator == 'dots2' then
+ vim.g.neoline_left_separator = '░▒'
+ vim.g.neoline_right_separator = '▒░'
+end
+
+if vim.g.neoline_separator == 'triangle' then
+vim.g.neoline_right_separator = ''
+vim.g.neoline_right_separator_alt = ''
+vim.g.neoline_left_separator = ''
+vim.g.neoline_left_separator_alt = ''
+end
+
+if vim.g.neoline_separator == 'empty' then
+ vim.g.neoline_left_separator = ''
+ vim.g.neoline_right_separator = ''
+end
+
+-- Space between components
+vim.g.neoline_blank = ' '
 
 -- Icons
-local iconOutline = '📌 Outline'
-local iconQf = '🐆 QF'
-local iconShell = '🐚'
-local iconDBUI = '🎲'
-local iconDBUIOut = '🐬'
-local iconDashboard = '🌅'
-local iconUpdate = '🧙'
-local iconVcs = '🐙'
-local iconTrouble = '💩'
-local iconHelp = '💡 help'
+vim.g.neoline_iconOutline = '📌 Outline'
+vim.g.neoline_iconQf = '🐆 QF'
+vim.g.neoline_iconShell = '🐚'
+vim.g.neoline_iconDBUI = '🎲'
+vim.g.neoline_iconDBUIOut = '🐬'
+vim.g.neoline_iconDashboard = '🌅'
+vim.g.neoline_iconUpdate = '🧙'
+vim.g.neoline_iconVcs = '🐙'
+vim.g.neoline_iconTrouble = '💩'
+vim.g.neoline_iconHelp = '💡 help'
 
 -- Using NERDFonts
 -- https://github.com/ryanoasis/powerline-extra-symbols
 -- ro=, ws=☲, lnr=☰, mlnr=, br=, nx=Ɇ, crypt=🔒, dirty=⚡
-local iconLn=''
+vim.g.neoline_iconLn=''
+
+-- LSP
+vim.g.neoline_lsp_stoped='🧊'
+
+if not vim.g.neoline_symbol_error then
+   vim.g.neoline_symbol_error = '💥'
+end
+if not vim.g.neoline_symbol_warning then
+   vim.g.neoline_symbol_warning = '💩'
+end
+if not vim.g.neoline_symbol_information then
+   vim.g.neoline_symbol_information = '⚠️'
+end
+if not vim.g.neoline_symbol_hint then
+   vim.g.neoline_symbol_hint = '💡'
+end
+
+-- File tree
+if not vim.g.neoline_iconTree then
+   vim.g.neoline_iconTree = '🌳'
+end
 
 ------------------------------------------------------------------------
 --                             StatusLine                             --
@@ -133,119 +164,119 @@ local current_mode = setmetatable({
 function M.initColors()
 
     -- File changed
-    api.nvim_command('hi NeoLineFileChanged guifg='..red..' guibg='..white)
+    api.nvim_command('hi NeoLineFileChanged guifg='..vim.g.neoline_red..' guibg='..vim.g.neoline_white)
 
     -- VCS Color
     local vcs_add = green
     local vcs_delete = red
     local vcs_change = orange
     local vcs_fg = white
-    api.nvim_command('hi NeoLineVCSLeft guifg='..white..' guibg='..blue)
-    api.nvim_command('hi NeoLineVCSLeft1 guifg='..blue..' guibg='..white)
-    api.nvim_command('hi NeoLineVCSAdd guifg='..green..' guibg='..white)
-    api.nvim_command('hi NeoLineVCSDelete guifg='..red..' guibg='..white)
-    api.nvim_command('hi NeoLineVCSChange guifg='..orange..' guibg='..white)
-    api.nvim_command('hi NeoLineVCSRight guifg='..white..' guibg='..blue)
+    api.nvim_command('hi NeoLineVCSLeft guifg='..vim.g.neoline_white..' guibg='..vim.g.neoline_blue)
+    api.nvim_command('hi NeoLineVCSLeft1 guifg='..vim.g.neoline_blue..' guibg='..vim.g.neoline_white)
+    api.nvim_command('hi NeoLineVCSAdd guifg='..vim.g.neoline_green..' guibg='..vim.g.neoline_white)
+    api.nvim_command('hi NeoLineVCSDelete guifg='..vim.g.neoline_red..' guibg='..vim.g.neoline_white)
+    api.nvim_command('hi NeoLineVCSChange guifg='..vim.g.neoline_orange..' guibg='..vim.g.neoline_white)
+    api.nvim_command('hi NeoLineVCSRight guifg='..vim.g.neoline_white..' guibg='..vim.g.neoline_blue)
 
-    api.nvim_command('hi NeoLineDefault guifg='..white..' guibg='..blue)
-    api.nvim_command('hi NeoLineDefaultInverse guifg='..blue..' guibg='..white)
+    api.nvim_command('hi NeoLineDefault guifg='..vim.g.neoline_white..' guibg='..vim.g.neoline_blue)
+    api.nvim_command('hi NeoLineDefaultInverse guifg='..vim.g.neoline_blue..' guibg='..vim.g.neoline_white)
 
     -- row and column Color
     local line_bg = 'None'
-    local line_fg = white_fg
+    local line_fg = vim.g.neoline_white_fg
     local line_gui = 'bold'
     api.nvim_command('hi NeoLineLine guibg='..line_bg..' guifg='..line_fg..' gui='..line_gui)
 
     -- TabLine
-    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..blue..' guifg='..white)
-    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..blue)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_blue..' guifg='..vim.g.neoline_white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_blue)
     api.nvim_command('hi NeoLineTabLine guibg=#cccccc guifg=#ffffff gui=None')
     api.nvim_command('hi NeoLineTabLineSeparator guifg=#cccccc')
     api.nvim_command('hi NeoLineTabLineFill guibg=None gui=None')
 
-    api.nvim_command('hi NeoLineActive guibg='..activeline_bg..' guifg='..activeline_fg)
-    api.nvim_command('hi NeoLineActiveInverse guibg='..activeline_fg..' guifg='..activeline_bg)
-    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..activeline_bg)
-    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..activeline_bg)
+    api.nvim_command('hi NeoLineActive guibg='..vim.g.neoline_activeline_bg..' guifg='..vim.g.neoline_activeline_fg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..vim.g.neoline_activeline_fg..' guifg='..vim.g.neoline_activeline_bg)
+    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..vim.g.neoline_activeline_bg)
+    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_activeline_bg)
 
-    api.nvim_command('hi NeoLineInActive guibg='..inactiveline_bg..' guifg='..inactiveline_fg)
-    api.nvim_command('hi NeoLineInActiveInverse guibg='..inactiveline_fg..' guifg='..inactiveline_bg)
-    api.nvim_command('hi NeoLineInActiveInverseBegin guibg=none'..' guifg='..inactiveline_bg)
-    api.nvim_command('hi NeoLineInActiveInverseEnd guibg=none'..' guifg='..inactiveline_bg)
+    api.nvim_command('hi NeoLineInActive guibg='..vim.g.neoline_inactiveline_bg..' guifg='..vim.g.neoline_inactiveline_fg)
+    api.nvim_command('hi NeoLineInActiveInverse guibg='..vim.g.neoline_inactiveline_fg..' guifg='..vim.g.neoline_inactiveline_bg)
+    api.nvim_command('hi NeoLineInActiveInverseBegin guibg=none'..' guifg='..vim.g.neoline_inactiveline_bg)
+    api.nvim_command('hi NeoLineInActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_inactiveline_bg)
 
 end
 
 -- Redraw different colors for different mode
 local RedrawColors = function(mode)
   if mode == 'n' then
-    api.nvim_command('hi NeoLineMode guibg='..blue..' guifg='..normal_fg..' gui=bold')
-    api.nvim_command('hi NeoLineModeSeparator guifg='..blue)
-    api.nvim_command('hi NeoLineDefault guibg='..blue)
-    -- api.nvim_command('hi CursorLine guibg='..blue_light)
-    api.nvim_command('hi NeoLineActive guibg='..blue..' guifg='..normal_bg)
-    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..blue)
-    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..blue)
-    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..blue)
-    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..blue..' guifg='..white)
-    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..blue)
+    api.nvim_command('hi NeoLineMode guibg='..vim.g.neoline_blue..' guifg='..vim.g.neoline_normal_fg..' gui=bold')
+    api.nvim_command('hi NeoLineModeSeparator guifg='..vim.g.neoline_blue)
+    api.nvim_command('hi NeoLineDefault guibg='..vim.g.neoline_blue)
+    -- api.nvim_command('hi CursorLine guibg='..vim.g.neoline_blue_light)
+    api.nvim_command('hi NeoLineActive guibg='..vim.g.neoline_blue..' guifg='..vim.g.neoline_normal_bg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..vim.g.neoline_normal_bg..' guifg='..vim.g.neoline_blue)
+    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..vim.g.neoline_blue)
+    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_blue)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_blue..' guifg='..vim.g.neoline_white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_blue)
   end
   if mode == 'i' then
-    api.nvim_command('hi NeoLineMode guibg='..green..' guifg='..normal_fg..' gui=bold')
-    api.nvim_command('hi NeoLineModeSeparator guifg='..green)
-    api.nvim_command('hi NeoLineDefault guibg='..green)
-    -- api.nvim_command('hi CursorLine guibg='..green_light)
-    api.nvim_command('hi NeoLineActive guibg='..green..' guifg='..normal_bg)
-    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..green)
-    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..green)
-    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..green)
-    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..green..' guifg='..white)
-    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..green)
+    api.nvim_command('hi NeoLineMode guibg='..vim.g.neoline_green..' guifg='..vim.g.neoline_normal_fg..' gui=bold')
+    api.nvim_command('hi NeoLineModeSeparator guifg='..vim.g.neoline_green)
+    api.nvim_command('hi NeoLineDefault guibg='..vim.g.neoline_green)
+    -- api.nvim_command('hi CursorLine guibg='..vim.g.neoline_green_light)
+    api.nvim_command('hi NeoLineActive guibg='..vim.g.neoline_green..' guifg='..vim.g.neoline_normal_bg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..vim.g.neoline_normal_bg..' guifg='..vim.g.neoline_green)
+    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..vim.g.neoline_green)
+    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_green)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_green..' guifg='..vim.g.neoline_white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_green)
   end
   if mode == 'v' or mode == 'V' or mode == '' then
-    api.nvim_command('hi NeoLineMode guibg='..purple..' guifg='..normal_fg..' gui=bold')
-    api.nvim_command('hi NeoLineModeSeparator guifg='..purple)
-    api.nvim_command('hi NeoLineDefault guibg='..purple)
-    api.nvim_command('hi Visual guibg='..purple_light)
-    api.nvim_command('hi NeoLineActive guibg='..purple..' guifg='..normal_bg)
-    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..purple)
-    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..purple)
-    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..purple)
-    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..purple..' guifg='..white)
-    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..purple)
+    api.nvim_command('hi NeoLineMode guibg='..vim.g.neoline_purple..' guifg='..vim.g.neoline_normal_fg..' gui=bold')
+    api.nvim_command('hi NeoLineModeSeparator guifg='..vim.g.neoline_purple)
+    api.nvim_command('hi NeoLineDefault guibg='..vim.g.neoline_purple)
+    api.nvim_command('hi Visual guibg='..vim.g.neoline_purple_light)
+    api.nvim_command('hi NeoLineActive guibg='..vim.g.neoline_purple..' guifg='..vim.g.neoline_normal_bg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..vim.g.neoline_normal_bg..' guifg='..vim.g.neoline_purple)
+    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..vim.g.neoline_purple)
+    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_purple)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_purple..' guifg='..vim.g.neoline_white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_purple)
   end
   if mode == 'c' then
-    api.nvim_command('hi NeoLineMode guibg='..yellow..' guifg='..normal_fg..' gui=bold')
-    api.nvim_command('hi NeoLineModeSeparator guifg='..yellow)
-    api.nvim_command('hi NeoLineDefault guibg='..yellow)
-    api.nvim_command('hi NeoLineActive guibg='..yellow..' guifg='..normal_bg)
-    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..yellow)
-    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..yellow)
-    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..yellow)
-    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..yellow..' guifg='..white)
-    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..yellow)
+    api.nvim_command('hi NeoLineMode guibg='..vim.g.neoline_yellow..' guifg='..vim.g.neoline_normal_fg..' gui=bold')
+    api.nvim_command('hi NeoLineModeSeparator guifg='..vim.g.neoline_yellow)
+    api.nvim_command('hi NeoLineDefault guibg='..vim.g.neoline_yellow)
+    api.nvim_command('hi NeoLineActive guibg='..vim.g.neoline_yellow..' guifg='..vim.g.neoline_normal_bg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..vim.g.neoline_normal_bg..' guifg='..vim.g.neoline_yellow)
+    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..vim.g.neoline_yellow)
+    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_yellow)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_yellow..' guifg='..vim.g.neoline_white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_yellow)
   end
   if mode == 'Rv' then
-    api.nvim_command('hi NeoLineMode guibg='..red..' guifg='..normal_fg..' gui=bold')
-    api.nvim_command('hi NeoLineModeSeparator guifg='..red)
-    api.nvim_command('hi NeoLineDefault guibg='..red)
-    -- api.nvim_command('hi CursorLine guibg='..red_light)
-    api.nvim_command('hi NeoLineActive guibg='..red..' guifg='..normal_bg)
-    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..red)
-    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..red)
-    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..red)
-    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..red..' guifg='..white)
-    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..red)
+    api.nvim_command('hi NeoLineMode guibg='..vim.g.neoline_red..' guifg='..vim.g.neoline_normal_fg..' gui=bold')
+    api.nvim_command('hi NeoLineModeSeparator guifg='..vim.g.neoline_red)
+    api.nvim_command('hi NeoLineDefault guibg='..vim.g.neoline_red)
+    -- api.nvim_command('hi CursorLine guibg='..vim.g.neoline_red_light)
+    api.nvim_command('hi NeoLineActive guibg='..vim.g.neoline_red..' guifg='..vim.g.neoline_normal_bg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..vim.g.neoline_normal_bg..' guifg='..vim.g.neoline_red)
+    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..vim.g.neoline_red)
+    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_red)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_red..' guifg='..vim.g.neoline_white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_red)
   end
   if mode == 't' then
-    api.nvim_command('hi NeoLineMode guibg='..turquoise..' guifg='..normal_fg..' gui=bold')
-    api.nvim_command('hi NeoLineModeSeparator guifg='..turquoise)
-    api.nvim_command('hi NeoLineDefault guibg='..turquoise)
-    api.nvim_command('hi NeoLineActive guibg='..turquoise..' guifg='..normal_bg)
-    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..turquoise)
-    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..turquoise)
-    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..turquoise)
-    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..turquoise..' guifg='..white)
-    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..turquoise)
+    api.nvim_command('hi NeoLineMode guibg='..vim.g.neoline_turquoise..' guifg='..vim.g.neoline_normal_fg..' gui=bold')
+    api.nvim_command('hi NeoLineModeSeparator guifg='..vim.g.neoline_turquoise)
+    api.nvim_command('hi NeoLineDefault guibg='..vim.g.neoline_turquoise)
+    api.nvim_command('hi NeoLineActive guibg='..vim.g.neoline_turquoise..' guifg='..vim.g.neoline_normal_bg)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..vim.g.neoline_turquoise)
+    api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..vim.g.neoline_turquoise)
+    api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_turquoise)
+    api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_turquoise..' guifg='..vim.g.neoline_white)
+    api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_turquoise)
   end
 end
 
@@ -277,40 +308,40 @@ local BuiltinLsp = function(idbuffer)
     end
 
     sl = sl.."%#NeoLineDefault#"
-    sl = sl..left_separator
+    sl = sl..vim.g.neoline_left_separator
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(idbuffer)) then
         local error, warning, information, hint = NeoDiagnosticStatus(idbuffer)
 
         sl=sl.."%#NeoLineDefaultInverse#"
         sl=sl..'🔥'
         if error > 0 then
-            sl=sl..' E:'
+            sl=sl..' '..vim.g.neoline_symbol_error
             sl=sl..error
         end
         if warning > 0 then
-            sl=sl..' W:'
+            sl=sl..' '..vim.g.neoline_symbol_warning
             sl=sl..warning
         end
         if information > 0 then
-            sl=sl..' I:'
+            sl=sl..' '..vim.g.neoline_symbol_information
             sl=sl..information
         end
         if hint > 0 then
-            sl=sl..' H:'
+            sl=sl..' '..vim.g.neoline_symbol_hint
             sl=sl..hint
         end
     else
-        sl=sl..'%#NeoLineDefaultInverse#🧊'
+        sl=sl..'%#NeoLineDefaultInverse#'..vim.g.neoline_lsp_stoped
     end
     sl = sl.."%#NeoLineDefault#"
-    sl = sl..right_separator
+    sl = sl..vim.g.neoline_right_separator
     return sl 
 end
 
 local LspStatus = function(idbuffer)
     local sl = ''
 
-    if util.Exists('g:did_coc_loaded') then
+    if vim.g.did_coc_loaded then
         sl=sl..CocStatus()
     else
         sl=sl..BuiltinLsp(idbuffer)
@@ -325,12 +356,12 @@ local TsStatus = function()
         return ''
     end
 
-    if not util.Exists('g:loaded_nvim_treesitter') then
+    if not vim.g.loaded_nvim_treesitter then
         return ''
     end
 
     local sl = "%#NeoLineDefault#"
-    sl = sl..left_separator
+    sl = sl..vim.g.neoline_left_separator
     sl = sl.."%#NeoLineDefaultInverse#"
     
     local ts = util.Call('nvim_treesitter#statusline', {30})
@@ -340,14 +371,13 @@ local TsStatus = function()
     sl = sl..ts
 
     sl = sl.."%#NeoLineDefault#"
-    sl = sl..right_separator
+    sl = sl..vim.g.neoline_right_separator
     
     return sl
 end
 
 local TreeStatus = function()
-    local iconTree = '🌳'
-    local statusline = iconTree
+    local statusline = vim.g.neoline_iconTree
     statusline = statusline..' '
     if filetype == 'nerdtree' then
         if util.IsVersion5() then
@@ -382,7 +412,7 @@ local FilePath = function(n)
 end
 
 local DebugStatus = function()
-    if not util.Exists('g:nvim_dap') then
+    if not vim.g.nvim_dap then
         return ''
     end
 
@@ -390,7 +420,7 @@ local DebugStatus = function()
 end
 
 local CurrentScope = function()
-    if util.Exists('g:did_coc_loaded') then
+    if vim.g.did_coc_loaded then
         return vim.fn.eval('b:coc_current_function')
     else
         return TsStatus()
@@ -398,7 +428,7 @@ local CurrentScope = function()
 end
 
 local RunStatus = function()
-    if util.Exists('g:asyncrun_status') then
+    if vim.g.asyncrun_status then
         local result = vim.g.asyncrun_status
         if result ~= nil then
             return result
@@ -410,7 +440,7 @@ end
 function M.activeLine(idbuffer)
   local statusline = "%#NeoLineDefault#"
 
-  statusline = "%#NeoLineActiveInverseBegin#" .. left_separator
+  statusline = "%#NeoLineActiveInverseBegin#" .. vim.g.neoline_left_separator
   statusline = statusline.."%#NeoLineActive#"
 
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
@@ -419,48 +449,48 @@ function M.activeLine(idbuffer)
   if filetype == 'nerdtree' or filetype == 'CHADTree' or filetype == 'NvimTree' then
       statusline = statusline .. TreeStatus()
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
       return statusline
   elseif filetype == 'dbui' then
-      statusline = statusline .. iconDBUI
+      statusline = statusline .. vim.g.neoline_iconDBUI
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
       return statusline
   elseif filetype == 'dbout' then
-      statusline = statusline .. iconDBUIOut
+      statusline = statusline .. vim.g.neoline_iconDBUIOut
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
       return statusline
   elseif filetype == 'dashboard' then
-      statusline = statusline .. iconDashboard
+      statusline = statusline .. vim.g.neoline_iconDashboard
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
       return statusline
   elseif filetype == 'git' or filetype == 'svn' then
-      statusline = statusline .. iconVcs
+      statusline = statusline .. vim.g.neoline_iconVcs
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
       return statusline
   elseif filetype == 'vim-plug' then
-      statusline = statusline .. iconUpdate
+      statusline = statusline .. vim.g.neoline_iconUpdate
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
       return statusline
   elseif filetype == 'Trouble' then
-      statusline = statusline .. iconTrouble
+      statusline = statusline .. vim.g.neoline_iconTrouble
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
       return statusline
   elseif filetype == 'help' then
-      statusline = statusline .. iconHelp
+      statusline = statusline .. vim.g.neoline_iconHelp
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
       return statusline
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown' or filetype == 'flutterToolsOutline' then
-      statusline = statusline ..iconOutline
+      statusline = statusline ..vim.g.neoline_iconOutline
       -- statusline = statusline .. vim.fn.eval('vista#statusline#()')
       statusline = statusline .. "%="
-      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. right_separator
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
       return statusline
   end
 
@@ -468,14 +498,14 @@ function M.activeLine(idbuffer)
   local mode = api.nvim_get_mode()['mode']
   RedrawColors(mode)
   statusline = statusline.."%#NeoLineDefault#"..current_mode[mode].." %#NeoLineDefault#"
-  statusline = statusline..blank
+  statusline = statusline..vim.g.neoline_blank
 
   statusline = statusline.."%#NeoLineVCSLeft#"
   statusline = statusline.."%#NeoLineDefault#"
-  statusline = statusline..left_separator
+  statusline = statusline..vim.g.neoline_left_separator
 
   -- Repository Status
-  -- if util.Exists('g:loaded_neovcs') then
+  -- if vim.g.loaded_neovcs then
 
       -- local vcsStatus = util.Call('VcsStatusLine', {})
 
@@ -483,7 +513,7 @@ function M.activeLine(idbuffer)
       -- statusline = statusline.." "..vcsStatus
 
   -- else
-  if util.Exists('g:loaded_signify') then
+  if vim.g.loaded_signify then
       local repostats = util.Call('sy#repo#get_stats', {})
 
       if repostats[1] > -1 then
@@ -505,7 +535,7 @@ function M.activeLine(idbuffer)
 
   statusline = statusline.."%#NeoLineVCSRight#"
   statusline = statusline.."%#NeoLineDefault#"
-  statusline = statusline..right_separator
+  statusline = statusline..vim.g.neoline_right_separator
 
   statusline = statusline.."%#NeoLineDefault#"
   statusline = statusline.."%="
@@ -528,14 +558,14 @@ function M.activeLine(idbuffer)
 
   -- Component: FileType
   statusline = statusline.."%#NeoLineDefault# "..filetype
-  statusline = statusline..blank
+  statusline = statusline..vim.g.neoline_blank
 
   -- Component: row and col
   local line = util.Call('line', {"."})
   local column = util.Call('col', {"."})
-  statusline = statusline.."%#NeoLineDefault# %{&fileencoding} "..iconLn.." "..line..":"..column
+  statusline = statusline.."%#NeoLineDefault# %{&fileencoding} "..vim.g.neoline_iconLn.." "..line..":"..column
 
-  statusline = statusline.."%#NeoLineActiveInverseEnd#"..right_separator
+  statusline = statusline.."%#NeoLineActiveInverseEnd#"..vim.g.neoline_right_separator
 
   return statusline
 end
@@ -550,21 +580,21 @@ function M.inActiveLine(idbuffer)
   if filetype == 'nerdtree' or filetype == 'CHADTree' or filetype == 'NvimTree' then
       statusline = statusline .. "%#Normal#"..TreeStatus()
   elseif filetype == 'dbui' then
-      statusline = statusline .. "%#Normal#"..iconDBUI
+      statusline = statusline .. "%#Normal#"..vim.g.neoline_iconDBUI
   elseif filetype == 'dbout' then
-      statusline = statusline .. "%#Normal#"..iconDBUIOut
+      statusline = statusline .. "%#Normal#"..vim.g.neoline_iconDBUIOut
   elseif filetype == 'dashboard' then
-      statusline = statusline .. "%#Normal#"..iconDashboard
+      statusline = statusline .. "%#Normal#"..vim.g.neoline_iconDashboard
   elseif filetype == 'git' or filetype == 'svn' then
-      statusline = statusline .. "%#Normal#"..iconVcs
+      statusline = statusline .. "%#Normal#"..vim.g.neoline_iconVcs
   elseif filetype == 'vim-plug' then
-      statusline = statusline .. "%#Normal#"..iconUpdate
+      statusline = statusline .. "%#Normal#"..vim.g.neoline_iconUpdate
   elseif filetype == 'Trouble' then
-      statusline = statusline .. "%#Normal#"..iconTrouble
+      statusline = statusline .. "%#Normal#"..vim.g.neoline_iconTrouble
   elseif filetype == 'help' then
-      statusline = statusline .. "%#Normal#"..iconHelp
+      statusline = statusline .. "%#Normal#"..vim.g.neoline_iconHelp
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown'  then
-      statusline = statusline .. "%#Normal#"..iconOutline
+      statusline = statusline .. "%#Normal#"..vim.g.neoline_iconOutline
       -- statusline = statusline .. vim.fn.eval('vista#statusline#()')
   else
       statusline = statusline .. "%#Normal# "..FilePath(idbuffer)
@@ -607,9 +637,9 @@ function M.TabLine()
   for _, val in ipairs(tab_list) do
     local file_name = getTabLabel(val)
     if val == current_tab then
-      tabline = tabline.."%#NeoLineTabLineSelSeparator# "..left_separator
+      tabline = tabline.."%#NeoLineTabLineSelSeparator# "..vim.g.neoline_left_separator
       tabline = tabline.."%#NeoLineTabLineSel# "..file_name
-      tabline = tabline.." %#NeoLineTabLineSelSeparator#"..right_separator
+      tabline = tabline.." %#NeoLineTabLineSelSeparator#"..vim.g.neoline_right_separator
     else
       tabline = tabline.."%#Normal# ".." "
       tabline = tabline.."%#Normal# "..file_name
@@ -618,9 +648,9 @@ function M.TabLine()
   end
   tabline = tabline.."%="
   if session.data ~= nil then
-    tabline = tabline.."%#NeoLineTabLineSeparator# "..left_separator
+    tabline = tabline.."%#NeoLineTabLineSeparator# "..vim.g.neoline_left_separator
     tabline = tabline.."%#NeoLineTabLine# session: "..session.data
-    tabline = tabline.." %#NeoLineTabLineSeparator#"..right_separator
+    tabline = tabline.." %#NeoLineTabLineSeparator#"..vim.g.neoline_right_separator
   end
   return tabline
 end
