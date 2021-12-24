@@ -113,16 +113,20 @@ vim.g.neoline_iconLn=''
 vim.g.neoline_lsp_stoped='🧊'
 
 if not vim.g.neoline_symbol_error then
-   vim.g.neoline_symbol_error = '💥'
+   -- vim.g.neoline_symbol_error = '💥'
+   vim.g.neoline_symbol_error = 'e'
 end
 if not vim.g.neoline_symbol_warning then
-   vim.g.neoline_symbol_warning = '💩'
+   -- vim.g.neoline_symbol_warning = '💩'
+   vim.g.neoline_symbol_warning = 'w'
 end
 if not vim.g.neoline_symbol_information then
-   vim.g.neoline_symbol_information = '⚠️'
+   -- vim.g.neoline_symbol_information = '⚠️'
+   vim.g.neoline_symbol_information = 'i'
 end
 if not vim.g.neoline_symbol_hint then
-   vim.g.neoline_symbol_hint = '💡'
+   -- vim.g.neoline_symbol_hint = '💡'
+   vim.g.neoline_symbol_hint = 'h'
 end
 
 -- File tree
