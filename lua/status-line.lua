@@ -510,12 +510,9 @@ function M.activeLine(idbuffer)
 
   -- Repository Status
   -- if vim.g.loaded_neovcs then
-
       -- local vcsStatus = util.Call('VcsStatusLine', {})
-
       -- statusline = statusline.."%#NeoLineVCSChange#"
       -- statusline = statusline.." "..vcsStatus
-
   -- else
   if vim.g.loaded_signify then
       local repostats = util.Call('sy#repo#get_stats', {})
@@ -621,7 +618,7 @@ local getTabLabel = function(n)
   local current_buf = api.nvim_win_get_buf(current_win)
   local file_name = api.nvim_buf_get_name(current_buf)
   if string.find(file_name, 'term://') ~= nil then
-    return current_number..' '..iconShell..' '..util.Call('fnamemodify', {file_name, ":p:t"})
+    return current_number..' '..vim.g.neoline_iconShell..' '..util.Call('fnamemodify', {file_name, ":p:t"})
   end
   file_name = util.Call('fnamemodify', {file_name, ":p:t"})
   if file_name == '' then
