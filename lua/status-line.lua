@@ -140,27 +140,43 @@ end
 
 -- Mode Prompt Table
 local current_mode = setmetatable({
-      ['n'] = 'NORMAL',
-      ['no'] = 'N·Operator Pending',
-      ['v'] = 'VISUAL',
-      ['V'] = 'V·Line',
       [''] = 'V·Block',
-      ['s'] = 'Select',
-      ['S'] = 'S·Line',
       [''] = 'S·Block',
-      ['i'] = 'INSERT',
-      ['ic'] = 'INSERT',
-      ['ix'] = 'INSERT',
-      ['R'] = 'Replace',
-      ['Rv'] = 'V·Replace',
-      ['c'] = 'COMMAND',
-      ['cv'] = 'Vim Ex',
-      ['ce'] = 'Ex',
-      ['r'] = 'Prompt',
-      ['rm'] = 'More',
-      ['r?'] = 'Confirm',
-      ['!'] = 'Shell',
-      ['t'] = 'TERMINAL'
+      ['n'] = 'N',
+      ['no'] = 'O',
+      ['nov'] = 'O',
+      ['noV'] = 'O',
+      ['no'] = 'O',
+      ['niI'] = 'N',
+      ['niR'] = 'N',
+      ['niV'] = 'N',
+      ['nt'] = 'N',
+      ['v'] = 'V',
+      ['vs'] = 'V',
+      ['V'] = 'V',
+      ['Vs'] = 'V',
+      [''] = 'V',
+      ['s'] = 'V',
+      ['s'] = 'S',
+      ['S'] = 'S',
+      [''] = 'S',
+      ['i'] = 'I',
+      ['ic'] = 'I',
+      ['ix'] = 'I',
+      ['R'] = 'R',
+      ['Rc'] = 'R',
+      ['Rx'] = 'R',
+      ['Rv'] = 'R',
+      ['Rvc'] = 'R',
+      ['Rvx'] = 'R',
+      ['c'] = 'C',
+      ['cv'] = 'EX',
+      ['ce'] = 'EX',
+      ['r'] = 'R',
+      ['rm'] = 'M',
+      ['r?'] = 'C',
+      ['!'] = 'S',
+      ['t'] = 'T',
     }, {}
 )
 
@@ -276,7 +292,7 @@ local RedrawColors = function(mode)
     api.nvim_command('hi NeoLineModeSeparator guifg='..vim.g.neoline_turquoise)
     api.nvim_command('hi NeoLineDefault guibg='..vim.g.neoline_turquoise)
     api.nvim_command('hi NeoLineActive guibg='..vim.g.neoline_turquoise..' guifg='..vim.g.neoline_normal_bg)
-    api.nvim_command('hi NeoLineActiveInverse guibg='..normal_bg..' guifg='..vim.g.neoline_turquoise)
+    api.nvim_command('hi NeoLineActiveInverse guibg='..vim.g.neoline_normal_bg..' guifg='..vim.g.neoline_turquoise)
     api.nvim_command('hi NeoLineActiveInverseBegin guibg=none'..' guifg='..vim.g.neoline_turquoise)
     api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_turquoise)
     api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_turquoise..' guifg='..vim.g.neoline_white)
