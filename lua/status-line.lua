@@ -517,7 +517,8 @@ function M.activeLine(idbuffer)
   -- Component: Mode
   local mode = api.nvim_get_mode()['mode']
   RedrawColors(mode)
-  statusline = statusline.."%#NeoLineDefault#"..current_mode[mode].." %#NeoLineDefault#"
+  statusline = statusline.."%#NeoLineDefault#"..current_mode[mode]
+  statusline = statusline.."%#NeoLineDefault#"
   statusline = statusline..vim.g.neoline_blank
 
   statusline = statusline.."%#NeoLineVCSLeft#"
@@ -543,7 +544,7 @@ function M.activeLine(idbuffer)
 
           -- TODO verificar se plugin esta ativo
           local vcsName = util.Call('VcsName', {})
-          statusline = statusline.." "..vcsName
+          statusline = statusline .. vim.g.neoline_blank .. vcsName
       end
   end
 
@@ -580,7 +581,10 @@ function M.activeLine(idbuffer)
   -- Component: row and col
   local line = util.Call('line', {"."})
   local column = util.Call('col', {"."})
-  statusline = statusline.."%#NeoLineDefault# %{&fileencoding} "..vim.g.neoline_iconLn.." "..line..":"..column
+  statusline = statusline.."%#NeoLineDefault#%{&fileencoding} "
+  statusline = statusline..vim.g.neoline_iconLn
+  statusline = statusline..vim.g.neoline_blank
+  statusline = statusline..line..":"..column
 
   statusline = statusline.."%#NeoLineActiveInverseEnd#"..vim.g.neoline_right_separator
 
