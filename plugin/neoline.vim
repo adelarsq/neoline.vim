@@ -2,7 +2,10 @@
 if exists('g:neoline_loaded')
     finish
 endif
+
 let g:neoline_loaded = 1
+
+set fillchars=stlnc\:―
 
 function! ActiveLine(idbuffer) abort
     let ss = "require'status-line'.activeLine(" . a:idbuffer . ")"
