@@ -2,7 +2,7 @@
 
 A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim) using [Lua](https://www.lua.org).
 
-Using neoline.vim with [material](https://github.com/marko-cerovac/material.nvim) dart theme and [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme):
+Using neoline.vim with [material](https://github.com/marko-cerovac/material.nvim) dark theme and [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme):
 
 <img width="782" src="https://user-images.githubusercontent.com/430272/115162411-c4500e80-a079-11eb-8315-7b1d30265e3a.png">
 
@@ -29,8 +29,14 @@ Add the following lines on the Vim/NeoVim config file:
 ```vim
 call dein#add('adelarsq/neoline.vim')
 ```
-
 Then open the editor and install with `call dein#install()`.
+
+### [Packer](https://github.com/wbthomason/packer.nvim)
+
+```lua
+use 'adelarsq/neoline.vim'
+```
+
 
 ## Features/Todos ⚙️
 
