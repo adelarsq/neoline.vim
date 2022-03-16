@@ -531,6 +531,7 @@ function M.activeLine(idbuffer)
       -- statusline = statusline.."%#NeoLineVCSChange#"
       -- statusline = statusline.." "..vcsStatus
   -- else
+  -- TODO move this on another module
   if vim.g.loaded_signify then
       local repostats = util.Call('sy#repo#get_stats', {})
 
@@ -548,6 +549,7 @@ function M.activeLine(idbuffer)
       end
   end
 
+  -- TODO move this on another module
   if util.Exists('b:gitsigns_head') then
     statusline = statusline.."%#NeoLineVCSAdd#"
     statusline = statusline .. vim.b.gitsigns_status .. ' ' .. vim.b.gitsigns_head
