@@ -548,6 +548,11 @@ function M.activeLine(idbuffer)
       end
   end
 
+  if util.Exists('b:gitsigns_head') then
+    statusline = statusline.."%#NeoLineVCSAdd#"
+    statusline = statusline .. vim.b.gitsigns_status .. ' ' .. vim.b.gitsigns_head
+  end
+
   statusline = statusline.."%#NeoLineFileChanged#"
   statusline = statusline.."%{&modified?'+':''}"
 

@@ -60,6 +60,7 @@ use 'adelarsq/neoline.vim'
   - VCS:
     - [x] [adelarsq/neovcs.vim](https://github.com/adelarsq/neovcs.vim)
     - [x] [vim-signify](https://github.com/mhinz/vim-signify)
+    - [x] [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
   - Database:
     - [x] [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui)
   - Start window:
