@@ -101,6 +101,7 @@ vim.g.neoline_iconDBUIOut = '🐬'
 vim.g.neoline_iconDashboard = '🌅'
 vim.g.neoline_iconUpdate = '🧙'
 vim.g.neoline_iconVcs = '🐙'
+vim.g.neoline_iconTerminal = '🐚'
 vim.g.neoline_iconTrouble = '💩'
 vim.g.neoline_iconHelp = '💡 help'
 
@@ -464,6 +465,7 @@ function M.activeLine(idbuffer)
   statusline = statusline.."%#NeoLineActive#"
 
   local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
+  local laststatus = api.nvim_get_option('laststatus')
 
   -- Icon For File
   if filetype == 'nerdtree' or filetype == 'CHADTree' or filetype == 'NvimTree' then
@@ -498,6 +500,11 @@ function M.activeLine(idbuffer)
       return statusline
   elseif filetype == 'Trouble' then
       statusline = statusline .. vim.g.neoline_iconTrouble
+      statusline = statusline .. "%="
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
+      return statusline
+  elseif filetype == 'floaterm' or filetype == 'nuake' then
+      statusline = statusline .. vim.g.neoline_iconTerminal
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
       return statusline

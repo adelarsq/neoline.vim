@@ -34,11 +34,18 @@ endfunction
 
 if !exists('g:neoline_disable_statusline')
     " Change statusline automatically
-    augroup NeoLine
-      autocmd!
-      autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine(bufnr('%'))
-      autocmd WinEnter,BufEnter,WinLeave,BufLeave * call InactiveLine(bufnr('%'))
-    augroup END
+    if &laststatus == 3
+        augroup NeoLine
+          autocmd!
+          autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine(bufnr('%'))
+        augroup END
+    else 
+        augroup NeoLine
+          autocmd!
+          autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine(bufnr('%'))
+          autocmd WinEnter,BufEnter,WinLeave,BufLeave * call InactiveLine(bufnr('%'))
+        augroup END
+    endif
 endif
 
 function! TabLine()
