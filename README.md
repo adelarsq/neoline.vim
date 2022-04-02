@@ -94,7 +94,7 @@ use 'adelarsq/neoline.vim'
 - [ ] Show LSP diagnostics for the whole workspace
 - [x] Use normal mode hightlight on inative tabs/buffers for better UX
 - [ ] Runner status [1](https://www.reddit.com/r/vimporn/comments/nv0pi7/simple_runner/)
-- [x] Local (`set laststatus=2`) and global status (`set laststatus=3`) line support
+- [x] Local (`set laststatus=2`) and global status (`set laststatus=3`) line support. Global status has a little better performance than local status on this plugin.
 
 ## Options ✅
 
