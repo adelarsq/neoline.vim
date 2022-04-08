@@ -93,6 +93,9 @@ end
 vim.g.neoline_blank = ' '
 
 -- Icons
+
+vim.g.neoline_iconCwd = '🏡'
+
 vim.g.neoline_iconOutline = '📌 Outline'
 vim.g.neoline_iconQf = '🐆 QF'
 vim.g.neoline_iconShell = '🐚'
@@ -682,11 +685,17 @@ function M.TabLine()
     end
   end
   tabline = tabline.."%="
+
   if session.data ~= nil then
     tabline = tabline.."%#NeoLineTabLineSeparator# "..vim.g.neoline_left_separator
     tabline = tabline.."%#NeoLineTabLine# session: "..session.data
     tabline = tabline.." %#NeoLineTabLineSeparator#"..vim.g.neoline_right_separator
   end
+
+  tabline = tabline.."%#NeoLineTabLineSeparator# "..vim.g.neoline_left_separator
+  tabline = tabline.."%#NeoLineTabLine# "..vim.g.neoline_iconCwd..' '..vim.loop.cwd()
+  tabline = tabline.." %#NeoLineTabLineSeparator#"..vim.g.neoline_right_separator
+
   return tabline
 end
 
