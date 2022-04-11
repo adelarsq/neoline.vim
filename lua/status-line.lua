@@ -687,14 +687,14 @@ function M.TabLine()
   tabline = tabline.."%="
 
   if session.data ~= nil then
-    tabline = tabline.."%#NeoLineTabLineSeparator# "..vim.g.neoline_left_separator
-    tabline = tabline.."%#NeoLineTabLine# session: "..session.data
-    tabline = tabline.." %#NeoLineTabLineSeparator#"..vim.g.neoline_right_separator
+    tabline = tabline.."%#NeoLineTabLineSelSeparator# "..vim.g.neoline_left_separator
+    tabline = tabline.."%#NeoLineTabLineSel# session: "..session.data
+    tabline = tabline.." %#NeoLineTabLineSelSeparator#"..vim.g.neoline_right_separator
   end
 
-  tabline = tabline.."%#NeoLineTabLineSeparator# "..vim.g.neoline_left_separator
-  tabline = tabline.."%#NeoLineTabLine# "..vim.g.neoline_iconCwd..' '..vim.loop.cwd()
-  tabline = tabline.." %#NeoLineTabLineSeparator#"..vim.g.neoline_right_separator
+  tabline = tabline.."%#NeoLineTabLineSelSeparator# "..vim.g.neoline_left_separator
+  tabline = tabline.."%#NeoLineTabLineSel# "..vim.g.neoline_iconCwd..' '..vim.loop.cwd()
+  tabline = tabline.." %#NeoLineTabLineSelSeparator#"..vim.g.neoline_right_separator
 
   return tabline
 end
