@@ -8,7 +8,6 @@ function ola(a){
 }
 
 function hola(a){
-    console.log('hola '+a);
 }
 
 hello('neovim');

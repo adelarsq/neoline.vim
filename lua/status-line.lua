@@ -375,29 +375,30 @@ local LspStatus = function(idbuffer)
 end
 
 local TsStatus = function()
-
-    if not util.IsVersion5() then
-        return ''
-    end
-
-    if not vim.g.loaded_nvim_treesitter then
-        return ''
-    end
-
-    local sl = "%#NeoLineDefault#"
-    sl = sl..vim.g.neoline_left_separator
-    sl = sl.."%#NeoLineDefaultInverse#"
-    
-    local ts = util.Call('nvim_treesitter#statusline', {30})
-    if ts == nil or ts == '' then
-        return ''
-    end
-    sl = sl..ts
-
-    sl = sl.."%#NeoLineDefault#"
-    sl = sl..vim.g.neoline_right_separator
-    
-    return sl
+                             
+    return ''
+    -- if not util.IsVersion5() then
+    --     return ''
+    -- end
+    --
+    -- if not vim.g.loaded_nvim_treesitter then
+    --     return ''
+    -- end
+    --
+    -- local sl = "%#NeoLineDefault#"
+    -- sl = sl..vim.g.neoline_left_separator
+    -- sl = sl.."%#NeoLineDefaultInverse#"
+    -- 
+    -- local ts = util.Call('nvim_treesitter#statusline', {30})
+    -- if ts == nil or ts == '' then
+    --     return ''
+    -- end
+    -- sl = sl..ts
+    --
+    -- sl = sl.."%#NeoLineDefault#"
+    -- sl = sl..vim.g.neoline_right_separator
+    -- 
+    -- return sl
 end
 
 local TreeStatus = function()
