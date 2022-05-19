@@ -310,9 +310,8 @@ local CocStatus = function()
     return cocstatus
 end
 
-local NeoDiagnosticStatus = function(idbuffer)
-    bufnr = bufnr or 0
-    local diagnostics = vim.diagnostic.get(bufnr)
+local NeoDiagnosticStatus = function(idBuffer)
+    local diagnostics = vim.diagnostic.get(idBuffer)
     local count = { 0, 0, 0, 0 }
     for _, diagnostic in ipairs(diagnostics) do
         count[diagnostic.severity] = count[diagnostic.severity] + 1
@@ -324,7 +323,7 @@ local NeoDiagnosticStatus = function(idbuffer)
 end
 
 -- Builtin Neovim LSP
-local BuiltinLsp = function(idbuffer)
+local BuiltinLsp = function(idBuffer)
     local sl = ''
 
     if not util.IsVersion5() then
@@ -333,8 +332,7 @@ local BuiltinLsp = function(idbuffer)
 
     sl = sl.."%#NeoLineDefault#"
     sl = sl..vim.g.neoline_left_separator
-    if not vim.tbl_isempty(vim.lsp.buf_get_clients(idbuffer)) then
-        local error, warning, information, hint = NeoDiagnosticStatus(idbuffer)
+    if not vim.tbl_isempty(vim.lsp.buf_get_clients(idBuffer)) then local error, warning, information, hint = NeoDiagnosticStatus(idBuffer)
 
         sl=sl.."%#NeoLineDefaultInverse#"
         sl=sl..'🔥'
@@ -362,13 +360,13 @@ local BuiltinLsp = function(idbuffer)
     return sl 
 end
 
-local LspStatus = function(idbuffer)
+local LspStatus = function(idBuffer)
     local sl = ''
 
     if vim.g.did_coc_loaded then
         sl=sl..CocStatus()
     else
-        sl=sl..BuiltinLsp(idbuffer)
+        sl=sl..BuiltinLsp(idBuffer)
     end
 
     return sl
@@ -401,7 +399,7 @@ local TsStatus = function()
     -- return sl
 end
 
-local TreeStatus = function()
+local TreeStatus = function(idBuffer)
     local statusline = vim.g.neoline_iconTree
     statusline = statusline..' '
     if filetype == 'nerdtree' then
@@ -462,18 +460,18 @@ local RunStatus = function()
     return ''
 end
 
-function M.activeLine(idbuffer)
+function M.activeLine(idBuffer)
   local statusline = "%#NeoLineDefault#"
 
   statusline = "%#NeoLineActiveInverseBegin#" .. vim.g.neoline_left_separator
   statusline = statusline.."%#NeoLineActive#"
 
-  local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
+  local filetype = api.nvim_buf_get_option(idBuffer, 'filetype')
   local laststatus = api.nvim_get_option('laststatus')
 
   -- Icon For File
   if filetype == 'nerdtree' or filetype == 'CHADTree' or filetype == 'NvimTree' then
-      statusline = statusline .. TreeStatus()
+      statusline = statusline .. TreeStatus(idBuffer)
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
       return statusline
@@ -590,7 +588,7 @@ function M.activeLine(idbuffer)
   statusline = statusline.."%#NeoLineDefault#"
 
   statusline = statusline..RunStatus()
-  statusline = statusline..LspStatus(idbuffer)
+  statusline = statusline..LspStatus(idBuffer)
 
   -- Component: FileType
   statusline = statusline.."%#NeoLineDefault# "..filetype
@@ -609,12 +607,12 @@ function M.activeLine(idbuffer)
   return statusline
 end
 
-function M.inActiveLine(idbuffer)
+function M.inActiveLine(idBuffer)
   local statusline = ""
 
   statusline = "%#Normal#" .. " "
 
-  local filetype = api.nvim_buf_get_option(idbuffer, 'filetype')
+  local filetype = api.nvim_buf_get_option(idBuffer, 'filetype')
 
   if filetype == 'nerdtree' or filetype == 'CHADTree' or filetype == 'NvimTree' then
       statusline = statusline .. "%#Normal#"..TreeStatus()
@@ -636,7 +634,7 @@ function M.inActiveLine(idbuffer)
       statusline = statusline .. "%#Normal#"..vim.g.neoline_iconOutline
       -- statusline = statusline .. vim.fn.eval('vista#statusline#()')
   else
-      statusline = statusline .. "%#Normal# "..FilePath(idbuffer)
+      statusline = statusline .. "%#Normal# "..FilePath(idBuffer)
       statusline = statusline .."%#Normal# "
   end
 
