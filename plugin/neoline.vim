@@ -46,6 +46,13 @@ if !exists('g:neoline_disable_statusline')
           autocmd WinEnter,BufEnter,WinLeave,BufLeave * call InactiveLine(bufnr('%'))
         augroup END
     endif
+    
+    if exists('g:neoline_winbar')
+        augroup NeoLineWinBar
+          autocmd!
+          autocmd WinEnter,BufEnter * setlocal winbar=%F
+        augroup END
+    endif
 endif
 
 function! TabLine()
