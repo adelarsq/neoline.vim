@@ -16,7 +16,7 @@ M.Call = function(arg0, arg1)
     return api.nvim_call_function(arg0, arg1)
 end
 
-local SplitString = function(arg0,fileSeparator)
+local SplitStringtoTable = function(arg0,fileSeparator)
     local arg0Split = arg0:gmatch('[^'..fileSeparator..'%s]+')
 
     local pathTable = {}
@@ -56,7 +56,7 @@ M.TrimmedDirectory = function(arg0)
         return path
     end
 
-    local pathTable, pathTableSize = SplitString(path,fileSeparator)
+    local pathTable, pathTableSize = SplitStringtoTable(path,fileSeparator)
 
     local ret=''
 
@@ -77,7 +77,19 @@ M.TrimmedDirectory = function(arg0)
 end
 
 M.IsVersion5 = function()
-    return api.nvim_call_function('has', {'nvim-0.5'}) == 1
+    return vim.fn.has('nvim-0.5.0') > 0
+end
+
+M.IsVersion6 = function()
+    return vim.fn.has('nvim-0.6.0') > 0
+end
+
+M.IsVersion7 = function()
+    return vim.fn.has('nvim-0.7.0') > 0
+end
+
+M.IsVersion8 = function()
+    return vim.fn.has('nvim-0.8.0') > 0
 end
 
 return M
