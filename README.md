@@ -140,10 +140,13 @@ vim.g.neoline_disable_tabline=1
 
 Thanks goes to these people/projects for inspiration:
 
-- [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
-- [haorenW1025 dotfiles](https://github.com/haorenW1025/config)
-- [ahmedelgabri/statusline.vim](https://gist.github.com/ahmedelgabri/b9127dfe36ba86f4496c8c28eb65ef2b)
-- [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+- **Status line**:
+   - [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
+   - [haorenW1025 dotfiles](https://github.com/haorenW1025/config)
+   - [ahmedelgabri/statusline.vim](https://gist.github.com/ahmedelgabri/b9127dfe36ba86f4496c8c28eb65ef2b)
+   - [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+- **Buffer/Tab line**:
+   - [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 
 ## License 📜
 
