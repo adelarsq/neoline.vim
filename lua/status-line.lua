@@ -230,6 +230,17 @@ function M.initColors()
 
 end
 
+-- petertriho/nvim-scrollbar
+local ScrollColor = function(bgcolor)
+    api.nvim_command('hi ScrollbarHandle guibg='..bgcolor)
+    api.nvim_command('hi ScrollbarSearchHandle guibg='..bgcolor)
+    api.nvim_command('hi ScrollbarErrorHandle guibg='..bgcolor)
+    api.nvim_command('hi ScrollbarWarnHandle guibg='..bgcolor)
+    api.nvim_command('hi ScrollbarInfoHandle guibg='..bgcolor)
+    api.nvim_command('hi ScrollbarHintHandle guibg='..bgcolor)
+    api.nvim_command('hi ScrollbarMiscHandle guibg='..bgcolor)
+end
+
 -- Redraw different colors for different mode
 local RedrawColors = function(mode)
   if mode == 'n' then
@@ -243,6 +254,8 @@ local RedrawColors = function(mode)
     api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_blue)
     api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_blue..' guifg='..vim.g.neoline_white)
     api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_blue)
+
+    ScrollColor(vim.g.neoline_blue)
   end
   if mode == 'i' then
     api.nvim_command('hi NeoLineMode guibg='..vim.g.neoline_green..' guifg='..vim.g.neoline_normal_fg..' gui=bold')
@@ -255,6 +268,8 @@ local RedrawColors = function(mode)
     api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_green)
     api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_green..' guifg='..vim.g.neoline_white)
     api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_green)
+
+    ScrollColor(vim.g.neoline_green)
   end
   if mode == 'v' or mode == 'V' or mode == '' then
     api.nvim_command('hi NeoLineMode guibg='..vim.g.neoline_purple..' guifg='..vim.g.neoline_normal_fg..' gui=bold')
@@ -267,6 +282,8 @@ local RedrawColors = function(mode)
     api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_purple)
     api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_purple..' guifg='..vim.g.neoline_white)
     api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_purple)
+
+    ScrollColor(vim.g.neoline_purple)
   end
   if mode == 'c' then
     api.nvim_command('hi NeoLineMode guibg='..vim.g.neoline_yellow..' guifg='..vim.g.neoline_normal_fg..' gui=bold')
@@ -278,6 +295,8 @@ local RedrawColors = function(mode)
     api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_yellow)
     api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_yellow..' guifg='..vim.g.neoline_white)
     api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_yellow)
+
+    ScrollColor(vim.g.neoline_yellow)
   end
   if mode == 'Rv' then
     api.nvim_command('hi NeoLineMode guibg='..vim.g.neoline_red..' guifg='..vim.g.neoline_normal_fg..' gui=bold')
@@ -290,6 +309,8 @@ local RedrawColors = function(mode)
     api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_red)
     api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_red..' guifg='..vim.g.neoline_white)
     api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_red)
+
+    ScrollColor(vim.g.neoline_red)
   end
   if mode == 't' then
     api.nvim_command('hi NeoLineMode guibg='..vim.g.neoline_turquoise..' guifg='..vim.g.neoline_normal_fg..' gui=bold')
@@ -301,6 +322,8 @@ local RedrawColors = function(mode)
     api.nvim_command('hi NeoLineActiveInverseEnd guibg=none'..' guifg='..vim.g.neoline_turquoise)
     api.nvim_command('hi NeoLineTabLineSel gui=Bold guibg='..vim.g.neoline_turquoise..' guifg='..vim.g.neoline_white)
     api.nvim_command('hi NeoLineTabLineSelSeparator gui=bold guifg='..vim.g.neoline_turquoise)
+
+    ScrollColor(vim.g.neoline_turquoise)
   end
 end
 

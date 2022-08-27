@@ -76,6 +76,8 @@ use 'adelarsq/neoline.vim'
     - [x] [akinsho/flutter-tools.nvim](https://github.com/akinsho/flutter-tools.nvim)
   - Diagnostics:
     - [x] [folke/trouble.nvim](https://github.com/folke/trouble.nvim)
+  - Scrollbar:
+    - [x] [petertriho/nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar)
 - [x] LSP status support
 - [x] TreeSitter support
 - [x] Mode color for current tab
