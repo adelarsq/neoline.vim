@@ -2,13 +2,9 @@
 
 A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim) using [Lua](https://www.lua.org).
 
-Using neoline.vim with [material](https://github.com/marko-cerovac/material.nvim) dark theme and [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme):
+Using neoline.vim with [material](https://github.com/marko-cerovac/material.nvim) dark theme, [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme), [petertriho/nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar), [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) and [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim):
 
-<img width="782" src="https://user-images.githubusercontent.com/430272/115162411-c4500e80-a079-11eb-8315-7b1d30265e3a.png">
-
-Using neoline.vim with [material](https://github.com/marko-cerovac/material.nvim) light theme and [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme):
-
-<img width="782" src="https://user-images.githubusercontent.com/430272/115162557-9d460c80-a07a-11eb-859d-5ab66e625f1a.png">
+<img width="782" src="https://user-images.githubusercontent.com/430272/187047082-bbf75b86-8660-47b6-8005-d45ad207c254.png">
 
 ## Installation 🧙
 
