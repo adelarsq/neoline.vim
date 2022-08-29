@@ -488,7 +488,7 @@ function M.activeLine(idBuffer)
   local laststatus = api.nvim_get_option('laststatus')
 
   -- Icon For File
-  if filetype == 'nerdtree' or filetype == 'CHADTree' or filetype == 'NvimTree' then
+  if filetype == 'nerdtree' or filetype == 'CHADTree' or filetype == 'NvimTree' or filetype == 'neo-tree'  then
       statusline = statusline .. TreeStatus(idBuffer)
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
@@ -632,7 +632,7 @@ function M.inActiveLine(idBuffer)
 
   local filetype = api.nvim_buf_get_option(idBuffer, 'filetype')
 
-  if filetype == 'nerdtree' or filetype == 'CHADTree' or filetype == 'NvimTree' then
+  if filetype == 'nerdtree' or filetype == 'CHADTree' or filetype == 'NvimTree' or filetype == 'neo-tree' then
       statusline = statusline .. "%#Normal#"..TreeStatus()
   elseif filetype == 'dbui' then
       statusline = statusline .. "%#Normal#"..vim.g.neoline_iconDBUI

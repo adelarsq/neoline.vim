@@ -53,6 +53,9 @@ use 'adelarsq/neoline.vim'
     - [x] [kyazdani42/nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
       - [ ] Show cwd path
       - [ ] Trim cwd path
+    - [x] [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
+      - [ ] Show cwd path
+      - [ ] Trim cwd path
   - VCS:
     - [x] [adelarsq/neovcs.vim](https://github.com/adelarsq/neovcs.vim)
     - [x] [vim-signify](https://github.com/mhinz/vim-signify)
