@@ -455,7 +455,7 @@ end
 local DebugStatus = function()
   local use, imported = pcall(require, "dap")
   if use then
-    return imported.status()
+    return require('dap').status()
   else
       return ''
   end
