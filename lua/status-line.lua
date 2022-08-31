@@ -623,10 +623,7 @@ function M.activeLine(idBuffer)
   statusline = statusline.."%="
   statusline = statusline.."%#NeoLineDefault#"
 
-  local debugStatus = DebugStatus()
-  if debugStatus == '' then
-    statusline = statusline..debugStatus
-  end
+  statusline = statusline..DebugStatus()
 
   local currentScope = CurrentScope()
   if currentScope then
