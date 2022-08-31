@@ -461,11 +461,12 @@ local DebugStatus = function()
 end
 
 local CurrentScope = function()
-    if vim.g.did_coc_loaded then
-        return vim.fn.eval('b:coc_current_function')
-    else
-        return TsStatus()
-    end
+    -- if vim.g.did_coc_loaded then
+    --     return vim.fn.eval('b:coc_current_function')
+    -- else
+    --     return TsStatus()
+    -- end
+    return ''
 end
 
 local RunStatus = function()
@@ -476,6 +477,24 @@ local RunStatus = function()
         end
     end
     return ''
+end
+
+local DebugStatusLine = function(filetype)
+  if filetype == 'dapui_watches' then
+      return " Watches"
+  elseif filetype == 'dapui_stacks' then
+      return " Stacks"
+  elseif filetype == 'dapui_breakpoints' then
+      return " Breackpoints"
+  elseif filetype == 'dapui_scopes' then
+      return " Scopes"
+  elseif filetype == 'dap_repl' then
+      return "ﲵ Repl"
+  elseif filetype == 'dapui_console' then
+      return " Console"
+  else
+      return ' '
+  end
 end
 
 function M.activeLine(idBuffer)
@@ -539,6 +558,16 @@ function M.activeLine(idBuffer)
       statusline = statusline .. "%="
       statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
       return statusline
+  elseif filetype == 'dapui_watches' or
+         filetype == 'dapui_stacks' or
+         filetype == 'dapui_breakpoints' or
+         filetype == 'dapui_scopes' or
+         filetype == 'dap_repl' or
+         filetype == 'dapui_console' then
+      statusline = statusline .. DebugStatusLine(filetype)
+      statusline = statusline .. "%="
+      statusline = statusline .. "%#NeoLineActiveInverseEnd#" .. vim.g.neoline_right_separator
+      return statusline
   end
 
   -- Component: Mode
@@ -595,9 +624,12 @@ function M.activeLine(idBuffer)
 
   local debugStatus = DebugStatus()
   if debugStatus == '' then
-    statusline = statusline..CurrentScope()
-  else
     statusline = statusline..debugStatus
+  end
+
+  local currentScope = CurrentScope()
+  if currentScope then
+    statusline = statusline..currentScope
   end
 
   -- Alignment to left
@@ -651,9 +683,15 @@ function M.inActiveLine(idBuffer)
   elseif filetype == 'vista' or filetype == 'vista_kind' or filetype == 'vista_markdown'  then
       statusline = statusline .. "%#Normal#"..vim.g.neoline_iconOutline
       -- statusline = statusline .. vim.fn.eval('vista#statusline#()')
+  elseif filetype == 'dapui_watches' or
+         filetype == 'dapui_stacks' or
+         filetype == 'dapui_breakpoints' or
+         filetype == 'dapui_scopes' or
+         filetype == 'dap_repl' or
+         filetype == 'dapui_console' then
+      statusline = statusline .. "%#Normal#"..DebugStatusLine(filetype)
   else
       statusline = statusline .. "%#Normal# "..FilePath(idBuffer)
-      statusline = statusline .."%#Normal# "
   end
 
   statusline = statusline .. "%="
