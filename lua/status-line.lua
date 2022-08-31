@@ -488,7 +488,7 @@ local DebugStatusLine = function(filetype)
       return " Breackpoints"
   elseif filetype == 'dapui_scopes' then
       return " Scopes"
-  elseif filetype == 'dap_repl' then
+  elseif filetype == 'dap-repl' then
       return "ﲵ Repl"
   elseif filetype == 'dapui_console' then
       return " Console"
@@ -562,7 +562,7 @@ function M.activeLine(idBuffer)
          filetype == 'dapui_stacks' or
          filetype == 'dapui_breakpoints' or
          filetype == 'dapui_scopes' or
-         filetype == 'dap_repl' or
+         filetype == 'dap-repl' or
          filetype == 'dapui_console' then
       statusline = statusline .. DebugStatusLine(filetype)
       statusline = statusline .. "%="
@@ -687,7 +687,7 @@ function M.inActiveLine(idBuffer)
          filetype == 'dapui_stacks' or
          filetype == 'dapui_breakpoints' or
          filetype == 'dapui_scopes' or
-         filetype == 'dap_repl' or
+         filetype == 'dap-repl' or
          filetype == 'dapui_console' then
       statusline = statusline .. "%#Normal#"..DebugStatusLine(filetype)
   else
