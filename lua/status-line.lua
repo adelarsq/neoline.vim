@@ -453,11 +453,12 @@ local FilePath = function(n)
 end
 
 local DebugStatus = function()
-    if not vim.g.nvim_dap then
-        return ''
-    end
-
-    return require('dap').status()
+  local use, imported = pcall(require, "dap")
+  if use then
+    return imported.status()
+  else
+      return ''
+  end
 end
 
 local CurrentScope = function()
