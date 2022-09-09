@@ -391,30 +391,15 @@ local LspStatus = function(idBuffer)
 end
 
 local TsStatus = function()
-                             
+    if vim.g.loaded_nvim_treesitter then
+      local use, imported = pcall(require, "nvim-treesitter.statusline")
+      if use then
+        return imported.statusline()
+      else
+        return ''
+      end
+    end
     return ''
-    -- if not util.IsVersion5() then
-    --     return ''
-    -- end
-    --
-    -- if not vim.g.loaded_nvim_treesitter then
-    --     return ''
-    -- end
-    --
-    -- local sl = "%#NeoLineDefault#"
-    -- sl = sl..vim.g.neoline_left_separator
-    -- sl = sl.."%#NeoLineDefaultInverse#"
-    -- 
-    -- local ts = util.Call('nvim_treesitter#statusline', {30})
-    -- if ts == nil or ts == '' then
-    --     return ''
-    -- end
-    -- sl = sl..ts
-    --
-    -- sl = sl.."%#NeoLineDefault#"
-    -- sl = sl..vim.g.neoline_right_separator
-    -- 
-    -- return sl
 end
 
 local TreeStatus = function(idBuffer)
@@ -455,18 +440,18 @@ end
 local DebugStatus = function()
   local use, imported = pcall(require, "dap")
   if use then
-    return require('dap').status()
+    return imported.status()
   else
       return ''
   end
 end
 
 local CurrentScope = function()
-    -- if vim.g.did_coc_loaded then
-    --     return vim.fn.eval('b:coc_current_function')
-    -- else
-    --     return TsStatus()
-    -- end
+    if vim.g.loaded_nvim_treesitter then
+        return TsStatus()
+    elseif vim.g.did_coc_loaded then
+        return vim.fn.eval('b:coc_current_function')
+    end
     return ''
 end
 
@@ -755,4 +740,3 @@ end
 M.initColors()
 
 return M
-
