@@ -35,10 +35,16 @@ endfunction
 if !exists('g:neoline_disable_statusline')
     " Change statusline automatically
     if &laststatus == 3
-        augroup NeoLine
-          autocmd!
-          autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine(bufnr('%'))
-        augroup END
+lua << EOF
+local timer = vim.loop.new_timer()
+
+timer:start(100, 1000, vim.schedule_wrap(function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local ss = require'status-line'.activeLine(bufnr)
+  vim.wo.statusline=ss
+end))
+
+EOF
     else 
         augroup NeoLine
           autocmd!
