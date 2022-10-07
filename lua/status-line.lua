@@ -483,6 +483,15 @@ local DebugStatusLine = function(filetype)
   end
 end
 
+local ShowMacroRecording = function()
+    local recording_register = vim.fn.reg_recording()
+    if recording_register == "" then
+        return ""
+    else
+        return " Recording @" .. recording_register .. " "
+    end
+end
+
 function M.activeLine(idBuffer)
   local statusline = "%#NeoLineDefault#"
 
@@ -605,6 +614,7 @@ function M.activeLine(idBuffer)
   statusline = statusline..vim.g.neoline_right_separator
 
   statusline = statusline.."%#NeoLineDefault#"
+  statusline = statusline..ShowMacroRecording()
   statusline = statusline.."%="
   statusline = statusline.."%#NeoLineDefault#"
 
