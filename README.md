@@ -33,9 +33,12 @@ Then open the editor and install with `call dein#install()`.
 use 'adelarsq/neoline.vim'
 ```
 
+## Features ⚙️
 
-## Features/Todos ⚙️
-
+- [x] Mode detection
+  - [x] Status line color
+  - [x] Current tab color
+  - [x] CursorLineNr and LineNr
 - Support for plugins
   - Icons and themes:
     - [x] [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
@@ -77,9 +80,14 @@ use 'adelarsq/neoline.vim'
     - [x] [folke/trouble.nvim](https://github.com/folke/trouble.nvim)
   - Scrollbar:
     - [x] [petertriho/nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar)
+- [x] Operating Systems
+  - [x] MS Windows    
+  - [x] macOS
+  - [x] Linux
+  - [ ] Android
+  - [ ] iOS?
 - [x] LSP status support
 - [x] TreeSitter support
-- [x] Mode color for current tab
 - [ ] Support one color [per tab](https://marketplace.visualstudio.com/items?itemName=orepor.color-tabs-vscode-ext)
 - [ ] Line cored based on mode **(disabled until dark mode to be supported)**
 - [ ] Animations? [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my) [2](https://github.com/windwp/windline.nvim)
@@ -88,7 +96,6 @@ use 'adelarsq/neoline.vim'
 - [ ] Add theme support
 - [x] Custom borders
 - [ ] Detect window size to show the right elements
-- [ ] Better support for MS Windows
 - [ ] Better support for dark themes
 - [ ] Add hint about position history
 - [ ] Setting per-filetype [1](https://www.reddit.com/r/neovim/comments/nbdgh9/statusline_plugin_with_perfiletype_settings/)
