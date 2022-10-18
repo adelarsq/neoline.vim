@@ -39,7 +39,7 @@ use 'adelarsq/neoline.vim'
   - [x] Status line color
   - [x] Current tab color
   - [x] CursorLineNr and LineNr
-- Support for plugins
+- [x] Plugins support
   - Icons and themes:
     - [x] [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
     - [ ] [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons)
