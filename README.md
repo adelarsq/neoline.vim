@@ -91,7 +91,10 @@ use 'adelarsq/neoline.vim'
 - [x] TreeSitter support
 - [ ] Support one color [per tab](https://marketplace.visualstudio.com/items?itemName=orepor.color-tabs-vscode-ext)
 - [ ] Line cored based on mode **(disabled until dark mode to be supported)**
-- [ ] Animations? [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my) [2](https://github.com/windwp/windline.nvim)
+- [ ] Animations
+  - [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my)
+  - [2](https://github.com/windwp/windline.nvim)
+  - [3](https://www.reddit.com/r/vimporn/comments/nv0pi7/simple_runner/)
 - [ ] Move all code to Lua
     - [x] Work in progress
 - [ ] Add theme support
@@ -102,7 +105,6 @@ use 'adelarsq/neoline.vim'
 - [ ] Setting per-filetype [1](https://www.reddit.com/r/neovim/comments/nbdgh9/statusline_plugin_with_perfiletype_settings/)
 - [ ] Show LSP diagnostics for the whole workspace
 - [x] Use normal mode hightlight on inative tabs/buffers for better UX
-- [ ] Runner status [1](https://www.reddit.com/r/vimporn/comments/nv0pi7/simple_runner/)
 - [x] **nightly** Local (`set laststatus=2`) and global status (`set laststatus=3`) line support. Global status has a little better performance than local status on this plugin.
 - [x] Macro recording status
 
