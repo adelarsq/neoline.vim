@@ -71,6 +71,7 @@ use 'adelarsq/neoline.vim'
     - [x] [junegunn/vim-plug](https://github.com/junegunn/vim-plug)
   - Debug:
     - [x] [mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap)
+      - [x] [rcarriga/nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) - show controls on tabline.
   - Distraction free:
     - [ ] [junegunn/goyo.vim](https://github.com/junegunn/goyo.vim)
     - [ ] [kdav5758/TrueZen.nvim](https://github.com/kdav5758/TrueZen.nvim)
