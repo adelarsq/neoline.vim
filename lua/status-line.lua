@@ -457,6 +457,19 @@ local DebugStatus = function()
   end
 end
 
+local DebugControls = function()
+  if DebugStatus() == '' then
+    return ''
+  end
+
+  local use, imported = pcall(require, "dapui")
+  if use then
+    return imported.controls()
+  else
+      return ''
+  end
+end
+
 local CurrentScope = function()
     if vim.g.loaded_nvim_treesitter then
         return TsStatus()
@@ -750,6 +763,8 @@ function M.TabLine()
     tabline = tabline.."%#NeoLineTabLineSel# session: "..session.data
     tabline = tabline.." %#NeoLineTabLineSelSeparator#"..vim.g.neoline_right_separator
   end
+
+  tabline = tabline.." "..DebugControls().." "
 
   tabline = tabline.."%#NeoLineTabLineSelSeparator# "..vim.g.neoline_left_separator
   tabline = tabline.."%#NeoLineTabLineSel# "..vim.g.neoline_iconCwd..' '..vim.loop.cwd()
