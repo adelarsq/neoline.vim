@@ -81,6 +81,8 @@ use 'adelarsq/neoline.vim'
     - [x] [folke/trouble.nvim](https://github.com/folke/trouble.nvim)
   - Scrollbar:
     - [x] [petertriho/nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar)
+  - Code runner:
+    - Reference [3](https://www.reddit.com/r/vimporn/comments/nv0pi7/simple_runner/)
 - [x] Operating Systems
   - [x] MS Windows    
   - [x] macOS
@@ -94,7 +96,6 @@ use 'adelarsq/neoline.vim'
 - [ ] Animations
   - Reference [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my)
   - Reference [2](https://github.com/windwp/windline.nvim)
-  - Reference [3](https://www.reddit.com/r/vimporn/comments/nv0pi7/simple_runner/)
 - [ ] Move all code to Lua
     - [x] Work in progress
 - [ ] Add theme support
