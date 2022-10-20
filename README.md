@@ -92,9 +92,9 @@ use 'adelarsq/neoline.vim'
 - [ ] Support one color [per tab](https://marketplace.visualstudio.com/items?itemName=orepor.color-tabs-vscode-ext)
 - [ ] Line cored based on mode **(disabled until dark mode to be supported)**
 - [ ] Animations
-  - [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my)
-  - [2](https://github.com/windwp/windline.nvim)
-  - [3](https://www.reddit.com/r/vimporn/comments/nv0pi7/simple_runner/)
+  - Reference [1](https://www.reddit.com/r/neovim/comments/gu7h0i/how_would_i_go_about_writing_an_animation_for_my)
+  - Reference [2](https://github.com/windwp/windline.nvim)
+  - Reference [3](https://www.reddit.com/r/vimporn/comments/nv0pi7/simple_runner/)
 - [ ] Move all code to Lua
     - [x] Work in progress
 - [ ] Add theme support
