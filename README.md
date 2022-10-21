@@ -108,6 +108,9 @@ use 'adelarsq/neoline.vim'
 - [x] Use normal mode hightlight on inative tabs/buffers for better UX
 - [x] **nightly** Local (`set laststatus=2`) and global status (`set laststatus=3`) line support. Global status has a little better performance than local status on this plugin.
 - [x] Macro recording status
+- [x] Tabline
+  - [x] Multiple files per tab
+  - [ ] One file per tab
 
 ## Options ✅
 
