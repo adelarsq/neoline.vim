@@ -239,6 +239,9 @@ local ScrollColor = function(bgcolor)
     api.nvim_command('hi ScrollbarInfoHandle guibg='..bgcolor)
     api.nvim_command('hi ScrollbarHintHandle guibg='..bgcolor)
     api.nvim_command('hi ScrollbarMiscHandle guibg='..bgcolor)
+    api.nvim_command('hi ScrollbarGitAddHandle guibg='..bgcolor)
+    api.nvim_command('hi ScrollbarGitChangeHandle guibg='..bgcolor)
+    api.nvim_command('hi ScrollbarGitDeleteHandle guibg='..bgcolor)
 end
 
 local CursorLineNr = function(bgcolor)
