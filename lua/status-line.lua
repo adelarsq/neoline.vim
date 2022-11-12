@@ -477,7 +477,10 @@ local CurrentScope = function()
     if vim.g.loaded_nvim_treesitter then
         return TsStatus()
     elseif vim.g.did_coc_loaded then
-        return vim.fn.eval('b:coc_current_function')
+        local result = vim.b.coc_current_function
+        if result ~= nil then
+            return result
+        end
     end
     return ''
 end
