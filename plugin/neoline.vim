@@ -5,10 +5,6 @@ endif
 
 let g:neoline_loaded = 1
 
-if exists('g:neoline_use_nightly')
-    set fillchars=stlnc\:―
-endif
-
 function! ActiveLine(idbuffer) abort
     let ss = "require'status-line'.activeLine(" . a:idbuffer . ")"
     return luaeval(ss)
