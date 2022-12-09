@@ -18,5 +18,27 @@ M.ScrollColor = function(bgcolor)
     api.nvim_command('hi ScrollbarGitDeleteHandle guibg='..bgcolor)
 end
 
+M.DebugStatus = function()
+  local use, imported = pcall(require, "dap")
+  if use then
+    return imported.status()
+  else
+      return ''
+  end
+end
+
+M.DebugControls = function()
+  if M.DebugStatus() == '' then
+    return ''
+  end
+
+  local use, imported = pcall(require, "dapui")
+  if use then
+    return imported.controls()
+  else
+      return ''
+  end
+end
+
 return M
 

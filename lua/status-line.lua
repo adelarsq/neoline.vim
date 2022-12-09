@@ -438,28 +438,6 @@ local FilePath = function(n)
     -- end
 end
 
-local DebugStatus = function()
-  local use, imported = pcall(require, "dap")
-  if use then
-    return imported.status()
-  else
-      return ''
-  end
-end
-
-local DebugControls = function()
-  if DebugStatus() == '' then
-    return ''
-  end
-
-  local use, imported = pcall(require, "dapui")
-  if use then
-    return imported.controls()
-  else
-      return ''
-  end
-end
-
 local CurrentScope = function()
     if vim.g.loaded_nvim_treesitter then
         return TsStatus()
@@ -635,7 +613,7 @@ function M.activeLine(idBuffer)
   statusline = statusline.."%="
   statusline = statusline.."%#NeoLineDefault#"
 
-  statusline = statusline..DebugStatus()
+  statusline = statusline.. plugins.DebugStatus()
 
   local currentScope = CurrentScope()
   if currentScope then
@@ -757,7 +735,7 @@ function M.TabLine()
     tabline = tabline.." %#NeoLineTabLineSelSeparator#"..vim.g.neoline_right_separator
   end
 
-  tabline = tabline.." "..DebugControls().." "
+  tabline = tabline.." ".. plugins.DebugControls() .." "
 
   tabline = tabline.."%#NeoLineTabLineSelSeparator# "..vim.g.neoline_left_separator
   tabline = tabline.."%#NeoLineTabLineSel# "..vim.g.neoline_iconCwd..' '..vim.loop.cwd()
