@@ -2,6 +2,7 @@ local api = vim.api
 local util = require 'util'
 local icons = require 'icons'
 local session = require 'abduco'
+local builtin = require 'builtin'
 local plugins = require 'plugins'
 local M = {}
 
@@ -391,18 +392,6 @@ local LspStatus = function(idBuffer)
     return sl
 end
 
-local TsStatus = function()
-    if vim.g.loaded_nvim_treesitter then
-      local use, imported = pcall(require, "nvim-treesitter.statusline")
-      if use then
-        return imported.statusline()
-      else
-        return ''
-      end
-    end
-    return ''
-end
-
 local TreeStatus = function(idBuffer)
     local statusline = vim.g.neoline_iconTree
     statusline = statusline..' '
@@ -436,18 +425,6 @@ local FilePath = function(n)
     -- else
         return '%f'
     -- end
-end
-
-local CurrentScope = function()
-    if vim.g.loaded_nvim_treesitter then
-        return TsStatus()
-    elseif vim.g.did_coc_loaded then
-        local result = vim.b.coc_current_function
-        if result ~= nil then
-            return result
-        end
-    end
-    return ''
 end
 
 local RunStatus = function()
@@ -615,7 +592,7 @@ function M.activeLine(idBuffer)
 
   statusline = statusline.. plugins.DebugStatus()
 
-  local currentScope = CurrentScope()
+  local currentScope = plugins.CurrentScope()
   if currentScope then
     statusline = statusline..currentScope
   end
