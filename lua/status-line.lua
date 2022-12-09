@@ -270,7 +270,7 @@ local BuiltinLsp = function(idBuffer)
     if not vim.tbl_isempty(vim.lsp.buf_get_clients(idBuffer)) then local error, warning, information, hint = NeoDiagnosticStatus(idBuffer)
 
         sl=sl.."%#NeoLineDefaultInverse#"
-        sl=sl..'🔥'
+        sl=sl..vim.g.neoline_lsp_running
         if error > 0 then
             sl=sl..' '..vim.g.neoline_symbol_error
             sl=sl..error
@@ -354,17 +354,17 @@ end
 
 local DebugStatusLine = function(filetype)
   if filetype == 'dapui_watches' then
-      return " Watches"
+      return vim.g.neoline_icon_dapui_watches.." Watches"
   elseif filetype == 'dapui_stacks' then
-      return " Stacks"
+      return vim.g.neoline_icon_dapui_stacks.." Stacks"
   elseif filetype == 'dapui_breakpoints' then
-      return " Breackpoints"
+      return vim.g.neoline_icon_dapui_breakpoints.." Breackpoints"
   elseif filetype == 'dapui_scopes' then
-      return " Scopes"
+      return vim.g.neoline_icon_dapui_scopes.." Scopes"
   elseif filetype == 'dap-repl' then
-      return "ﲵ Repl"
+      return vim.g.neoline_icon_dap_repl.." Repl"
   elseif filetype == 'dapui_console' then
-      return " Console"
+      return vim.g.neoline_icon_dapui_console.." Console"
   else
       return ' '
   end

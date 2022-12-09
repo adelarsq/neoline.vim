@@ -23,6 +23,7 @@ M.Setup = function()
     vim.g.neoline_iconLn=''
 
     -- LSP
+    vim.g.neoline_lsp_running='🔥'
     vim.g.neoline_lsp_stoped='🧊'
 
     if not vim.g.neoline_symbol_error then
@@ -46,6 +47,14 @@ M.Setup = function()
     if not vim.g.neoline_iconTree then
     vim.g.neoline_iconTree = '🌳'
     end
+
+    -- Dap
+    vim.g.neoline_icon_dapui_watches = ''
+    vim.g.neoline_icon_dapui_stacks = ''
+    vim.g.neoline_icon_dapui_breakpoints = ''
+    vim.g.neoline_icon_dapui_scopes = ''
+    vim.g.neoline_icon_dap_repl = 'ﲵ'
+    vim.g.neoline_icon_dapui_console = ''
 end
 
 M.GetIcon = function(file_name)
