@@ -117,25 +117,25 @@ use 'adelarsq/neoline.vim'
 **Disabling the statusline:**
 
 ```vim
-set g:neoline_disable_statusline=1
-```
-
-Or with Lua:
-
-```lua
 vim.g.neoline_disable_statusline=1
+-- or with VimScript
+set g:neoline_disable_statusline=1
 ```
 
 **Disabling the tabline:**
 
 ```vim
+vim.g.neoline_disable_tabline=1
+-- or with VimScript
 set g:neoline_disable_tabline=1
 ```
 
-Or with Lua:
+**Disabling current scope on the status line:**
 
 ```lua
-vim.g.neoline_disable_tabline=1
+vim.g.neoline_disable_current_scope = 1 
+-- or with VimScript
+set g:neoline_disable_current_scope = 1 
 ```
 
 ## Others 🦕

@@ -507,9 +507,11 @@ function M.activeLine(idBuffer)
 
   statusline = statusline.. plugins.DebugStatus()
 
-  local currentScope = plugins.CurrentScope()
-  if currentScope then
-    statusline = statusline..currentScope
+  if not vim.g.neoline_disable_current_scope then
+    local currentScope = plugins.CurrentScope()
+    if currentScope then
+        statusline = statusline..currentScope
+    end
   end
 
   -- Alignment to left
