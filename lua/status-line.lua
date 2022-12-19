@@ -5,6 +5,8 @@ local icons = require 'icons'
 local session = require 'abduco'
 local builtin = require 'builtin'
 local plugins = require 'plugins'
+local files = require 'files'
+
 local M = {}
 
 ------------------------------------------------------------------------
@@ -632,7 +634,8 @@ function M.TabLine()
   tabline = tabline.." ".. plugins.DebugControls() .." "
 
   tabline = tabline.."%#NeoLineTabLineSelSeparator# "..vim.g.neoline_left_separator
-  tabline = tabline.."%#NeoLineTabLineSel# "..vim.g.neoline_iconCwd..' '..vim.loop.cwd()
+  -- tabline = tabline.."%#NeoLineTabLineSel# "..vim.g.neoline_iconCwd..' '..vim.loop.cwd()
+  tabline = tabline.."%#NeoLineTabLineSel# "..vim.g.neoline_iconCwd..' '..files.abbreviate_path(vim.loop.cwd())
   tabline = tabline.." %#NeoLineTabLineSelSeparator#"..vim.g.neoline_right_separator
 
   return tabline
