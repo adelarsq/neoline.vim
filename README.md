@@ -1,5 +1,7 @@
 # neoline.vim ✅
 
+[![License: MIT](https://img.shields.io/github/license/adelarsq/neoline.vim?style=flat&color=green)](https://mit-license.org)
+
 A light statusline/tabline plugin for [Neovim](https://github.com/neovim/neovim) using [Lua](https://www.lua.org).
 
 Using neoline.vim with [material](https://github.com/marko-cerovac/material.nvim) dark theme, [vim-emoji-icon-theme](https://github.com/adelarsq/vim-emoji-icon-theme), [petertriho/nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar), [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) and [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim):
