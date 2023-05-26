@@ -4,8 +4,16 @@ local api = vim.api
 local M = {}
 
 M.abbreviate_path = function(path)
+  if path == nil then
+    return ''
+  end
+  
   local last_name = string.match(path, "[^/\\]+$")
 
+  if last_name == nil then
+    return ''
+  end
+  
   local previous_folders = string.match(path, "^.+[\\/]")
 
   local abbreviated_folders = ""
