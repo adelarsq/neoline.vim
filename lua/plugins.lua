@@ -56,7 +56,7 @@ M.DebugControls = function()
     return ''
   end
 
-  local use, imported = pcall(require, "dapui")
+  local use, imported = pcall(require, "dapui.controls")
   if use then
     return imported.controls()
   else
