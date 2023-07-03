@@ -165,6 +165,7 @@ Thanks goes to these people/projects for inspiration:
    - [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 - **Buffer/Tab line**:
    - [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
+   - [willothy/nvim-cokeline](https://github.com/willothy/nvim-cokeline)
 
 ## License 📜
 
