@@ -584,6 +584,21 @@ function M.inActiveLine(idBuffer)
   return statusline
 end
 
+
+function M.UpdateInactiveWindows()
+    if vim.bo.buftype == 'popup' then
+        return
+    end
+
+    for n = 1, vim.fn.winnr('$') do
+        if not vim.api.nvim_win_is_valid(0) then
+            local bufferId = vim.fn.winbufnr(n)
+            local statusLine = M.inActiveLine(bufferId)
+            vim.api.nvim_win_set_var(n, '&statusline', statusLine)
+        end
+    end
+end
+
 ------------------------------------------------------------------------
 --                              TabLine                               --
 ------------------------------------------------------------------------
@@ -634,8 +649,7 @@ function M.TabLine()
   tabline = tabline.." ".. plugins.DebugControls() .." "
 
   tabline = tabline.."%#NeoLineTabLineSelSeparator# "..vim.g.neoline_left_separator
-  -- tabline = tabline.."%#NeoLineTabLineSel# "..vim.g.neoline_iconCwd..' '..vim.loop.cwd()
-  tabline = tabline.."%#NeoLineTabLineSel# "..vim.g.neoline_iconCwd..' '..files.abbreviate_path(vim.loop.cwd())
+  tabline = tabline.."%#NeoLineTabLineSel# "..vim.g.neoline_iconCwd..' '..files.abbreviate_path(vim.uv.cwd())
   tabline = tabline.." %#NeoLineTabLineSelSeparator#"..vim.g.neoline_right_separator
 
   return tabline
