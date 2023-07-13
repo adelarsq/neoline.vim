@@ -8,7 +8,7 @@ let g:neoline_loaded = 1
 if !exists('g:neoline_disable_statusline')
 
 lua << EOF
-local timer = vim.loop.new_timer()
+local timer = vim.uv.new_timer()
 
 timer:start(100, 1000, vim.schedule_wrap(function()
   local bufnr = vim.api.nvim_get_current_buf()
