@@ -1,6 +1,6 @@
 local M = {}
 local vim = vim
-local loop = vim.loop
+local uv = vim.uv
 local api = vim.api
 
 M.items = {}
@@ -25,10 +25,10 @@ local function onread(err, data)
 end
 
 M.abduco_session = function()
-  local stdout = vim.loop.new_pipe(false)
-  local stderr = vim.loop.new_pipe(false)
+  local stdout = vim.uv.new_pipe(false)
+  local stderr = vim.uv.new_pipe(false)
   local handle, pid
-  handle, pid = vim.loop.spawn('abduco', {
+  handle, pid = vim.uv.spawn('abduco', {
     args = {},
     stdio = {stdout,stderr}
     },
@@ -40,8 +40,8 @@ M.abduco_session = function()
       handle:close()
     end
     ))
-  vim.loop.read_start(stdout, onread)
-  vim.loop.read_start(stderr, onread)
+  vim.uv.read_start(stdout, onread)
+  vim.uv.read_start(stderr, onread)
 end
 
 return M
