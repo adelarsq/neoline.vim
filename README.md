@@ -10,6 +10,18 @@ Using neoline.vim with [material](https://github.com/marko-cerovac/material.nvim
 
 ## Installation 🧙
 
+### [Lazy](https://github.com/folke/lazy.nvim)
+
+Add the following lines on the NeoVim config file (Lua):
+
+```lua
+require('lazy').setup({
+  {
+    'https://github.com/adelarsq/neoline.vim'
+  },
+}, {})
+```
+
 ### [Plug](https://github.com/junegunn/vim-plug)
 
 Add the following lines on the Vim/NeoVim config file:
