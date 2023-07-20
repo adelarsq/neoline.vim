@@ -1,8 +1,8 @@
+
 local api = vim.api
 local util = require 'util'
 local colors = require 'colors'
 local icons = require 'icons'
-local session = require 'abduco'
 local builtin = require 'builtin'
 local plugins = require 'plugins'
 local files = require 'files'
@@ -10,8 +10,6 @@ local files = require 'files'
 local M = {}
 
 ------------------------------------------------------------------------
-
-session.abduco_session()
 
 colors.Setup()
 icons.Setup()
@@ -639,12 +637,6 @@ function M.TabLine()
     end
   end
   tabline = tabline.."%="
-
-  if session.data ~= nil then
-    tabline = tabline.."%#NeoLineTabLineSelSeparator# "..vim.g.neoline_left_separator
-    tabline = tabline.."%#NeoLineTabLineSel# session: "..session.data
-    tabline = tabline.." %#NeoLineTabLineSelSeparator#"..vim.g.neoline_right_separator
-  end
 
   tabline = tabline.." ".. plugins.DebugControls() .." "
 
