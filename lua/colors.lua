@@ -1,23 +1,14 @@
 local M = {}
 
 M.Setup = function()
-    -- Different colors for mode
-    -- vim.g.neoline_red = '#BF616A'
-    -- vim.g.neoline_yellow = '#EBCB8B'
-    -- vim.g.neoline_green = '#A3BE8C'
-    -- vim.g.neoline_blue = '#81A1C1'
-    -- vim.g.neoline_purple = '#B48EAD'
-
     vim.g.neoline_white = '#ffffff'
     vim.g.neoline_red = '#ff5349' -- red orange
     vim.g.neoline_orange = '#ff9326'
     vim.g.neoline_yellow = '#fe6e00' -- blaze orange
     vim.g.neoline_green = '#4CBB17' -- color Kelly
-    -- vim.g.neoline_green = '#55a630'
     vim.g.neoline_turquoise = '#3FE0D0'
     vim.g.neoline_aqua = '#18ffe0'
     vim.g.neoline_blue = '#31baff'
-    -- vim.g.neoline_blue = '#3a86ff'
     vim.g.neoline_purple = '#9d8cff'
     vim.g.neoline_green_light = '#D5F5E3'
     vim.g.neoline_purple_light = '#E8DAEF'
