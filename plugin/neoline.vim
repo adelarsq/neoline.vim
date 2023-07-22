@@ -22,7 +22,7 @@ timer:start(100, 1000, vim.schedule_wrap(function()
     vim.wo.statusline=require'status-line'.activeLine(bufnr)
   end
 
-  if g:neoline_disable_tabline != 1
+  if not exists('g:neoline_disable_tabline') then
     vim.o.tabline=require'status-line'.TabLine()
   end
 end))
