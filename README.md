@@ -19,7 +19,7 @@ Add the following lines on the NeoVim config file (Lua):
 ```lua
 require('lazy').setup({
   {
-    'https://github.com/adelarsq/neoline.vim'
+    'adelarsq/neoline.vim'
   },
 }, {})
 ```
@@ -29,7 +29,7 @@ require('lazy').setup({
 Add the following lines on the Vim/NeoVim config file:
 
 ```vim
-Plug 'https://github.com/adelarsq/neoline.vim'
+Plug 'adelarsq/neoline.vim'
 ```
 
 Then open the editor and install with `PlugInstall`.
