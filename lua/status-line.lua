@@ -280,7 +280,7 @@ local BuiltinLsp = function(idBuffer)
 
     sl = sl .. "%#NeoLineDefault#"
     sl = sl .. vim.g.neoline_left_separator
-    if not vim.tbl_isempty(vim.lsp.buf_get_clients(idBuffer)) then
+    if not vim.tbl_isempty(vim.lsp.get_clients({ bufnr = idBuffer })) then
         local error, warning, information, hint = NeoDiagnosticStatus(idBuffer)
 
         sl = sl .. "%#NeoLineDefaultInverse#"
